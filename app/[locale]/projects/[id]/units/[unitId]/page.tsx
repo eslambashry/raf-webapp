@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RegisterModal from '@/components/RegisterModal';
@@ -46,8 +45,7 @@ interface Unit {
   };
 }
 
-const ProjectPage = () => {
-  const params = useParams();
+const ProjectPage = ({ params }: { params: { unitId: string } }) => {
   const [unit, setUnit] = useState<Unit | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
@@ -301,10 +299,12 @@ const ProjectPage = () => {
       <Footer />
 
       <RegisterModal 
-        isOpen={isRegisterOpen} 
-        onClose={() => setIsRegisterOpen(false)}
-        onSuccess={handleRegistrationSuccess}
-      />
+  isOpen={isRegisterOpen} 
+  onClose={() => setIsRegisterOpen(false)}
+  onSuccess={handleRegistrationSuccess}
+  unitId={params.unitId}
+  categoryId={unit?.categoryId || ''}
+/>
 
       <ThankYouModal 
         isOpen={isThankYouOpen} 
