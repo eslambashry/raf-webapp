@@ -45,7 +45,7 @@ export default function Contact() {
 
     try {
       const validatedData = contactSchema.parse(formData);
-      const response = await fetch('http://localhost:8000/message/create', {
+      const response = await fetch('https://raf-alpha.vercel.app/message/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(validatedData)

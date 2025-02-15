@@ -41,7 +41,7 @@ export default function RegisterModal({ isOpen, onClose, onSuccess,unitId, categ
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:8000/interested/create', {
+      const response = await fetch('https://raf-alpha.vercel.app/interested/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
