@@ -10,11 +10,14 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+// import { useParams } from "next/navigation"
+import axios from 'axios';
+
 
 const newPasswordSchema = z.object({
-  password: z.string().min(8),
+  newPassword: z.string().min(8),
   confirmPassword: z.string().min(8),
-}).refine(data => data.password === data.confirmPassword, {
+}).refine(data => data.newPassword === data.confirmPassword, {
   message: "Passwords do not match",
   path: ["confirmPassword"],
 });
@@ -24,23 +27,36 @@ type NewPasswordFormData = z.infer<typeof newPasswordSchema>;
 export default function NewPasswordPage() {
   const t = useTranslations('auth.resetPassword');
   const v = useTranslations('auth.validation');
+  // const params = useParams()
+  // const tokenParts = params?.token as string[]
+  // const token = tokenParts.join('/');
+
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const { resetPassword } = useAuth();
+  
+  // const { resetPassword } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const token = searchParams.get('token') || '';
+  const token = searchParams?.get('token');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm<NewPasswordFormData>({
     resolver: zodResolver(newPasswordSchema),
   });
-
+  console.log(token);
+  
   const onSubmit = async (data: NewPasswordFormData) => {
     setIsSubmitting(true);
     try {
-      const success = await resetPassword(token, data.password);
-      if (success) {
+      const response = await axios.post(
+        `https://raf-backend.vercel.app/auth/resetmypassword/${token}`, // Token as part of URL
+        {
+          newPassword: data.newPassword, // Send the new password in the request body
+        }
+      );       
+      console.log(response);
+       
+      if (response.status === 200 || response.status === 201) {
         toast.success(t('passwordResetSuccess'));
         router.push('/auth/login');
       } else {
@@ -75,12 +91,12 @@ export default function NewPasswordPage() {
               {t('newPassword')}
             </label>
             <input
-              {...register('password')}
+              {...register('newPassword')}
               type="password"
               className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
               dir="ltr"
             />
-            {errors.password && (
+            {errors.newPassword && (
               <p className="text-red-500 text-xs">{v('passwordLength')}</p>
             )}
           </div>

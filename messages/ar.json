@@ -411,6 +411,8 @@
     "sold": "تم البيع",
     "reserved": "محجوز",
     "available": "متاح",
+    "unavailable":"تحت الانشاء",
+    "totalUnits":"إجمالي الوحدات",
     "gridView": "عرض الشبكة",
     "horizontalView": "عرض أفقي",
     "compactView": "عرض مختصر",
@@ -426,7 +428,9 @@
     "viewProject": "عرض المشروع",
     "sold": "تم البيع",
     "reserved": "محجوز",
-    "available": "متاح"
+    "available": "متاح",
+    "unavailable":"تحت الانشاء",
+    "totalUnits":"إجمالي الوحدات"
   },
   "services": {
     "afterSaleTitle": "خدمات متميزه ",
@@ -515,7 +519,10 @@
     },
     "signup": {
       "title": "إنشاء حساب جديد",
-      "fullName": "الاسم الكامل",
+      "firstName": "الاسم الاول",
+      "lastName": "الاسم الاخير",
+      "middleName": "الاسم الأوسط",
+      "phoneNumber": "رقم الجوال",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
       "confirmPassword": "تأكيد كلمة المرور",
@@ -529,10 +536,10 @@
     "resetPassword": {
       "title": "إعادة تعيين كلمة المرور",
       "email": "البريد الإلكتروني",
-      "sendLink": "إرسال رابط إعادة التعيين",
+      "sendLink": "إرسال كود إعادة التعيين",
       "backToLogin": "العودة إلى تسجيل الدخول",
-      "resetSuccess": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
-      "resetError": "حدث خطأ أثناء إرسال رابط إعادة التعيين",
+      "resetSuccess": "تم إرسال كود إعادة تعيين كلمة المرور إلى بريدك الإلكتروني",
+      "resetError": "حدث خطأ أثناء إرسال كود إعادة التعيين",
       "newPassword": "كلمة المرور الجديدة",
       "confirmPassword": "تأكيد كلمة المرور الجديدة",
       "resetButton": "إعادة تعيين كلمة المرور",

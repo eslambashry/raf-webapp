@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import {  useRouter } from "next/navigation"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,7 +69,36 @@ export default function Navbar() {
     setUserMenuOpen(!userMenuOpen);
   };
 
-  const handleLogout = () => {
+
+  const router = useRouter()
+
+  const handleLogout = async() => {
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        router.push("/login")
+        return
+      }
+
+      const response = await fetch("https://raf-backend.vercel.app/auth/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ token }),
+      })
+
+      console.log(response);
+      
+      if (response.ok) {
+        localStorage.removeItem("token")
+        document.cookie = "auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+        router.push("/login")
+      }
+    } catch (error) {
+      console.error("Error during logout:", error)
+    }
     logout();
     setUserMenuOpen(false);
     closeMenu();
@@ -90,7 +120,6 @@ export default function Navbar() {
         { text: t('auth.nav.signup'), href: "/auth/signup", active: pathname === `/${locale}/auth/signup` },
       ];
 
-  const allNavItems = [...navItems, ...authItems];
 
   return (
     <nav

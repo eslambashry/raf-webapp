@@ -5,10 +5,11 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { useAuth } from '@/context/AuthContext';
+// import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import axios from 'axios';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -23,7 +24,7 @@ export default function LoginPage() {
   const v = useTranslations('auth.validation');
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,8 +38,16 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setIsSubmitting(true);
     try {
-      const success = await login(data.email, data.password);
-      if (success) {
+      const response = await axios.post('https://raf-backend.vercel.app/auth/signIn', {
+        email: data.email,
+        password: data.password
+      });      
+      console.log(response.data);
+      if (response.status === 200 || response.status === 201) {
+        localStorage.setItem('token', response.data.userUpdated.token);
+        document.cookie = `auth-token=${response.data.userUpdated.token}; path=/; secure; samesite=strict`
+        localStorage.setItem('user_data', JSON.stringify(response.data.userUpdated));
+
         toast.success(t('loginSuccess'));
         router.push('/');
       } else {
