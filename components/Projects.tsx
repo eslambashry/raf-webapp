@@ -5,7 +5,15 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { LayoutGrid, Layout, Grid2X2, List, Heart, ChevronRight, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 
+interface CategoryProgress {
+  completedPercentage: number;
+  availablePercentage: number;
+  reservedPercentage: number;
+  unavailablePercentage: number;
+  total: number;
+}
 interface Category {
   _id: string;
   title: string;
@@ -14,11 +22,7 @@ interface Category {
     public_id: string;
   };
   isWishlisted?: boolean;
-  progress?: {
-    total: number;
-    sold: number;
-    reserved: number;
-  };
+  progress: CategoryProgress;
 }
 
 export default function Projects() {
@@ -28,7 +32,7 @@ export default function Projects() {
   const [wishlist, setWishlist] = useState<Set<string>>(new Set());
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'horizontal' | 'compact'>('horizontal');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  // const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = viewMode === 'compact' ? 6 : 4;
 
@@ -48,15 +52,15 @@ export default function Projects() {
 
         const response = await fetch(apiUrl);
         const data = await response.json();
-        setCategories(data.category.map((cat: Category) => ({
-          ...cat,
-          isWishlisted: wishlist.has(cat._id),
-          progress: {
-            total: 100,
-            sold: Math.floor(Math.random() * 70),
-            reserved: Math.floor(Math.random() * 20)
-          }
-        })));
+        console.log(data);
+        
+        if (Array.isArray(data.categories)) {
+          const mappedCategories = data.categories.map((cat: Category) => ({
+            ...cat,
+            isWishlisted: wishlist.has(cat._id),
+          }));
+          setCategories(mappedCategories);
+        }
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
@@ -65,34 +69,61 @@ export default function Projects() {
     fetchCategories();
   }, [locale, wishlist]);
 
-  const toggleWishlist = (categoryId: string, event: React.MouseEvent) => {
+  const toggleWishlist = async (categoryId: string, event: React.MouseEvent) => {
     event.preventDefault();
-    const newWishlist = new Set(wishlist);
-    if (wishlist.has(categoryId)) {
-      newWishlist.delete(categoryId);
-    } else {
-      newWishlist.add(categoryId);
-    }
-    setWishlist(newWishlist);
-    localStorage.setItem('wishlist', JSON.stringify(Array.from(newWishlist)));
-  };
-
-  const calculateProgress = (progress: Category['progress']) => {
-    if (!progress) return { available: 0, sold: 0, reserved: 0 };
-    const soldPercentage = (progress.sold / progress.total) * 100;
-    const reservedPercentage = (progress.reserved / progress.total) * 100;
-    const availablePercentage = 100 - soldPercentage - reservedPercentage;
-    return {
-      available: availablePercentage,
-      sold: soldPercentage,
-      reserved: reservedPercentage
-    };
-  };
-
-  const renderHorizontalView = (category: Category) => {
-    const progress = calculateProgress(category.progress);
-    const isHovered = hoveredCard === category._id;
     
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    
+    if (token) {
+      try {
+        // If user is authenticated, use the API
+        await axios.post(
+          "https://raf-backend.vercel.app/auth/wishlist", 
+          { category: categoryId },
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          }
+        );
+        
+        // Update local state after successful API call
+        const newWishlist = new Set(wishlist);
+        if (wishlist.has(categoryId)) {
+          newWishlist.delete(categoryId);
+        } else {
+          newWishlist.add(categoryId);
+        }
+        setWishlist(newWishlist);
+        
+      } catch (error) {
+        console.error('Error toggling wishlist item:', error);
+      }
+    } else {
+      // If not authenticated, use local storage
+      const newWishlist = new Set(wishlist);
+      if (wishlist.has(categoryId)) {
+        newWishlist.delete(categoryId);
+      } else {
+        newWishlist.add(categoryId);
+      }
+      setWishlist(newWishlist);
+      localStorage.setItem('wishlist', JSON.stringify(Array.from(newWishlist)));
+    }
+  };
+  
+  const renderHorizontalView = (category: Category) => {
+    const isHovered = hoveredCard === category._id;
+    const progress = category.progress || {
+      completedPercentage: 0,
+      availablePercentage: 0,
+      reservedPercentage: 0,
+      unavailablePercentage: 0,
+      total: 0
+    };
+
+
     return (
       <motion.div
         layout
@@ -142,14 +173,14 @@ export default function Projects() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('sold')}</span>
-                    <span className="text-sm font-semibold text-green-600">
-                      {Math.round(progress.sold)}%
+                    <span className="text-sm font-semibold text-blue-600">
+                      {progress.completedPercentage}%
                     </span>
                   </div>
                   <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500 ease-out"
-                      style={{ width: `${progress.sold}%` }}
+                      className="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 ease-out"
+                      style={{ width: `${progress.completedPercentage}%` }}
                     />
                   </div>
                 </div>
@@ -158,13 +189,13 @@ export default function Projects() {
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('reserved')}</span>
                     <span className="text-sm font-semibold text-yellow-600">
-                      {Math.round(progress.reserved)}%
+                      {progress.reservedPercentage}%
                     </span>
                   </div>
                   <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-gradient-to-r from-yellow-400 to-yellow-600 transition-all duration-500 ease-out"
-                      style={{ width: `${progress.reserved}%` }}
+                      style={{ width: `${progress.reservedPercentage}%` }}
                     />
                   </div>
                 </div>
@@ -172,17 +203,39 @@ export default function Projects() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('available')}</span>
-                    <span className="text-sm font-semibold text-blue-600">
-                      {Math.round(progress.available)}%
+                    <span className="text-sm font-semibold text-green-600">
+                      {progress.availablePercentage}%
                     </span>
                   </div>
                   <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 ease-out"
-                      style={{ width: `${progress.available}%` }}
+                      className="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500 ease-out"
+                      style={{ width: `${progress.availablePercentage}%` }}
                     />
                   </div>
                 </div>
+                <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm text-gray-600">{t('unavailable')}</span>
+                  <span className="text-sm font-semibold text-red-600">
+                    {progress.unavailablePercentage || 0}%
+                  </span>
+                </div>
+                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-red-400 to-red-600 transition-all duration-500 ease-out"
+                    style={{ width: `${progress.unavailablePercentage || 0}%` }}
+                  />
+                </div>
+              </div>
+              <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm text-gray-600">{t('totalUnits')}</span>
+                <span className="text-sm font-semibold text-gray-800">
+                  {progress.total}
+                </span>
+              </div>
+            </div>
               </div>
             </div>
 
@@ -202,9 +255,15 @@ export default function Projects() {
   };
 
   const renderCompactView = (category: Category) => {
-    const progress = calculateProgress(category.progress);
     const isHovered = hoveredCard === category._id;
-
+    const progress = category.progress || {
+      completedPercentage: 0,
+      availablePercentage: 0,
+      reservedPercentage: 0,
+      unavailablePercentage: 0,
+      total: 0
+    };
+  
     return (
       <motion.div
         layout
@@ -222,33 +281,37 @@ export default function Projects() {
               src={category.Image.secure_url}
               alt={category.title}
               fill
-              className={`object-cover transition-all duration-500 ${
-                isHovered ? 'scale-110' : ''
-              }`}
+              className={`object-cover transition-all duration-500 ${isHovered ? 'scale-110' : ''}`}
             />
           </div>
-
+  
           <div className="flex-1 ml-4">
             <h3 className="text-lg font-bold text-[#34222e] mb-2 font-cairo">
               {category.title}
             </h3>
-
+  
             <div className="flex items-center space-x-4">
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-500 mr-2" />
-                <span className="text-xs text-gray-600">{Math.round(progress.sold)}% {t('sold')}</span>
+                <span className="text-xs text-gray-600">
+                  {Math.round(progress.completedPercentage)}% {t('sold')}
+                </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2" />
-                <span className="text-xs text-gray-600">{Math.round(progress.reserved)}% {t('reserved')}</span>
+                <span className="text-xs text-gray-600">
+                  {Math.round(progress.reservedPercentage)}% {t('reserved')}
+                </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-blue-500 mr-2" />
-                <span className="text-xs text-gray-600">{Math.round(progress.available)}% {t('available')}</span>
+                <span className="text-xs text-gray-600">
+                  {Math.round(progress.availablePercentage)}% {t('available')}
+                </span>
               </div>
             </div>
           </div>
-
+  
           <div className="flex items-center space-x-4">
             <Link
               href={`/projects/${category._id}`}
@@ -264,6 +327,7 @@ export default function Projects() {
       </motion.div>
     );
   };
+  
 
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-[#EFEDEA]">

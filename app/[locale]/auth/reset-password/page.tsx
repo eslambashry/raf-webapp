@@ -5,9 +5,10 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { useAuth } from '@/context/AuthContext';
+// import { useAuth } from '@/context/AuthContext';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import axios from 'axios';
 
 const resetSchema = z.object({
   email: z.string().email(),
@@ -18,9 +19,10 @@ type ResetFormData = z.infer<typeof resetSchema>;
 export default function ResetPasswordPage() {
   const t = useTranslations('auth.resetPassword');
   const v = useTranslations('auth.validation');
+
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const { requestPasswordReset } = useAuth();
+  // const { requestPasswordReset } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 
@@ -28,11 +30,16 @@ export default function ResetPasswordPage() {
     resolver: zodResolver(resetSchema),
   });
 
+
   const onSubmit = async (data: ResetFormData) => {
     setIsSubmitting(true);
     try {
-      const success = await requestPasswordReset(data.email);
-      if (success) {
+      const response = await axios.post('https://raf-backend.vercel.app/auth/forgetmypassword', {
+        email: data.email,
+      }); 
+      console.log(response);
+      
+      if (response.status === 200 || response.status === 201) {
         toast.success(t('resetSuccess'));
         setEmailSent(true);
       } else {
