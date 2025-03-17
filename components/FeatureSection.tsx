@@ -145,7 +145,7 @@ const exclusiveFeatures = [
   },
   {
     icon: Building2,
-    imageUrl: '/hero_One.jpg',
+    imageUrl: '/aboutPage.png',
     ar: {
       title: 'تقنيات ذكية',
       description: 'أنظمة منزلية متكاملة تمنحك تحكماً كاملاً في وحدتك السكنية',
@@ -159,7 +159,7 @@ const exclusiveFeatures = [
   },
   {
     icon: Gem,
-    imageUrl: '/landscape_2.jpg',
+    imageUrl: '/desk.jpg',
     ar: {
       title: 'مواقع استراتيجية',
       description: 'اختيار دقيق للمواقع يضمن لك سهولة الوصول لجميع الخدمات',

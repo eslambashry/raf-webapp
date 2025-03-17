@@ -76,6 +76,7 @@ export default function AboutPage() {
   });
 
   const [activeSection, setActiveSection] = useState('hero');
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
     const yOffset = -90; // Account for fixed navbar
@@ -129,7 +130,7 @@ export default function AboutPage() {
         <section 
           ref={sectionRefs.hero}
           data-section="hero"
-          className="relative mt-[90px] h-[285px] bg-[url('/hero_One.jpg')] bg-cover bg-center"
+          className="relative mt-[90px] h-[285px] bg-[url('/aboutPage.png')] bg-cover bg-center"
           aria-labelledby="hero-title"
         >
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -174,7 +175,7 @@ export default function AboutPage() {
 
         {/* Section Navigation Menu */}
         <motion.nav 
-          className={`fixed ${isRTL ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 z-40 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg py-4 px-2`}
+          className={`fixed ${isRTL ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 z-40 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg py-4 px-2 hidden md:block`}
           initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
@@ -208,7 +209,23 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Skip to Content Button (for keyboard users) */}
+          {/* Mobile Toggle Button */}
+          <motion.button
+            className="md:hidden fixed ${isRTL ? 'left-4' : 'right-4'} bottom-4 z-[100] w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary backdrop-blur-sm shadow-lg flex items-center justify-center"
+            onClick={() => setIsNavOpen(!isNavOpen)}
+            whileTap={{ scale: 0.9 }}
+            aria-label={t('sections.toggleNavigation')}
+          >
+            <motion.span
+              className="text-2xl text-white"
+              animate={{ rotate: isNavOpen ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isNavOpen ? '×' : '☰'}
+            </motion.span>
+          </motion.button>
+
+          {/* Skip to Content Button */}
           <button
             onClick={() => scrollToSection('hero')}
             className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:mt-2 focus:ml-2 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:shadow-lg"
@@ -216,6 +233,57 @@ export default function AboutPage() {
             {t('sections.skipToContent')}
           </button>
         </motion.nav>
+
+        <AnimatePresence>
+          {isNavOpen && (
+            <motion.nav
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="fixed top-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg z-[99] p-6 shadow-xl"
+              aria-label={t('sections.navigation')}
+            >
+              <button
+                className="absolute top-4 right-4"
+                onClick={() => setIsNavOpen(false)}
+                aria-label={t('sections.closeNavigation')}
+              >
+                <span className="text-2xl">×</span>
+              </button>
+              <div className="flex flex-col gap-4 mt-12">
+                {navItems.map(({ id, icon }) => (
+                  <motion.button
+                    key={id}
+                    onClick={() => {
+                      scrollToSection(id);
+                      setIsNavOpen(false);
+                    }}
+                    className={`w-full h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      activeSection === id 
+                        ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg scale-110'
+                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    }`}
+                    whileHover={{ scale: activeSection === id ? 1.15 : 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={t(`sections.${id}`)}
+                    aria-label={t(`sections.${id}`)}
+                    aria-current={activeSection === id ? 'true' : 'false'}
+                  >
+                    <span 
+                      role="img" 
+                      aria-hidden="true"
+                      className="text-lg"
+                    >
+                      {icon}
+                    </span>
+                    <span className="sr-only">{t(`sections.${id}`)}</span>
+                  </motion.button>
+                ))}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
 
         {/* Who We Are Section */}
         <section 
@@ -227,7 +295,7 @@ export default function AboutPage() {
             <div className={`flex flex-col ${isRTL ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 mb-24`}>
               <div className="w-full md:w-1/2">
                 <Image
-                  src="/landscape_1.jpg"
+                  src="/aboutPage.png"
                   alt={t('whoWeAre.title')}
                   width={657}
                   height={430}
@@ -334,7 +402,7 @@ export default function AboutPage() {
             >
               <div className="w-full md:w-1/2">
                 <Image
-                  src="/landscape_3.jpg"
+                  src="/desk.jpg"
                   alt={t('mission.title')}
                   width={667}
                   height={430}

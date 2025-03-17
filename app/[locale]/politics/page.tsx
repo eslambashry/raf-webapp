@@ -85,21 +85,34 @@ export default function PrivacyPolicy() {
     }
   ];
 
-  const privacyRights = [
+  // const privacyRights = [
+  //   {
+  //     icon: UserCheck,
+  //     title: t('rights.access.title'),
+  //     description: t('rights.access.description')
+  //   },
+  //   {
+  //     icon: Bell,
+  //     title: t('rights.control.title'),
+  //     description: t('rights.control.description')
+  //   },
+  //   {
+  //     icon: FileCheck,
+  //     title: t('rights.delete.title'),
+  //     description: t('rights.delete.description')
+  //   }
+  // ];
+
+  const sections = [
     {
-      icon: UserCheck,
-      title: t('rights.access.title'),
-      description: t('rights.access.description')
+      title: t('sections.privacyPolicy.title'),
+      content: t('sections.privacyPolicy.content'),
+      items: t.raw('sections.privacyPolicy.items')
     },
     {
-      icon: Bell,
-      title: t('rights.control.title'),
-      description: t('rights.control.description')
-    },
-    {
-      icon: FileCheck,
-      title: t('rights.delete.title'),
-      description: t('rights.delete.description')
+      title: t('sections.termsOfUse.title'),
+      content: t('sections.termsOfUse.content'),
+      items: t.raw('sections.termsOfUse.items')
     }
   ];
 
@@ -135,43 +148,25 @@ export default function PrivacyPolicy() {
 
           {/* Main Content Sections */}
           <div className="space-y-12" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-            <section className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6 border-b border-gray-100 pb-4">
-                {t('sections.intro.title')}
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {t('sections.intro.content')}
-              </p>
-            </section>
-
-            <section className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6 border-b border-gray-100 pb-4">
-                {t('sections.collection.title')}
-              </h2>
-              <p className="text-gray-700 mb-6 text-lg">
-                {t('sections.collection.content')}
-              </p>
-              <ul className="space-y-4">
-                {t.raw('sections.items').map((item: string, index: number) => (
-                  <li key={index} className="flex items-center text-gray-700 group">
-                    <ChevronRight className={`w-5 h-5 text-primary ${locale === 'ar' ? 'rotate-180' : ''} 
-                      group-hover:translate-x-1 transition-transform`}/>
-                    <span className="text-lg ms-3">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Your Rights Section */}
-            <div className="grid md:grid-cols-3 gap-8">
-              {privacyRights.map((right, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                  <right.icon className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-3">{right.title}</h3>
-                  <p className="text-gray-600">{right.description}</p>
-                </div>
-              ))}
-            </div>
+            {sections.map((section, index) => (
+              <section key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-6 border-b border-gray-100 pb-4">
+                  {section.title}
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-lg">
+                  {section.content}
+                </p>
+                <ul className="space-y-4">
+                  {section.items.map((item: string, index: number) => (
+                    <li key={index} className="flex items-center text-gray-700 group">
+                      <ChevronRight className={`w-5 h-5 text-primary ${locale === 'ar' ? 'rotate-180' : ''} 
+                        group-hover:translate-x-1 transition-transform`}/>
+                      <span className="text-lg ms-3">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
         </div>
       </Container>

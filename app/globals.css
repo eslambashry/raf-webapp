@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Almarai:wght@300;400;700;800&family=Bokor&family=Cairo:wght@200..1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Markazi+Text:wght@400..700&family=Parkinsans:wght@300..800&family=Reem+Kufi:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Almarai:wght@300;400;700;800&family=Bokor&family=Cairo:wght@200..1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Markazi+Text:wght@400..700&family=Parkinsans:wght@300..800&family=Reem+Kufi:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap'); */
 
 @layer base {
   html {
@@ -20,133 +21,114 @@
     --secondary-light: 14 57% 71%;
     --secondary-dark: 14 57% 51%;
     
-    /* ألوان الخلفية والنصوص */
-    --background: 20 33% 95%; /* RICE WHITE - #f4ede9 */
-    --foreground: 270 75% 8%; /* EGGPLANT - #1d0728 */
+    /* الألوان المحايدة */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
     
-    /* ألوان إضافية */
-    --accent: 14 57% 61%;
-    --accent-foreground: 270 75% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
     
-    /* ألوان العناصر */
-    --card: 20 33% 95%;
-    --card-foreground: 270 75% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
     
-    --popover: 20 33% 95%;
-    --popover-foreground: 270 75% 8%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
     
-    --muted: 14 57% 61%;
-    --muted-foreground: 270 75% 8%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     
-    /* ألوان التفاعل */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 20 33% 95%;
+    --destructive-foreground: 0 0% 98%;
     
-    /* ألوان الحدود والإدخال */
-    --border: 270 75% 8%;
-    --input: 270 75% 8%;
-    --ring: 270 75% 8%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
     
     --radius: 0.5rem;
   }
-}
-
-@layer utilities {
-  .animate-scroll-left-fast {
-    animation: scroll-left 25s linear infinite;
-    animation-delay: -25s;
-  }
   
-  .animate-scroll-right-fast {
-    animation: scroll-right 25s linear infinite;
-    animation-delay: -25s;
-  }
-  
-  .animate-scroll-left-fast:hover,
-  .animate-scroll-right-fast:hover {
-    animation-play-state: paused;
-  }
-  
-  /* إزالة شريط التمرير */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* إزالة شريط التمرير لجميع المتصفحات */
-  * {
-    -ms-overflow-style: none;  /* لمتصفح Internet Explorer و Edge */
-    scrollbar-width: none;  /* لمتصفح Firefox */
-  }
-  
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-[#681034] via-[#d68c3c] to-[#681034];
-  }
-  
-  .bg-gradient-secondary {
-    @apply bg-gradient-to-r from-[#d68c3c] to-[#681034];
-  }
-  
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#681034] to-[#d68c3c];
-  }
-  
-  .hover-primary {
-    @apply hover:bg-[#681034] hover:text-[#f4ede9] transition-colors duration-300;
-  }
-  
-  .hover-secondary {
-    @apply hover:bg-[#d68c3c] hover:text-[#f4ede9] transition-colors duration-300;
-  }
-  
-  .container {
-    @apply px-4 md:px-6 lg:px-8;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    @apply bg-[#681034] text-[#f4ede9] px-6 py-3 rounded-lg font-bold
-           hover:bg-[#d68c3c] transition-all duration-300 shadow-lg;
-  }
-  
-  .btn-secondary {
-    @apply bg-[#d68c3c] text-[#f4ede9] px-6 py-3 rounded-lg font-bold
-           hover:bg-[#681034] transition-all duration-300 shadow-lg;
-  }
-  
-  .card {
-    @apply bg-[#f4ede9] rounded-2xl p-6 shadow-lg
-           hover:shadow-xl transition-all duration-300
-           border border-[#d68c3c]/10;
-  }
-  
-  .heading-primary {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-[#1d0728];
-  }
-  
-  .heading-secondary {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold text-[#1d0728];
-  }
-  
-  .text-body {
-    @apply text-lg text-[#1d0728]/70;
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
 @layer base {
-  h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+  * {
+    @apply border-border;
   }
-  
-  h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+  body {
+    @apply bg-background text-foreground;
   }
-  
-  h3 {
-    @apply text-xl md:text-2xl lg:text-3xl;
-  }
+}
+
+/* إخفاء شريط التمرير في جميع المتصفحات */
+/* إخفاء شريط التمرير في Chrome و Safari و Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* إخفاء شريط التمرير في IE و Edge و Firefox */
+* {
+  -ms-overflow-style: none;  /* IE و Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .font-cairo {
   font-family: var(--font-cairo);
+}
+
+.font-tajawal {
+  font-family: var(--font-tajawal);
+}
+
+.font-almarai {
+  font-family: var(--font-almarai);
+}
+
+.font-ibm {
+  font-family: var(--font-ibm);
+}
+
+.font-rubik {
+  font-family: var(--font-rubik);
+}
+
+.font-alexandria {
+  font-family: var(--font-alexandria);
+}
+
+.font-markazi {
+  font-family: var(--font-markazi);
+}
+
+.font-reem {
+  font-family: var(--font-reem);
+}
+
+.font-parkinsans {
+  font-family: var(--font-parkinsans);
+}
+
+.font-bokor {
+  font-family: var(--font-bokor);
 }

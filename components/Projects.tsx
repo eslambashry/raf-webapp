@@ -134,7 +134,7 @@ export default function Projects() {
 
           <div className="relative w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
             <div>
-              <h3 className="text-2xl font-bold text-[#34222e] mb-8 font-cairo">
+              <h3 className="text-2xl font-bold  text-[#34222e] mb-8 font-cairo">
                 {category.title}
               </h3>
               
@@ -270,10 +270,10 @@ export default function Projects() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl m-auto md:text-4xl font-bold text-[#34222E] mb-3 ">
+            <h2 className="text-2xl sm:text-3xl m-auto text-center md:text-4xl font-bold text-[#34222E] mb-3 ">
               {t('sectionTitle')}
             </h2>
-            <div className="w-20 h-1 bg-[#34222E]"></div>
+            {/* <div className="w-20 h-1 text-center bg-[#34222E]"></div> */}
           </div>
 
           <div className="text-center mt-12 sm:mt-16">

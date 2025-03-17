@@ -37,7 +37,7 @@ export default function Home() {
     >
       <Navbar />
       {/* Hero Section - Full height on mobile */}
-      <div className="min-h-[100vh] md:min-h-[90vh]">
+      <div className=" md:min-h-full pt-24">
         <Hero />
       </div>
 
@@ -47,14 +47,12 @@ export default function Home() {
           {/* Cards Grid Section */}
           
             {/* <FeatureCards /> */}
-           <VideoSection />
+           {/* <VideoSection /> */}
 
           {/* Projects Section */}
           
             <Projects />
-           
-    
-           
+
             <AboutUs />
            
            {/* <Blog />
@@ -62,9 +60,6 @@ export default function Home() {
             <Consultation />
             */}
 
-          
-     
-           
 {/* <Consultation /> */}
 
           

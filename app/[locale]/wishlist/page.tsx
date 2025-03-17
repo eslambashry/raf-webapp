@@ -92,13 +92,13 @@ export default function Wishlist() {
 
   return (
     <ClientOnly>
-      <main className="min-h-screen py-12 bg-[#f8f9fa]">
+      <main className="min-h-screen  bg-[#f8f9fa]">
         <Navbar />
         
         <section className="pt-20 pb-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h1 className="text-5xl font-bold text-[#34222e] font-cairo mb-4">
+              <h1 className="text-5xl font-bold mt-10 text-[#34222e] font-cairo mb-4">
                 {t('wishlistTitle')}
               </h1>
               <div className="w-32 h-1 bg-gradient-to-r from-[#c48765] to-[#e2b399] mx-auto rounded-full" />

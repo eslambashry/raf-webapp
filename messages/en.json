@@ -142,23 +142,62 @@
     "close": "Close"
   },
   "privacy": {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last Updated",
+    "title": "Privacy Policy and Terms of Use",
+    "lastUpdated": "Last Updated: {date}",
+    "description": "We take your privacy seriously. Learn how we protect your data",
+    "features": {
+      "security": {
+        "title": "Strong Protection",
+        "description": "We use the latest security technologies to protect your data"
+      },
+      "data": {
+        "title": "Control Your Data",
+        "description": "You have full control over your personal information"
+      },
+      "transparency": {
+        "title": "Transparency"
+      }
+    },
     "sections": {
-      "dataCollection": {
-        "title": "Data Collection",
-        "content": "We collect personal information when you:",
+      "privacyPolicy": {
+        "title": "Privacy Policy",
+        "content": "RAF Real Estate (\"the Company\") values the privacy of its customers and users of its website (\"the Site\"). This policy explains how the Company collects, uses, and shares personal data provided to us.",
         "items": [
-          "Register on our website",
-          "Subscribe to our newsletter",
-          "Fill out contact forms",
-          "Contacting us",
-          "Booking unit viewings"
+          "We collect personal data you provide when registering on the site or contacting us",
+          "We also collect data automatically collected when you visit the site",
+          "We use personal data to provide the services you request",
+          "We use automatically collected data to improve the site",
+          "We do not share personal data with any third party unless necessary to provide services",
+          "You have the right to access, update, correct, and delete your personal data"
         ]
       },
-      "intro": {
-        "title": "Introduction",
-        "content": "We take your privacy seriously. This privacy policy explains who we are, how we collect, share and use personal information about you, and how you can exercise your privacy rights."
+      "termsOfUse": {
+        "title": "Terms of Use",
+        "content": "You are allowed to use the Site for legal purposes only. You are not allowed to upload, post, or send any illegal or inappropriate content.",
+        "items": [
+          "The law protects the intellectual property rights of all content on the Site",
+          "You are not allowed to use, reproduce, or distribute any content without prior permission",
+          "We reserve the right to cancel your account or prevent you from accessing the Site at any time",
+          "These terms and conditions are subject to the laws of the Kingdom of Saudi Arabia",
+          "Any disputes or disagreements will be resolved through arbitration in Saudi Arabia"
+        ]
+      }
+    },
+    "rights": {
+      "intellectual": {
+        "title": "Intellectual Property",
+        "description": "All content on this website is the property of RAF Real Estate Company"
+      },
+      "termination": {
+        "title": "Account Termination",
+        "description": "We reserve the right to terminate accounts that violate our terms"
+      },
+      "modification": {
+        "title": "Terms Modification",
+        "description": "We may modify these terms at any time with proper notification"
+      },
+      "delete": {
+        "description": "You can request deletion of your data at any time"
       }
     }
   },
@@ -241,7 +280,9 @@
       "goals": "Goals",
       "services": "Services",
       "design": "Design",
-      "whoWeAre": "Who We Are"
+      "whoWeAre": "Who We Are",
+      "closeNavigation": "Close Navigation",
+      "toggleNavigation": "Toggle Navigation"
     },
     "values": {
       "title": "Our Values",
@@ -586,6 +627,7 @@
     "title": "Welcome to RAF Real Estate Development Company",
     "description": "Experience the future of real estate development with RAF Real Estate Development Company",
     "videoTitle": " ",
-    "videoDescription": " "
+    "videoDescription": " ",
+    "loading": "Loading..."
   }
 }

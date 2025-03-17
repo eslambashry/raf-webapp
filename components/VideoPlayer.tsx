@@ -34,8 +34,10 @@ export default function VideoPlayer({
   const videoSrc = src.startsWith('/') ? src : `/${src}`
 
   useEffect(() => {
+    // التأكد من أن الكود يعمل فقط في المتصفح
+    if (typeof window === 'undefined' || !videoRef.current) return
+
     const videoElement = videoRef.current
-    if (!videoElement) return
 
     const handleLoadedData = () => {
       setIsLoaded(true)
@@ -52,11 +54,26 @@ export default function VideoPlayer({
     videoElement.addEventListener('loadeddata', handleLoadedData)
     videoElement.addEventListener('error', handleError)
     
+    // محاولة تحميل الفيديو مرة أخرى في حالة الخطأ
+    if (hasError) {
+      const retryTimeout = setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.load()
+        }
+      }, 1000)
+      
+      return () => {
+        clearTimeout(retryTimeout)
+        videoElement.removeEventListener('loadeddata', handleLoadedData)
+        videoElement.removeEventListener('error', handleError)
+      }
+    }
+    
     return () => {
       videoElement.removeEventListener('loadeddata', handleLoadedData)
       videoElement.removeEventListener('error', handleError)
     }
-  }, [videoSrc])
+  }, [videoSrc, hasError])
 
   const togglePlay = () => {
     if (!videoRef.current) return
@@ -89,6 +106,17 @@ export default function VideoPlayer({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
           <p className="text-center">خطأ في تحميل الفيديو. تأكد من أن المسار صحيح: {videoSrc}</p>
+          <button 
+            onClick={() => {
+              setHasError(false)
+              if (videoRef.current) {
+                videoRef.current.load()
+              }
+            }}
+            className="mt-4 px-4 py-2 bg-[#681034] text-white rounded-md hover:bg-[#7a1a42] transition-colors"
+          >
+            إعادة المحاولة
+          </button>
         </div>
       )}
       

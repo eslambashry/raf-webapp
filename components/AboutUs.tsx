@@ -136,7 +136,7 @@ export default function AboutUs() {
             >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
                 <Image
-                  src="/hero_One.jpg"
+                  src="/aboutcom.png"
                   alt={t('imageAlt')}
                   fill
                   className="object-cover"
