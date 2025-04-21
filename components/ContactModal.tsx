@@ -17,19 +17,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   
   const contactMethods = [
     {
-      icon: <Phone className="w-6 h-6 text-[#34222E]" />,
+      icon: <Phone className="w-6 h-6 text-[#540f6b]" />,
       label: t('phone'),
       value: "0536667967",
       action: "tel:0536667967"
     },
     {
-      icon: <MessageCircle className="w-6 h-6 text-[#34222E]" />,
+      icon: <MessageCircle className="w-6 h-6 text-[#540f6b]" />,
       label: t('whatsapp'),
       value: "0536667967",
       action: "https://wa.me/+966536667967"
     },
     {
-      icon: <Mail className="w-6 h-6 text-[#34222E]" />,
+      icon: <Mail className="w-6 h-6 text-[#540f6b]" />,
       label: t('email'),
       value: "info@rafco.sa",
       action: "mailto:info@rafco.sa"
@@ -65,7 +65,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-[#EFEDEA] p-6 shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
-                  className={`text-2xl font-bold text-[#34222E] text-center mb-8 ${isRTL ? 'font-cairo' : 'font-sans'}`}
+                  className={`text-2xl font-bold text-[#540f6b] text-center mb-8 ${isRTL ? 'font-cairo' : 'font-sans'}`}
                 >
                   {t('title')}
                 </Dialog.Title>
@@ -77,13 +77,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       href={method.action}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-lg border-2 border-[#34222e] hover:bg-gray-50 transition-colors"
+                      className="flex items-center gap-4 p-4 rounded-lg border-2 border-[#540f6b] hover:bg-gray-50 transition-colors"
                     >
-                      <div className="w-12 h-12 rounded-full bg-[#34222e]/10 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-[#540f6b]/10 flex items-center justify-center">
                         {method.icon}
                       </div>
                       <div>
-                        <h4 className="font-bold text-[#34222E]">{method.label}</h4>
+                        <h4 className="font-bold text-[#540f6b]">{method.label}</h4>
                         <p className="text-gray-600">{method.value}</p>
                       </div>
                     </a>
@@ -92,7 +92,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 <button
                   onClick={onClose}
-                  className="mt-8 w-full border-2 border-[#34222e] text-[#34222E] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
+                  className="mt-8 w-full border-2 border-[#540f6b] text-[#540f6b] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
                 >
                   {t('close')}
                 </button>

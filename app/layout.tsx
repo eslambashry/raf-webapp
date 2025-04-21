@@ -4,10 +4,10 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   metadataBase: new URL('https://raf-advanced.sa'),
   title: {
-    default: 'راف المتقدمة | تطوير عقاري متميز في المملكة العربية السعودية',
-    template: '%s | راف المتقدمة'
+    default: 'راف العقاريه | تطوير عقاري متميز في المملكة العربية السعودية',
+    template: '%s | راف العقاريه'
   },
-  description: 'راف المتقدمة - شركة رائدة في التطوير العقاري في المملكة العربية السعودية، نقدم مشاريع سكنية فاخرة وشقق عصرية وعقارات متميزة في مواقع استراتيجية',
+  description: 'راف العقاريه - شركة رائدة في التطوير العقاري في المملكة العربية السعودية، نقدم مشاريع سكنية فاخرة وشقق عصرية وعقارات متميزة في مواقع استراتيجية',
   keywords: [
     'عقارات السعودية',
     'عقارات فاخرة الرياض',
@@ -16,29 +16,54 @@ export const metadata: Metadata = {
     'تطوير عقاري الرياض',
     'منازل عصرية السعودية',
     'استثمار عقاري',
-    'عقارات راف المتقدمة',
+    'عقارات راف العقاريه',
     'عقارات فاخرة',
-    'إسكان متميز الرياض'
+    'إسكان متميز الرياض',
+    'فلل فاخرة الرياض',
+    'شقق للبيع الرياض',
+    'مجمعات سكنية',
+    'تمويل عقاري',
+    'مكاتب تجارية الرياض',
+    'أراضي للبيع السعودية',
+    'تشطيبات فاخرة',
+    'مقاولات عامة',
+    'تصميم داخلي',
+    'استشارات عقارية',
+    'وحدات سكنية جاهزة',
+    'عقارات تجارية',
+    'مشاريع تطوير عقاري',
+    'استثمارات عقارية آمنة',
+    'تملك حر السعودية',
+    'عقارات جدة',
+    'شقق فاخرة جدة',
+    'فلل للبيع جدة',
+    'مشاريع سكنية جدة',
+    'استثمار عقاري جدة',
+    'تطوير عقاري جدة',
+    'مجمعات سكنية جدة',
+    'أراضي للبيع جدة',
+    'عقارات تجارية جدة',
+    'مكاتب للإيجار جدة'
   ],
-  authors: [{ name: 'راف المتقدمة' }],
-  creator: 'راف المتقدمة',
-  publisher: 'راف المتقدمة',
+  authors: [{ name: 'راف العقاريه' }],
+  creator: 'راف العقاريه',
+  publisher: 'راف العقاريه',
   formatDetection: {
     email: false,
     address: true,
     telephone: true,
   },
   openGraph: {
-    title: 'راف المتقدمة | تطوير عقاري متميز',
-    description: 'اكتشف المشاريع السكنية الفاخرة والعقارات المتميزة في المملكة العربية السعودية مع راف المتقدمة',
+    title: 'راف العقاريه | تطوير عقاري متميز',
+    description: 'اكتشف المشاريع السكنية الفاخرة والعقارات المتميزة في المملكة العربية السعودية مع راف العقاريه',
     url: 'https://raf-advanced.sa',
-    siteName: 'راف المتقدمة',
+    siteName: 'راف العقاريه',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'عقارات راف المتقدمة',
+        alt: 'عقارات راف العقاريه',
       },
     ],
     locale: 'ar_SA',
@@ -46,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'راف المتقدمة | تطوير عقاري متميز',
+    title: 'راف العقاريه | تطوير عقاري متميز',
     description: 'مشاريع سكنية فاخرة وعقارات متميزة في المملكة العربية السعودية',
     images: ['/twitter-image.jpg'],
     creator: '@raf_advanced',
@@ -79,7 +104,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo1.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#34222E" />
+        <meta name="theme-color" content="#540f6b" />
         <link
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
           rel="stylesheet"

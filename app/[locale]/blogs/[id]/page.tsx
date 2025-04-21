@@ -160,7 +160,7 @@ export default function BlogPost() {
               {t('blog')}
             </Link>
             <span>/</span>
-            <span className="text-[#34222E]">{t('details')}</span>
+            <span className="text-[#540f6b]">{t('details')}</span>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@ export default function BlogPost() {
 
               {/* Newsletter Subscription */}
               <div className="relative">
-                <div className="sticky top-24 bg-gradient-to-br from-[#34222e] to-[#1a1116] rounded-2xl shadow-lg p-8 text-white">
+                <div className="sticky top-24 bg-gradient-to-br from-[#540f6b] to-[#1a1116] rounded-2xl shadow-lg p-8 text-white">
                   <div className="flex items-center justify-center mb-6">
                     <div className="bg-[#c48765]/20 p-4 rounded-full">
                       <Mail className="w-8 h-8 text-[#c48765]" />

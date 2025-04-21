@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface Unit {
   _id: string;
@@ -109,7 +110,7 @@ const ProjectPage = () => {
       navigator.clipboard.writeText(mapUrl);
       toast.success(t('linkCopied'), {
         style: {
-          background: '#34222e',
+          background: '#540f6b',
           color: '#fff'
         }
       });
@@ -118,7 +119,7 @@ const ProjectPage = () => {
       navigator.clipboard.writeText(mapUrl);
       toast.success(t('linkCopied'), {
         style: {
-          background: '#34222e',
+          background: '#540f6b',
           color: '#fff'
         }
       });
@@ -163,7 +164,7 @@ const ProjectPage = () => {
             <div className="lg:col-span-2 space-y-8">
               {/* Title */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h1 className="text-3xl font-bold text-[#34222e] mb-3">{unit.title}</h1>
+                <h1 className="text-3xl font-bold text-[#540f6b] mb-3">{unit.title}</h1>
                 <p className="text-[#c48765] font-medium text-lg">{unit.type}</p>
               </div>
 
@@ -225,7 +226,7 @@ const ProjectPage = () => {
 
               {/* Description */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold text-[#34222e] mb-4">{t('description')}</h2>
+                <h2 className="text-2xl font-bold text-[#540f6b] mb-4">{t('description')}</h2>
                 <p className="text-gray-600 leading-relaxed text-lg">{unit.description}</p>
               </div>
 
@@ -236,7 +237,7 @@ const ProjectPage = () => {
                 animate="show"
                 className="bg-white rounded-2xl p-8 shadow-lg"
               >
-                <h2 className="text-2xl font-bold text-[#34222e] mb-8">{t('feature')}</h2>
+                <h2 className="text-2xl font-bold text-[#540f6b] mb-8">{t('feature')}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                   {features.map((feature, index) => (
                     <motion.div
@@ -254,7 +255,7 @@ const ProjectPage = () => {
                       </div>
                       <div>
                         <p className="text-sm text-gray-500">{feature.label}</p>
-                        <p className="text-lg font-bold text-[#34222e]">{feature.value}</p>
+                        <p className="text-lg font-bold text-[#540f6b]">{feature.value}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -264,7 +265,7 @@ const ProjectPage = () => {
               {/* Nearby Places */}
               {unit.nearbyPlaces.length > 0 && (
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h2 className="text-2xl font-bold text-[#34222e] mb-8">{t('nearbyPlaces')}</h2>
+                  <h2 className="text-2xl font-bold text-[#540f6b] mb-8">{t('nearbyPlaces')}</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {unit.nearbyPlaces.map((place, index) => (
                       <div key={index} className="p-6 bg-[#EFEDEA] rounded-xl text-center group hover:bg-[#c48765]/10 transition-colors">
@@ -288,7 +289,7 @@ const ProjectPage = () => {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <p className="text-gray-500 mb-1">{t('price')}</p>
-                    <p className="text-3xl font-bold text-[#34222e]">{unit.price.toLocaleString()} {t('currency')}</p>
+                    <p className="text-3xl font-bold text-[#540f6b]">{unit.price.toLocaleString()} {t('currency')}</p>
                   </div>
                   <div className="p-3 bg-[#c48765]/10 rounded-xl">
                     <span className="text-[#c48765] font-semibold">{unit.status}</span>
@@ -299,7 +300,7 @@ const ProjectPage = () => {
                 <div className="space-y-4">
                   <button
                     onClick={() => setIsMapOpen(true)}
-                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#34222e] text-white rounded-xl hover:bg-[#34222e]/90 transition-colors group"
+                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#540f6b] text-white rounded-xl hover:bg-[#540f6b]/90 transition-colors group"
                   >
                     <Map className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span className="text-base">{t('viewLocation')}</span>
@@ -310,7 +311,7 @@ const ProjectPage = () => {
                     className="w-full flex items-center justify-center gap-3 p-4 bg-[#EFEDEA] hover:bg-[#c48765]/10 rounded-xl transition-colors group"
                   >
                     <MapPin className="w-5 h-5 text-[#c48765] group-hover:scale-110 transition-transform" />
-                    <span className="font-medium text-[#34222e] group-hover:text-[#c48765] transition-colors text-base">
+                    <span className="font-medium text-[#540f6b] group-hover:text-[#c48765] transition-colors text-base">
                       {t('copyLink')}
                     </span>
                   </button>
@@ -319,22 +320,23 @@ const ProjectPage = () => {
 
               {/* Contact Options */}
               <div className="bg-white rounded-2xl p-8 shadow-lg sticky top-24">
-                <h2 className="text-2xl font-bold text-[#34222e] mb-6">{t('contact.title')}</h2>
+                <h2 className="text-2xl font-bold text-[#540f6b] mb-6">{t('contact.title')}</h2>
                 <div className="space-y-4">
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#34222e] text-white rounded-xl hover:bg-[#34222e]/90 transition-colors group"
-                  >
+                  <Link href="tel:+966536667967" className="w-full flex items-center justify-center gap-3 p-4 bg-[#540f6b] text-white rounded-xl hover:bg-[#540f6b]/90 transition-colors group">
                     <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span className="text-base">{t('contact.callUs')}</span>
-                  </button>
-                  <button
-                    onClick={() => window.open(`https://wa.me/+966500000000`)}
-                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
+                  </Link>
+                  <Link                     className="w-full flex items-center justify-center gap-3  bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
+ href="https://wa.me/+966536667967 " target='_blank'>
+                  <button                     className="w-full flex items-center justify-center gap-3 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
+
+                    
                   >
                     <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span className="text-base">{t('contact.whatsapp')}</span>
                   </button>
+                  </Link>
+              
                 </div>
               </div>
             </div>

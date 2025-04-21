@@ -20,7 +20,7 @@ const FloatingButtons = () => {
 
       <Link
         href="tel:0536667967"
-        className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        className="bg-[#540f6b] hover:bg-blue-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
         aria-label={t('phone')}
       >
         <FaPhone size={24} />

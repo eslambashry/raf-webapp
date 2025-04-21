@@ -171,7 +171,7 @@ export default function Projects() {
           </div>
           <div className="relative w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
             <div>
-              <h3 className="text-2xl font-bold text-[#34222e] mb-6 font-cairo">
+              <h3 className="text-2xl font-bold text-[#540f6b] mb-6 font-cairo">
                 {category.title}
               </h3>
               
@@ -179,13 +179,13 @@ export default function Projects() {
   <div>
     <div className="flex justify-between items-center mb-2">
       <span className="text-sm text-gray-600">{t('sold')}</span>
-      <span className="text-sm font-semibold text-blue-600">
+      <span className="text-sm font-semibold text-[#540f6b]">
         {progress.completedPercentage}%
       </span>
     </div>
     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
       <div
-        className="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 ease-out"
+        className="h-full bg-[#540f6b] transition-all duration-500 ease-out"
         style={{ width: `${progress.completedPercentage}%` }}
       />
     </div>
@@ -207,13 +207,13 @@ export default function Projects() {
   <div>
     <div className="flex justify-between items-center mb-2">
       <span className="text-sm text-gray-600">{t('available')}</span>
-      <span className="text-sm font-semibold text-green-600">
+      <span className="text-sm font-semibold text-[#1D0728]">
         {progress.availablePercentage}%
       </span>
     </div>
     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
       <div
-        className="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500 ease-out"
+        className="h-full bg-[#1D0728] transition-all duration-500 ease-out"
         style={{ width: `${progress.availablePercentage}%` }}
       />
     </div>
@@ -221,13 +221,13 @@ export default function Projects() {
   <div>
     <div className="flex justify-between items-center mb-2">
       <span className="text-sm text-gray-600">{t('unavailable')}</span>
-      <span className="text-sm font-semibold text-red-600">
+      <span className="text-sm font-semibold text-[#C48765]">
         {progress.unavailablePercentage || 0}%
       </span>
     </div>
     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
       <div
-        className="h-full bg-gradient-to-r from-red-400 to-red-600 transition-all duration-500 ease-out"
+        className="h-full bg-[#C48765] transition-all duration-500 ease-out"
         style={{ width: `${progress.unavailablePercentage || 0}%` }}
       />
     </div>
@@ -247,7 +247,7 @@ export default function Projects() {
               href={`/projects/${category._id}`}
               className="mt-8 block"
             >
-              <button className="w-full bg-gradient-to-r from-[#c48765] to-[#b37654] text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold">
+              <button className="w-full bg-[#540f6b] text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold">
                 {t('viewProject')}
               </button>
             </Link>
@@ -265,7 +265,7 @@ export default function Projects() {
         <section className="pt-20 pb-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h1 className="text-5xl font-bold mt-10 text-[#34222e] font-cairo mb-4">
+              <h1 className="text-5xl font-bold mt-10 text-[#540f6b] font-cairo mb-4">
                 {t('sectionTitle')}
               </h1>
               <div className="w-32 h-1 bg-gradient-to-r from-[#c48765] to-[#e2b399] mx-auto rounded-full" />

@@ -8,7 +8,7 @@ const features = [
   {
     key: "goals",
     icon: "/medal-star.svg",
-    style: "bg-[#34222e]",
+    style: "bg-[#540f6b]",
     styleText: "text-[#c48765]"
   },
   {

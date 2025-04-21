@@ -156,13 +156,13 @@ export default function ProjectDetails() {
         {/* Hero Section */}
         <section className="relative h-[60vh] min-h-[500px] w-full">
           <Image
-            src={category?.Image.secure_url || ''}
+            src={category?.Image.secure_url || './rafweb.jpg'}
             alt={category?.title || ''}
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/100 via-black/100 " />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white">
               <motion.h1 
@@ -198,14 +198,14 @@ export default function ProjectDetails() {
                     <div>
                       <h3 className="text-sm text-gray-500">{t('location')}</h3>
                       <div className="flex items-center gap-2">
-                        <p className="text-lg font-medium text-[#34222e]">{category?.location}</p>
+                        <p className="text-lg font-medium text-[#540f6b]">{category?.location}</p>
                         <button
                           onClick={handleCopyLocationLink}
                           className="p-2 hover:bg-[#c48765]/10 rounded-lg transition-colors group relative"
                           aria-label={t('copyLink')}
                         >
                           <Copy className="w-4 h-4 text-[#c48765]" />
-                          <span className="absolute -top-8 right-0 bg-[#34222e] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                          <span className="absolute -top-8 right-0 bg-[#540f6b] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
                             {t('copyLink')}
                           </span>
                         </button>
@@ -218,13 +218,13 @@ export default function ProjectDetails() {
                     </div>
                     <div>
                       <h3 className="text-sm text-gray-500">{t('area')}</h3>
-                      <p className="text-lg font-medium text-[#34222e]">{category?.area} {t('areaUnit')}</p>
+                      <p className="text-lg font-medium text-[#540f6b]">{category?.area} {t('areaUnit')}</p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-[#34222e] mb-4">{t('projectDescription')}</h3>
-                  <p className="text-gray-600 leading-relaxed">{category?.description}</p>
+                  <h3 className={`text-xl font-semibold text-[#540f6b] mb-4 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>{t('projectDescription')}</h3>
+                  <p className={`text-gray-600 leading-relaxed ${locale === 'ar' ? 'text-right' : 'text-left'}`}>{category?.description}</p>
                 </div>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function ProjectDetails() {
 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-[#34222e]">{unit.title}</h3>
+                    <h3 className="text-xl font-bold text-[#540f6b]">{unit.title}</h3>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleCopyLink(unit._id)}
@@ -387,7 +387,7 @@ export default function ProjectDetails() {
 
                   {unit.price && (
                     <div className="flex items-center gap-2 mb-6">
-                      <span className="text-lg font-bold text-[#34222e]">{t('price')}:</span>
+                      <span className="text-lg font-bold text-[#540f6b]">{t('price')}:</span>
                       <span className="text-xl font-bold text-[#c48765]">
                         {unit.price.toLocaleString()} {t('currency')}
                       </span>
@@ -405,7 +405,7 @@ export default function ProjectDetails() {
           </motion.div>
         </div>
 
-        <FeatureSection />
+        {/* <FeatureSection /> */}
         <Footer />
       </main>
     </ClientOnly>

@@ -17,7 +17,7 @@ export default function NotFound() {
             className="object-contain"
           />
         </div>
-        <h1 className="text-4xl font-bold text-[#34222E] mb-4">
+        <h1 className="text-4xl font-bold text-[#540f6b] mb-4">
           {t('404.title')}
         </h1>
         <p className="text-lg text-gray-600 mb-8">

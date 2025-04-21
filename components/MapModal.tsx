@@ -56,7 +56,7 @@ const MapModal = ({ isOpen, onClose, location, coordinates }: MapModalProps) => 
             >
               <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-all">
                 <div className="relative">
-                  <Dialog.Title className="text-2xl font-bold text-[#34222e] mb-4">
+                  <Dialog.Title className="text-2xl font-bold text-[#540f6b] mb-4">
                     {t('mapTitle')}
                   </Dialog.Title>
                   
@@ -74,7 +74,7 @@ const MapModal = ({ isOpen, onClose, location, coordinates }: MapModalProps) => 
                       href={getMapUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#34222e] text-white rounded-xl hover:bg-[#34222e]/90 transition-colors group"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#540f6b] text-white rounded-xl hover:bg-[#540f6b]/90 transition-colors group"
                     >
                       <ExternalLink className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       <span>{t('viewOnMap')}</span>

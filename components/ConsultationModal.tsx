@@ -191,10 +191,10 @@ export default function ConsultationModal({ isOpen, onClose }: { isOpen: boolean
           onClick={onClose}
           className={`absolute top-6 ${locale === 'ar' ? 'left-6' : 'right-6'} p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200 z-10`}
           >
-          <X size={24} className="text-[#34222e]" />
+          <X size={24} className="text-[#540f6b]" />
         </motion.button>
 
-        <div className={`relative w-full h-full bg-[#34222e]/95 rounded-[25px] md:rounded-[50px] p-6 md:p-12 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <div className={`relative w-full h-full bg-[#540f6b]/95 rounded-[25px] md:rounded-[50px] p-6 md:p-12 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
         <motion.h3
             {...fadeIn}
             className="text-2xl md:text-3xl font-bold text-white mb-8 font-cairo"
@@ -210,7 +210,7 @@ export default function ConsultationModal({ isOpen, onClose }: { isOpen: boolean
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: i * 0.1 }}
                   className={`w-10 h-10 rounded-full flex items-center justify-center
-                    ${step >= i ? 'bg-[#c48765] text-white' : 'bg-white text-[#34222e]'}
+                    ${step >= i ? 'bg-[#c48765] text-white' : 'bg-white text-[#540f6b]'}
                     transition-all duration-300`}
                 >
                   {i}
@@ -241,7 +241,7 @@ export default function ConsultationModal({ isOpen, onClose }: { isOpen: boolean
                         className={`h-[77px] rounded-[25px] font-semibold transition-all duration-300
                           ${formData.meetingMethod === method.value
                             ? 'bg-[#c48765] text-white'
-                            : 'bg-white text-[#34222e] hover:bg-[#c48765] hover:text-white'
+                            : 'bg-white text-[#540f6b] hover:bg-[#c48765] hover:text-white'
                           }
                           shadow-lg hover:shadow-xl`}
                       >
@@ -271,7 +271,7 @@ export default function ConsultationModal({ isOpen, onClose }: { isOpen: boolean
                         ${
                           formData.selectedDay === day.ar
                             ? 'bg-[#c48765] text-white'
-                            : 'bg-white text-[#34222e] hover:bg-[#c48765] hover:text-white'
+                            : 'bg-white text-[#540f6b] hover:bg-[#c48765] hover:text-white'
                         }
                         shadow-lg hover:shadow-xl`}
                     >

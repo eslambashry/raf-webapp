@@ -24,7 +24,7 @@
 //     <section className="py-20 overflow-hidden bg-[#EFEDEA]">
 //       <div className="container mx-auto px-4">
 //         <div className="text-center mb-16">
-//           <h2 className="text-4xl font-bold text-[#34222E] mb-4">شركاؤنا</h2>
+//           <h2 className="text-4xl font-bold text-[#540f6b] mb-4">شركاؤنا</h2>
 //           <div className="w-[224px] h-1 bg-[#C48765] mx-auto shadow-md" />
 //         </div>
 
@@ -114,7 +114,7 @@ export default function Partners() {
     <section className="py-20 overflow-hidden " dir="ltr">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16" dir="rtl">
-          <h2 className="text-4xl font-bold text-[#34222E] mb-4">{t('title')}</h2>
+          <h2 className="text-4xl font-bold text-[#540f6b] mb-4">{t('title')}</h2>
           <div className="w-[224px] h-1 bg-[#C48765] mx-auto shadow-md" />
         </div>
 

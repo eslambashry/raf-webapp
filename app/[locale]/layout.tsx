@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/context/AuthContext';
+import ScrollBar from '@/components/ui/ScrollBar';
+import GlobalScrollbar from '@/components/ui/GlobalScrollbar';
 
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
@@ -58,6 +60,7 @@ export default async function LocaleLayout({
       },
      }}
     />
+    <GlobalScrollbar children={undefined} />
    </AuthProvider>
   </NextIntlClientProvider>
  );

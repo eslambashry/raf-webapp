@@ -51,10 +51,10 @@ export default function FAQ() {
             className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-2xl shadow-sm mb-6"
           >
             <MessageCircle className="w-5 h-5 text-[#C48765]" />
-            <span className="text-[#34222E] font-medium">{t('subtitle')}</span>
+            <span className="text-[#540f6b] font-medium">{t('subtitle')}</span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#34222E] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#540f6b] mb-6">
             {t('title')}
           </h2>
         </div>
@@ -76,7 +76,7 @@ export default function FAQ() {
               >
                 <div className="p-6 flex items-center gap-4">
                   <div className={`flex-1 text-${isRTL ? 'right' : 'left'}`}>
-                    <h3 className="text-lg font-semibold text-[#34222E]">
+                    <h3 className="text-lg font-semibold text-[#540f6b]">
                       {question.question}
                     </h3>
                   </div>
@@ -86,7 +86,7 @@ export default function FAQ() {
                     className="flex-shrink-0"
                   >
                     <Plus className={`w-6 h-6 text-[#C48765] transition-colors
-                      ${openIndex === index ? 'text-[#34222E]' : ''}`} 
+                      ${openIndex === index ? 'text-[#540f6b]' : ''}`} 
                     />
                   </motion.div>
                 </div>

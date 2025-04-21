@@ -70,7 +70,7 @@ export default function Blog() {
     <section className="py-24 " dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold text-[#34222E] mb-4">
+          <h2 className="text-5xl font-bold text-[#540f6b] mb-4">
             {t('title')}
           </h2>
           <div className="w-32 h-1 bg-[#c48765] mx-auto" />
@@ -93,7 +93,7 @@ export default function Blog() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-white/90 px-3 py-1.5 rounded-full">
                   <Eye className="w-4 h-4 text-[#c48765]" />
-                  <span className="text-sm font-medium text-[#34222E]">
+                  <span className="text-sm font-medium text-[#540f6b]">
                     {blog.views || 0}
                   </span>
                 </div>
@@ -114,7 +114,7 @@ export default function Blog() {
                   </div>
                 </div>
 
-                <h3 className={`text-xl font-bold text-[#34222E] ${isRTL ? 'text-right' : 'text-left'} line-clamp-2 min-h-[3.5rem]`}>
+                <h3 className={`text-xl font-bold text-[#540f6b] ${isRTL ? 'text-right' : 'text-left'} line-clamp-2 min-h-[3.5rem]`}>
                   {blog.title}
                 </h3>
 

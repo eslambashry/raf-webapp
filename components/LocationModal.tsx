@@ -82,20 +82,20 @@
 //                   </button>
 //                 </div>
 //                 <div className="p-6 bg-white">
-//                   <h3 className="text-xl font-bold text-[#34222e] mb-2">موقع المشروع</h3>
+//                   <h3 className="text-xl font-bold text-[#540f6b] mb-2">موقع المشروع</h3>
 //                   <p className="text-gray-600">{unitData?.unit?.title}</p>
 //                   <div className="mt-4 flex gap-4">
 //                     <a
 //                       href={unitData?.googleMapsLink}
 //                       target="_blank"
 //                       rel="noopener noreferrer"
-//                       className="flex-1 bg-[#34222e] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors text-center"
+//                       className="flex-1 bg-[#540f6b] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors text-center"
 //                     >
 //                       فتح في خرائط قوقل
 //                     </a>
 //                     <button
 //                       onClick={onClose}
-//                       className="flex-1 border-2 border-[#34222e] text-[#34222e] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
+//                       className="flex-1 border-2 border-[#540f6b] text-[#540f6b] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
 //                     >
 //                       إغلاق
 //                     </button>
@@ -196,20 +196,20 @@ export default function LocationModal({ isOpen, onClose, unitId }: LocationModal
                     </button>
                   </div>
                   <div className="p-6 bg-white">
-                    <h3 className="text-xl font-bold text-[#34222e] mb-2">{t('projectLocation')}</h3>
+                    <h3 className="text-xl font-bold text-[#540f6b] mb-2">{t('projectLocation')}</h3>
                     <p className="text-gray-600">{unitData?.unit?.title}</p>
                     <div className="mt-4 flex gap-4">
                       <a
                         href={unitData?.googleMapsLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-[#34222e] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors text-center"
+                        className="flex-1 bg-[#540f6b] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors text-center"
                       >
                         {t('openInGoogleMaps')}
                       </a>
                       <button
                         onClick={onClose}
-                        className="flex-1 border-2 border-[#34222e] text-[#34222e] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
+                        className="flex-1 border-2 border-[#540f6b] text-[#540f6b] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
                       >
                         {t('close')}
                       </button>

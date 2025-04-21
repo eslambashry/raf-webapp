@@ -12,7 +12,7 @@ import Navbar from "@/components/Navbar";
 import Partners from "@/components/Partners";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials";
 import FeatureSection from "@/components/FeatureSection";
 import VideoSection from "@/components/VideoSection";
 // import Consultation from "@/components/Consultation";
@@ -37,7 +37,7 @@ export default function Home() {
     >
       <Navbar />
       {/* Hero Section - Full height on mobile */}
-      <div className=" md:min-h-full pt-24">
+      <div className=" md:min-h-full ">
         <Hero />
       </div>
 
@@ -73,7 +73,7 @@ export default function Home() {
           {/* Contact Section */}
           <FAQ />
          
-          <Testimonials />
+          {/* <Testimonials /> */}
             <Contact />
            
 

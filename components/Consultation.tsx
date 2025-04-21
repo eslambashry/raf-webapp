@@ -18,7 +18,7 @@ export default function Consultation() {
     <>
    
       <div className="relative w-full py-12 md:py-20 lg:py-24 px-4">
-        <div className="max-w-[1306px] mx-auto bg-[#34222e]/90 rounded-[25px] md:rounded-[50px] py-12 md:py-16 lg:py-20">
+        <div className="max-w-[1306px] mx-auto bg-[#540f6b]/90 rounded-[25px] md:rounded-[50px] py-12 md:py-16 lg:py-20">
           <div className="flex flex-col items-center justify-center text-center px-4">
             <h3 className="text-xl md:text-2xl lg:text-[25px] font-bold text-white mb-4 md:mb-6 lg:mb-8">
               {t('title')}
@@ -30,7 +30,7 @@ export default function Consultation() {
               onClick={() => setIsModalOpen(true)}
               className="px-8 py-3 md:px-10 md:py-4 lg:px-12 lg:py-5 bg-white border-2 border-white rounded-full shadow-lg hover:scale-105 transform transition-all duration-300 group"
             >
-              <span className="text-xl md:text-2xl lg:text-[30px] font-bold text-[#34222e] group-hover:text-[#c48765] transition-colors">
+              <span className="text-xl md:text-2xl lg:text-[30px] font-bold text-[#540f6b] group-hover:text-[#c48765] transition-colors">
                 {t('cta')}
               </span>
             </button>

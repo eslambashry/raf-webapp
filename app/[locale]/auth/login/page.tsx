@@ -73,18 +73,18 @@ export default function LoginPage() {
               className="mx-auto mb-4"
             />
           </Link>
-          <h1 className="text-2xl font-bold text-[#34222E]">{t('title')}</h1>
+          <h1 className="text-2xl font-bold text-[#540f6b]">{t('title')}</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('email')}
             </label>
             <input
               {...register('email')}
               type="email"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               placeholder="example@domain.com"
               dir="ltr"
             />
@@ -94,13 +94,13 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('password')}
             </label>
             <input
               {...register('password')}
               type="password"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               dir="ltr"
             />
             {errors.password && (
@@ -114,9 +114,9 @@ export default function LoginPage() {
                 {...register('rememberMe')}
                 type="checkbox"
                 id="rememberMe"
-                className="w-4 h-4 text-[#c48765] border-2 border-[#34222e] rounded focus:ring-[#c48765]"
+                className="w-4 h-4 text-[#c48765] border-2 border-[#540f6b] rounded focus:ring-[#c48765]"
               />
-              <label htmlFor="rememberMe" className="ml-2 text-sm text-[#34222E]">
+              <label htmlFor="rememberMe" className="ml-2 text-sm text-[#540f6b]">
                 {t('rememberMe')}
               </label>
             </div>
@@ -131,13 +131,13 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[#34222e] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a1c26] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#540f6b] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a1c26] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? '...' : t('loginButton')}
           </button>
 
           <div className="text-center mt-6">
-            <p className="text-sm text-[#34222E]">
+            <p className="text-sm text-[#540f6b]">
               {t('noAccount')} <Link href="/auth/signup" className="text-[#c48765] hover:underline font-medium">{t('signUp')}</Link>
             </p>
           </div>

@@ -5,31 +5,32 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const statistics = [
   { 
     key: 'landArea', 
     number: 888,
     icon: '/icons/area-icon.svg',
-    gradient: 'from-[#34222E]/20 to-[#34222E]/5'
+    gradient: 'from-[#540f6b]/20 to-[#540f6b]/5'
   },
   { 
     key: 'projects', 
     number: 100,
     icon: '/icons/project-icon.svg',
-    gradient: 'from-[#34222E]/15 to-[#34222E]/5'
+    gradient: 'from-[#540f6b]/15 to-[#540f6b]/5'
   },
   { 
     key: 'housingUnits', 
-    number: 8788,
+    number: 878,
     icon: '/icons/house-icon.svg',
-    gradient: 'from-[#34222E]/10 to-[#34222E]/5'
+    gradient: 'from-[#540f6b]/10 to-[#540f6b]/5'
   },
   { 
     key: 'totalArea', 
-    number: 98787,
+    number: 1000,
     icon: '/icons/measure-icon.svg',
-    gradient: 'from-[#34222E]/5 to-[#34222E]/5'
+    gradient: 'from-[#540f6b]/5 to-[#540f6b]/5'
   }
 ];
 
@@ -89,7 +90,7 @@ export default function AboutUs() {
   animate={{ opacity: 1, scale: 1 }}
   className="absolute top-0 right-0 -translate-y-1/3 pointer-events-none"
 >
-  <span className="text-[25rem] font-black text-[#34222E]/[0.02] leading-none select-none">
+  <span className="text-[25rem] font-black text-[#540f6b]/[0.02] leading-none select-none">
     RAF
   </span>
 </motion.div>
@@ -102,29 +103,32 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, x: 0 }}
             className="space-y-8"
           >
-            <span className="inline-block px-4 py-2 bg-[#34222E]/5 rounded-full text-sm font-medium text-[#34222E]">
+            <span className="inline-block px-4 py-2 bg-[#540f6b]/5 rounded-full text-sm font-medium text-[#540f6b]">
               {t('subtitle')}
             </span>
             
-            <h2 className="text-5xl font-bold text-[#34222E] leading-tight" dir={isRTL ? 'rtl' : 'ltr'}>
+            <h2 className="text-5xl font-bold text-[#540f6b] leading-tight" dir={isRTL ? 'rtl' : 'ltr'}>
               {t('title')}
             </h2>
             
-            <div className="w-24 h-1 bg-[#34222E]" />
+            <div className="w-24 h-1 bg-[#540f6b]" />
             
-            <p className="text-xl text-[#34222E]/70 leading-relaxed">
+            <p className="text-xl text-[#540f6b]/70 leading-relaxed">
               {t('description')}
             </p>
 
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#34222E] text-[#EFEDEA] rounded-full
-                       text-lg font-medium hover:bg-[#34222E]/90 transition-colors"
-            >
-              {t('learnMore')}
-              <ArrowUpRight className="w-5 h-5" />
-            </motion.button>
+<Link href={'/about'} className="inline-block mt-8">
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    className="inline-flex items-center gap-3 px-10 py-4 bg-[#540f6b] text-[#EFEDEA] rounded-full
+               text-lg font-medium hover:bg-[#540f6b]/90 transition-all duration-300
+               shadow-lg hover:shadow-xl"
+  >
+    {t('learnMore')}
+    <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+  </motion.button>
+</Link>
+         
           </motion.div>
 
           {/* Right Column - Image & Stats */}
@@ -134,19 +138,20 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, x: 0 }}
               className="relative"
             >
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
+              <div className="relative aspect-[6/4] rounded-3xl overflow-hidden">
                 <Image
-                  src="/aboutcom.png"
+                  src="/rafweb.jpg"
                   alt={t('imageAlt')}
-                  fill
-                  className="object-cover"
+                  layout="fill"
+                  objectFit="cover"
+                  className="object-cover w-full h-full"
                   sizes="(max-width: 1280px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#34222E]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#540f6b]/20 to-transparent" />
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -z-10 -bottom-8 -right-8 w-64 h-64 rounded-full bg-[#34222E]/5 blur-3xl" />
+              <div className="absolute -z-10 -bottom-8 -right-8 w-64 h-64 rounded-full bg-[#540f6b]/5 blur-3xl" />
             </motion.div>
 
             {/* Statistics Grid */}
@@ -157,20 +162,20 @@ export default function AboutUs() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative p-6 rounded-2xl bg-gradient-to-br border border-[#34222E]/10
-                           hover:border-[#34222E]/20 transition-all duration-500 group"
+                  className="relative p-6 rounded-2xl bg-gradient-to-br border border-[#540f6b]/10
+                           hover:border-[#540f6b]/20 transition-all duration-500 group"
                 >
                   <div className="relative z-10">
-                    <div className="flex items-baseline gap-1 text-4xl font-bold text-[#34222E] mb-2">
+                    <div className="flex items-baseline gap-1 text-4xl font-bold text-[#540f6b] mb-2">
                       <AnimatedCounter end={stat.number} />
-                      <span className="text-[#34222E]/60">+</span>
+                      <span className="text-[#540f6b]/60">+</span>
                     </div>
-                    <p className="text-[#34222E]/70">
+                    <p className="text-[#540f6b]/70">
                       {t(`statistics.${stat.key}`)}
                     </p>
                   </div>
                   
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#34222E]/5 to-transparent 
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#540f6b]/5 to-transparent 
                                 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
               ))}
@@ -180,8 +185,8 @@ export default function AboutUs() {
       </div>
 
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#34222E]/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#34222E]/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#540f6b]/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#540f6b]/5 rounded-full blur-3xl -z-10" />
       
     </section>
   );

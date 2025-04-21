@@ -67,6 +67,7 @@ const quickLinks = [
 
 const Footer = () => {
   const locale = useLocale();
+
   const t = useTranslations();
   const [email, setEmail] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,64 +79,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#34222E] text-[#EFEDEA]" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Awards */}
-      <div className="w-full bg-[#34222E] py-12 border-b border-[#EFEDEA]/10">
-        <div className="container mx-auto px-4">
-          <h4 className="text-xl font-bold mb-8 text-center text-[#EFEDEA]">جوائز</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-6 bg-[#EFEDEA]/10 rounded-xl border border-[#EFEDEA]/20 hover:border-[#EFEDEA]/40 transition-all">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#681034] to-[#d68c3c] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
-                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-                  </svg>
-                </div>
-                <h5 className="text-lg font-semibold text-[#EFEDEA]">جائزة التميز العقاري 2024</h5>
-              </div>
-              <p className="text-sm text-[#EFEDEA]/80">أفضل تطوير عقاري</p>
-            </div>
-            <div className="p-6 bg-[#EFEDEA]/10 rounded-xl border border-[#EFEDEA]/20 hover:border-[#EFEDEA]/40 transition-all">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#681034] to-[#d68c3c] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
-                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-                  </svg>
-                </div>
-                <h5 className="text-lg font-semibold text-[#EFEDEA]">جائزة الابتكار 2023</h5>
-              </div>
-              <p className="text-sm text-[#EFEDEA]/80">أفضل حلول تكنولوجية</p>
-            </div>
-            <div className="p-6 bg-[#EFEDEA]/10 rounded-xl border border-[#EFEDEA]/20 hover:border-[#EFEDEA]/40 transition-all">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#681034] to-[#d68c3c] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
-                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-                  </svg>
-                </div>
-                <h5 className="text-lg font-semibold text-[#EFEDEA]">جائزة الاستدامة 2023</h5>
-              </div>
-              <p className="text-sm text-[#EFEDEA]/80">أفضل ممارسات بيئية</p>
-            </div>
-            <div className="p-6 bg-[#EFEDEA]/10 rounded-xl border border-[#EFEDEA]/20 hover:border-[#EFEDEA]/40 transition-all">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#681034] to-[#d68c3c] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
-                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-                  </svg>
-                </div>
-                <h5 className="text-lg font-semibold text-[#EFEDEA]">جائزة خدمة العملاء 2022</h5>
-              </div>
-              <p className="text-sm text-[#EFEDEA]/80">أفضل تجربة عملاء</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <footer className="bg-[#540f6b] text-[#EFEDEA]" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Main Footer Content */}
       <div className="border-t border-[#EFEDEA]/10">
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Company Info */}
             <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
               <Image
@@ -145,7 +93,7 @@ const Footer = () => {
                 height={80}
                 className="object-contain rounded-lg hover:rounded-full transition-all duration-300"
               />
-              <p className="text-[#EFEDEA]/80 leading-relaxed mb-6">
+              <p className="text-[#EFEDEA]/80 leading-relaxed my-6">
                 {t('footer.companyDescription')}
               </p>
               
@@ -160,7 +108,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full border border-[#EFEDEA]/20 flex items-center justify-center
-                               hover:bg-[#EFEDEA] hover:text-[#34222E] group transition-all duration-300"
+                               hover:bg-[#EFEDEA] hover:text-[#540f6b] group transition-all duration-300"
                     >
                       <Icon />
                     </Link>
@@ -171,24 +119,22 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
-              <h4 className="text-xl font-bold mb-8">{t('footer.quickLinks')}</h4>
-              <ul className="space-y-6" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+              <h4 className="text-xl font-bold mb-6">{t('footer.quickLinks')}</h4>
+              <ul className="space-y-4" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
                 {quickLinks.map((link) => (
                   <li key={link.href} className="group">
                     <Link
                       href={link.href}
-                      className={`text-[#EFEDEA]/80 hover:text-[#EFEDEA] transition-all duration-300
-                               flex items-center gap-4 `}
+                      className="text-[#EFEDEA]/80 hover:text-[#EFEDEA] transition-all duration-300
+                               flex items-center gap-3"
                       dir={locale === 'ar' ? 'rtl' : 'ltr'}
                     >
-                      <div className="w-10 h-10 rounded-lg bg-[#EFEDEA]/10 flex items-center justify-center
+                      <div className="w-8 h-8 rounded-lg bg-[#EFEDEA]/10 flex items-center justify-center
                                   group-hover:bg-[#EFEDEA] transition-all duration-300">
-                        <ArrowUpRight className={`w-5 h-5 group-hover:text-[#34222E] transition-all
+                        <ArrowUpRight className={`w-4 h-4 group-hover:text-[#540f6b] transition-all
                           ${locale === 'ar' ? 'rotate-180' : ''}`} />
                       </div>
-                      <div>
-                        <span className="block text-base">{t(link.text)}</span>
-                      </div>
+                      <span className="block text-base">{t(link.text)}</span>
                     </Link>
                   </li>
                 ))}
@@ -197,35 +143,32 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
-              <h4 className="text-xl font-bold mb-8">{t('footer.contactUs')}</h4>
-              <ul className="space-y-6">
+              <h4 className="text-xl font-bold mb-6">{t('footer.contactUs')}</h4>
+              <ul className="space-y-4">
                 {[
                   { icon: Phone, text: '0536667967', subtext: t('footer.mainNumber'), href: 'tel:0536667967' },
+                  { icon: Phone, text: '920031103', subtext: t('footer.unifiedNumber'), href: 'tel:920031103', isUnified: true },
                   { icon: Mail, text: 'info@rafco.sa', subtext: t('footer.email'), href: 'mailto:info@rafco.sa' },
                   { icon: MapPin, text: t('footer.address'), subtext: t('footer.country') },
-
                 ].map((item, index) => (
                   <li key={index} className="group">
                     {item.href ? (
-                      <Link 
-                        href={item.href} 
-                        className={`flex items-start gap-4 `}
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-[#EFEDEA]/10 flex items-center justify-center
-                                    group-hover:bg-[#EFEDEA] transition-all duration-300">
-                          <item.icon className="w-5 h-5 group-hover:text-[#34222E] transition-colors" />
+                      <Link href={item.href} className="flex items-start gap-3">
+                        <div className={`w-8 h-8 rounded-lg ${item.isUnified ? 'bg-[#EFEDEA]/20' : 'bg-[#EFEDEA]/10'} flex items-center justify-center
+                                    group-hover:bg-[#EFEDEA] transition-all duration-300`}>
+                          <item.icon className="w-4 h-4 group-hover:text-[#540f6b] transition-colors" />
                         </div>
                         <div className="flex flex-col">
-                          <span className="block text-base text-[#EFEDEA]/80 group-hover:text-[#EFEDEA] transition-colors">
+                          <span className={`block text-base text-[#EFEDEA]/80 group-hover:text-[#EFEDEA] transition-colors ${item.isUnified ? 'font-bold' : ''}`}>
                             {item.text}
                           </span>
                           <span className="text-sm text-[#EFEDEA]/60">{item.subtext}</span>
                         </div>
                       </Link>
                     ) : (
-                      <div className={`flex items-start gap-4 `}>
-                        <div className="w-10 h-10 rounded-lg bg-[#EFEDEA]/10 flex items-center justify-center">
-                          <item.icon className="w-5 h-5" />
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#EFEDEA]/10 flex items-center justify-center">
+                          <item.icon className="w-4 h-4" />
                         </div>
                         <div className="flex flex-col">
                           <span className="block text-base text-[#EFEDEA]/80">{item.text}</span>
@@ -237,31 +180,55 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
+          </div>
 
-            {/* Map */}
-            {/* <div className="lg:col-span-1">
-              <div className="rounded-2xl overflow-hidden h-[200px] border border-[#EFEDEA]/10">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.7960960420257!2d46.6893654!3d24.7136225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2z2KfZhNix2YrYp9i2INin2YTYs9i52YjYr9mK2Kk!5e0!3m2!1sar!2ssa!4v1709917391044!5m2!1sar!2ssa"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+          {/* Real Estate License */}
+          <div className="mt-8 pt-6 border-t border-[#EFEDEA]/10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              {/* Fal License with Logo */}
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/fal.svg"
+                  alt="Fal Real Estate License"
+                  width={100}
+                  height={100}
+                  className="object-contain bg-white p-1.5 rounded-lg"
                 />
+                <div className="flex flex-col items-start">
+                  <span className="text-sm text-[#EFEDEA]/80">رخصة فال للوساطة العقارية</span>
+                  <span className="text-xs text-[#EFEDEA]/60">Fal Real Estate License</span>
+                </div>
               </div>
-            </div> */}
+
+              {/* License Number */}
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-lg font-bold text-[#EFEDEA]">I20002693</span>
+                <span className="text-xs text-[#EFEDEA]/60">رقم الترخيص | License No.</span>
+              </div>
+
+              {/* QR Code */}
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/qr.png"
+                  alt="License QR Code"
+                  width={90}
+                  height={90}
+                  className="object-contain bg-white p-1.5 rounded-lg"
+                />
+                <div className="flex flex-col items-start">
+                  <span className="text-sm text-[#EFEDEA]/80">امسح الرمز للتحقق</span>
+                  <span className="text-xs text-[#EFEDEA]/60">Scan to verify</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Copyright */}
-          <div className="mt-16 pt-8 border-t border-[#EFEDEA]/10 text-center">
+          <div className="mt-12 pt-6 border-t border-[#EFEDEA]/10 text-center">
             <p className="text-[#EFEDEA]/60">
               {t('footer.copyright')}
             </p>
-          </div>
-          <div className="text-center mt-8">
-            <p className="text-[#EFEDEA]/80 text-sm">
+            <p className="text-[#EFEDEA]/80 text-sm mt-4">
               تم التطوير بواسطة <a href="https://goldenmoonads.com/" className="text-[#EFEDEA] underline">Golden Moon Ads</a>
             </p>
           </div>

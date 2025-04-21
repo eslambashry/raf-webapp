@@ -20,7 +20,7 @@ export default function Spinner() {
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className={`absolute inset-0 border-2 border-[#34222e] rounded-full animate-ripple`}
+                className={`absolute inset-0 border-2 border-[#540f6b] rounded-full animate-ripple`}
                 style={{
                   animationDelay: `${i * 0.5}s`,
                   width: '100%',
@@ -33,8 +33,8 @@ export default function Spinner() {
 
         {/* Loading Bar */}
         <div className="mt-8">
-          <div className="w-48 h-1 bg-[#34222e]/10 rounded-full overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-r from-[#34222e] to-[#C48765] animate-loading-bar" />
+          <div className="w-48 h-1 bg-[#540f6b]/10 rounded-full overflow-hidden">
+            <div className="w-full h-full bg-gradient-to-r from-[#540f6b] to-[#C48765] animate-loading-bar" />
           </div>
         </div>
       </div>

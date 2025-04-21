@@ -165,7 +165,7 @@ export default function Projects() {
 
           <div className="relative w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
             <div>
-              <h3 className="text-2xl font-bold  text-[#34222e] mb-8 font-cairo">
+              <h3 className="text-2xl font-bold  text-[#540f6b] mb-8 font-cairo">
                 {category.title}
               </h3>
               
@@ -173,13 +173,13 @@ export default function Projects() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('sold')}</span>
-                    <span className="text-sm font-semibold text-blue-600">
+                    <span className="text-sm font-semibold text-[#540f6b]">
                       {progress.completedPercentage}%
                     </span>
                   </div>
                   <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 ease-out"
+                      className="h-full bg-[#540f6b] transition-all duration-500 ease-out"
                       style={{ width: `${progress.completedPercentage}%` }}
                     />
                   </div>
@@ -203,13 +203,13 @@ export default function Projects() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('available')}</span>
-                    <span className="text-sm font-semibold text-green-600">
+                    <span className="text-sm font-semibold text-[#540f6b]">
                       {progress.availablePercentage}%
                     </span>
                   </div>
                   <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-500 ease-out"
+                      className="h-full bg-[#540f6b] transition-all duration-500 ease-out"
                       style={{ width: `${progress.availablePercentage}%` }}
                     />
                   </div>
@@ -217,13 +217,13 @@ export default function Projects() {
                 <div>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm text-gray-600">{t('unavailable')}</span>
-                  <span className="text-sm font-semibold text-red-600">
+                  <span className="text-sm font-semibold text-[#C48765]">
                     {progress.unavailablePercentage || 0}%
                   </span>
                 </div>
                 <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-red-400 to-red-600 transition-all duration-500 ease-out"
+                    className="h-full bg-[#C48765] transition-all duration-500 ease-out"
                     style={{ width: `${progress.unavailablePercentage || 0}%` }}
                   />
                 </div>
@@ -243,7 +243,7 @@ export default function Projects() {
               href={`/projects/${category._id}`}
               className="mt-8 block"
             >
-              <button className="w-full bg-gradient-to-r from-[#c48765] to-[#b37654] text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
+              <button className="w-full bg-[#540f6b] text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
                 {t('viewProject')}
                 <ChevronRight className="inline-block ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
@@ -286,7 +286,7 @@ export default function Projects() {
           </div>
   
           <div className="flex-1 ml-4">
-            <h3 className="text-lg font-bold text-[#34222e] mb-2 font-cairo">
+            <h3 className="text-lg font-bold text-[#540f6b] mb-2 font-cairo">
               {category.title}
             </h3>
   
@@ -304,7 +304,7 @@ export default function Projects() {
                 </span>
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-blue-500 mr-2" />
+                <div className="w-2 h-2 rounded-full bg-[#540f6b] mr-2" />
                 <span className="text-xs text-gray-600">
                   {Math.round(progress.availablePercentage)}% {t('available')}
                 </span>
@@ -317,7 +317,7 @@ export default function Projects() {
               href={`/projects/${category._id}`}
               className="block"
             >
-              <button className="bg-white/95 backdrop-blur-sm text-[#34222e] px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
+              <button className="bg-white/95 backdrop-blur-sm text-[#540f6b] px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
                 {t('viewProject')}
                 <ChevronRight className="inline-block ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </button>
@@ -334,10 +334,10 @@ export default function Projects() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl m-auto text-center md:text-4xl font-bold text-[#34222E] mb-3 ">
+            <h2 className="text-2xl sm:text-3xl m-auto text-center md:text-4xl font-bold text-[#540f6b] mb-3 ">
               {t('sectionTitle')}
             </h2>
-            {/* <div className="w-20 h-1 text-center bg-[#34222E]"></div> */}
+            {/* <div className="w-20 h-1 text-center bg-[#540f6b]"></div> */}
           </div>
 
           <div className="text-center mt-12 sm:mt-16">
@@ -392,13 +392,13 @@ export default function Projects() {
                   className={`p-2 rounded-lg transition-all duration-300 ${
                     currentPage === 1
                       ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-[#34222e] hover:bg-[#c48765] hover:text-white'
+                      : 'bg-white text-[#540f6b] hover:bg-[#c48765] hover:text-white'
                   }`}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 
-                <span className="text-[#34222e] font-medium">
+                <span className="text-[#540f6b] font-medium">
                   {currentPage} / {Math.ceil(categories.length / itemsPerPage)}
                 </span>
 
@@ -410,7 +410,7 @@ export default function Projects() {
                   className={`p-2 rounded-lg transition-all duration-300 ${
                     currentPage === Math.ceil(categories.length / itemsPerPage)
                       ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-[#34222e] hover:bg-[#c48765] hover:text-white'
+                      : 'bg-white text-[#540f6b] hover:bg-[#c48765] hover:text-white'
                   }`}
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -421,8 +421,8 @@ export default function Projects() {
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 text-sm sm:text-base 
-                       text-[#34222E] font-medium hover:text-[#34222E]/80 
-                       transition-colors duration-300 mt-8 border border-[#34222E] rounded-full px-6 py-3"
+                       text-[#540f6b] font-medium hover:text-[#540f6b]/80 
+                       transition-colors duration-300 mt-8 border border-[#540f6b] rounded-full px-6 py-3"
             >
               {t('discover')}
               <ChevronRight className="w-5 h-5" />

@@ -15,7 +15,10 @@
     "title": "Find Your Dream Home",
     "subtitle": "Discover the perfect property that matches your lifestyle and aspirations",
     "cta": "Explore Properties",
-    "description": "Explore our properties and find your dream home."
+    "description": "Explore our properties and find your dream home.",
+    "exploreProjects": "Explore Projects",
+    "contactUs": "Contact Us"
+
   },
   "projectDetails": {
     "title": "Project Details",
@@ -110,13 +113,14 @@
     "quickLinks": "Quick Links",
     "commercialRecord": "Commercial Record",
     "contactUs": "Contact Us",
-    "mainNumber": "Main Number",
+    "mainNumber": "unified Number",
     "email": "Email",
     "address": "Kingdom of Saudi Arabia",
     "country": "Saudi Arabia",
     "copyright": "All rights reserved for RAF Real Estate Development Company",
     "madeBy": "Crafted with precision by RAF",
-    "subscribeError": "An error occurred while subscribing to the newsletter"
+    "subscribeError": "An error occurred while subscribing to the newsletter",
+    "unifiedNumber": "unified Number"	
   },
   "contact": {
     "title": "Get in Touch",

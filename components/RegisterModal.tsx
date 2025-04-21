@@ -91,20 +91,20 @@ export default function RegisterModal({ isOpen, onClose, onSuccess, unitId, cate
               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-[#EFEDEA] p-8 shadow-xl transition-all" dir={isArabic ? 'rtl' : 'ltr'}>
                 <Dialog.Title
                   as="h3"
-                  className="text-2xl font-bold text-[#34222E] text-center mb-8"
+                  className="text-2xl font-bold text-[#540f6b] text-center mb-8"
                 >
                   {t('title')}
                 </Dialog.Title>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div className="space-y-2">
-                    <label className="block text-[#34222E] font-bold text-sm">
+                    <label className="block text-[#540f6b] font-bold text-sm">
                       {t('fullName.label')}
                     </label>
                     <input
                       {...register('fullName')}
                       type="text"
-                      className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+                      className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
                       placeholder={t('fullName.placeholder')}
                     />
                     {errors.fullName && (
@@ -113,13 +113,13 @@ export default function RegisterModal({ isOpen, onClose, onSuccess, unitId, cate
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-[#34222E] font-bold text-sm">
+                    <label className="block text-[#540f6b] font-bold text-sm">
                       {t('phone.label')}
                     </label>
                     <input
                       {...register('phone')}
                       type="tel"
-                      className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+                      className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
                       placeholder={t('phone.placeholder')}
                       dir="ltr"
                     />
@@ -129,13 +129,13 @@ export default function RegisterModal({ isOpen, onClose, onSuccess, unitId, cate
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-[#34222E] font-bold text-sm">
+                    <label className="block text-[#540f6b] font-bold text-sm">
                       {t('email.label')}
                     </label>
                     <input
                       {...register('email')}
                       type="email"
-                      className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+                      className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
                       placeholder={t('email.placeholder')}
                       dir="ltr"
                     />
@@ -148,14 +148,14 @@ export default function RegisterModal({ isOpen, onClose, onSuccess, unitId, cate
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 bg-[#34222e] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 bg-[#540f6b] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a3761] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? t('buttons.submitting') : t('buttons.submit')}
                     </button>
                     <button
                       type="button"
                       onClick={onClose}
-                      className="flex-1 border-2 border-[#34222e] text-[#34222E] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
+                      className="flex-1 border-2 border-[#540f6b] text-[#540f6b] rounded-lg py-3 font-bold text-sm hover:bg-gray-50 transition-colors"
                     >
                       {t('buttons.cancel')}
                     </button>

@@ -105,7 +105,7 @@ export default function Testimonials() {
           scale: [1, 1.3, 1]
         }}
         transition={{ duration: 25, repeat: Infinity }}
-        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#34222e]/10 to-[#c48765]/10 rounded-full blur-3xl"
+        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#540f6b]/10 to-[#c48765]/10 rounded-full blur-3xl"
       />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -121,10 +121,10 @@ export default function Testimonials() {
             className="inline-flex items-center gap-2 px-6 py-2 bg-white/50 backdrop-blur-sm rounded-full mb-6"
           >
             <Sparkles className="w-5 h-5 text-[#C48765]" />
-            <span className="text-sm font-medium text-[#34222E]">{t('subtitle')}</span>
+            <span className="text-sm font-medium text-[#540f6b]">{t('subtitle')}</span>
           </motion.div>
           
-          <h2 className="text-5xl font-bold text-[#34222E] mb-6">
+          <h2 className="text-5xl font-bold text-[#540f6b] mb-6">
             {t('title')}
           </h2>
           <motion.div 
@@ -219,12 +219,12 @@ export default function Testimonials() {
                       ))}
                     </div>
 
-                    <p className="text-lg text-[#34222E]/80 mb-6 line-clamp-4">
+                    <p className="text-lg text-[#540f6b]/80 mb-6 line-clamp-4">
                       {review.description}
                     </p>
 
                     <div className="pt-6 border-t border-[#C48765]/10">
-                      <h3 className="text-xl font-bold text-[#34222E] mb-1">{review.name}</h3>
+                      <h3 className="text-xl font-bold text-[#540f6b] mb-1">{review.name}</h3>
                       <p className="text-[#C48765]">{review.country}</p>
                     </div>
                   </div>
@@ -242,7 +242,7 @@ export default function Testimonials() {
                      rounded-full flex items-center justify-center shadow-lg hover:shadow-xl z-10
                      border border-[#C48765]/10 transition-all duration-300"
           >
-            {isRTL ? <ChevronRight className="w-6 h-6 text-[#34222E]" /> : <ChevronLeft className="w-6 h-6 text-[#34222E]" />}
+            {isRTL ? <ChevronRight className="w-6 h-6 text-[#540f6b]" /> : <ChevronLeft className="w-6 h-6 text-[#540f6b]" />}
           </motion.button>
           <motion.button
             ref={nextRef}
@@ -252,7 +252,7 @@ export default function Testimonials() {
                      rounded-full flex items-center justify-center shadow-lg hover:shadow-xl z-10
                      border border-[#C48765]/10 transition-all duration-300"
           >
-            {isRTL ? <ChevronLeft className="w-6 h-6 text-[#34222E]" /> : <ChevronRight className="w-6 h-6 text-[#34222E]" />}
+            {isRTL ? <ChevronLeft className="w-6 h-6 text-[#540f6b]" /> : <ChevronRight className="w-6 h-6 text-[#540f6b]" />}
           </motion.button>
         </div>
       </div>

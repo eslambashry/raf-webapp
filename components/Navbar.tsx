@@ -131,22 +131,22 @@ export default function Navbar() {
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       {/* Gradient border at top */}
-      <div className="h-1 bg-gradient-to-r from-[#c48765] via-[#34222E] to-[#c48765]"></div>
+      <div className="h-1 bg-gradient-to-r from-[#c48765] via-[#540f6b] to-[#c48765]"></div>
       
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center group">
           <div className="relative overflow-hidden rounded pt-1">
             <Image
-              src="/logo_2.png"
+              src="/raf.png"
               alt="RAF Advanced Logo"
-              width={50}
+              width={160}
               height={50}
               className={`transition-transform duration-300 group-hover:scale-110 ${isArabic ? 'ml-2' : 'mr-2'}`}
             />
           </div>
-          <span className="text-xl font-bold text-[#34222E] group-hover:text-[#c48765] transition-colors duration-300">
-        راف المتطوره 
-          </span>
+          {/* <span className="text-xl font-bold text-[#540f6b] group-hover:text-[#c48765] transition-colors duration-300">
+            {isArabic ? 'راف العقارية' : 'RAF Real Estate'}
+          </span> */}
         </Link>
 
         {/* Desktop Menu */}
@@ -158,7 +158,7 @@ export default function Navbar() {
               className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
                 item.active
                   ? 'text-[#c48765] bg-[#c48765]/10'
-                  : 'text-[#34222E] hover:text-[#c48765] hover:bg-[#c48765]/5'
+                  : 'text-[#540f6b] hover:text-[#c48765] hover:bg-[#c48765]/5'
               }`}
             >
               {item.text}
@@ -172,11 +172,11 @@ export default function Navbar() {
             <div className="relative" ref={userMenuRef}>
               <button 
                 onClick={toggleUserMenu}
-                className={`flex items-center px-3 py-2 text-sm font-medium text-[#34222E] hover:text-[#c48765] transition-colors rounded-lg hover:bg-[#c48765]/5 ${userMenuOpen ? 'bg-[#c48765]/10 text-[#c48765]' : ''}`}
+                className={`flex items-center px-3 py-2 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-colors rounded-lg hover:bg-[#c48765]/5 ${userMenuOpen ? 'bg-[#c48765]/10 text-[#c48765]' : ''}`}
                 aria-expanded={userMenuOpen}
                 aria-haspopup="true"
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-[#34222E] to-[#4a3340] rounded-full flex items-center justify-center text-white mr-2 shadow-sm">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#540f6b] to-[#4a3340] rounded-full flex items-center justify-center text-white mr-2 shadow-sm">
                   {userDisplayName.charAt(0).toUpperCase()}
                 </div>
                 <span className={`${isArabic ? 'ml-1' : 'mr-1'}`}>{userDisplayName}</span>
@@ -199,12 +199,12 @@ export default function Navbar() {
                 }`}
               >
                 <div className="px-4 py-2 border-b border-gray-100">
-                  <p className="text-sm font-medium text-[#34222E]">{userDisplayName}</p>
+                  <p className="text-sm font-medium text-[#540f6b]">{userDisplayName}</p>
                   <p className="text-xs text-gray-500">{user.email}</p>
                 </div>
                 <Link 
                   href="/wishlist" 
-                  className="flex items-center px-4 py-2 text-sm text-[#34222E] hover:bg-[#c48765]/5 hover:text-[#c48765]"
+                  className="flex items-center px-4 py-2 text-sm text-[#540f6b] hover:bg-[#c48765]/5 hover:text-[#c48765]"
                   onClick={() => setUserMenuOpen(false)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -231,14 +231,14 @@ export default function Navbar() {
                 className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
                   pathname === "/auth/login"
                     ? 'text-[#c48765] bg-[#c48765]/10'
-                    : 'text-[#34222E] hover:text-[#c48765] hover:bg-[#c48765]/5'
+                    : 'text-[#540f6b] hover:text-[#c48765] hover:bg-[#c48765]/5'
                 }`}
               >
                 {t('auth.nav.login')}
               </Link>
               <Link
                 href="/auth/signup"
-                className="bg-gradient-to-r from-[#34222E] to-[#4a3340] text-white px-5 py-2 rounded-lg text-sm font-medium hover:from-[#2a1c26] hover:to-[#3d2a34] transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:translate-y-0 duration-300"
+                className="bg-gradient-to-r from-[#540f6b] to-[#4a3340] text-white px-5 py-2 rounded-lg text-sm font-medium hover:from-[#2a1c26] hover:to-[#3d2a34] transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:translate-y-0 duration-300"
               >
                 {t('auth.nav.signup')}
               </Link>
@@ -248,7 +248,7 @@ export default function Navbar() {
           <Link
             href="/"
             locale={isArabic ? 'en' : 'ar'}
-            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#34222E] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
+            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
             aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
           >
             <span className="font-semibold">{isArabic ? 'EN' : 'عربي'}</span>
@@ -260,14 +260,14 @@ export default function Navbar() {
           <Link
             href="/"
             locale={isArabic ? 'en' : 'ar'}
-            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#34222E] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
+            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
             aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
           >
             <span className="font-semibold">{isArabic ? 'EN' : 'عربي'}</span>
           </Link>
           
           <button
-            className="p-2 text-[#34222E] focus:outline-none rounded-lg hover:bg-[#c48765]/5"
+            className="p-2 text-[#540f6b] focus:outline-none rounded-lg hover:bg-[#c48765]/5"
             onClick={toggleMenu}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -298,7 +298,7 @@ export default function Navbar() {
                 className={`px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
                   item.active
                     ? 'text-[#c48765] bg-[#c48765]/10'
-                    : 'text-[#34222E] hover:bg-[#c48765]/5 hover:text-[#c48765]'
+                    : 'text-[#540f6b] hover:bg-[#c48765]/5 hover:text-[#c48765]'
                 }`}
                 onClick={closeMenu}
               >
@@ -310,18 +310,18 @@ export default function Navbar() {
               <>
                 <div className="px-4 py-3 mt-2 mb-1 border-t border-gray-100">
                   <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-br from-[#34222E] to-[#4a3340] rounded-full flex items-center justify-center text-white mr-3 shadow-sm">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#540f6b] to-[#4a3340] rounded-full flex items-center justify-center text-white mr-3 shadow-sm">
                       {userDisplayName.charAt(0).toUpperCase()}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#34222E]">{userDisplayName}</p>
+                      <p className="text-sm font-medium text-[#540f6b]">{userDisplayName}</p>
                       <p className="text-xs text-gray-500">{user.email}</p>
                     </div>
                   </div>
                 </div>
                 <Link
                   href="/wishlist"
-                  className="px-4 py-3 text-sm font-medium text-[#34222E] hover:bg-[#c48765]/5 hover:text-[#c48765] rounded-lg transition-all duration-200 flex items-center"
+                  className="px-4 py-3 text-sm font-medium text-[#540f6b] hover:bg-[#c48765]/5 hover:text-[#c48765] rounded-lg transition-all duration-200 flex items-center"
                   onClick={closeMenu}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -346,7 +346,7 @@ export default function Navbar() {
                   className={`px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
                     pathname === "/auth/login"
                       ? 'text-[#c48765] bg-[#c48765]/10'
-                      : 'text-[#34222E] hover:bg-[#c48765]/5 hover:text-[#c48765]'
+                      : 'text-[#540f6b] hover:bg-[#c48765]/5 hover:text-[#c48765]'
                   }`}
                   onClick={closeMenu}
                 >
@@ -354,7 +354,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="bg-gradient-to-r from-[#34222E] to-[#4a3340] text-white px-4 py-3 rounded-lg text-sm font-medium text-center hover:from-[#2a1c26] hover:to-[#3d2a34] transition-all shadow-sm"
+                  className="bg-gradient-to-r from-[#540f6b] to-[#4a3340] text-white px-4 py-3 rounded-lg text-sm font-medium text-center hover:from-[#2a1c26] hover:to-[#3d2a34] transition-all shadow-sm"
                   onClick={closeMenu}
                 >
                   {t('auth.nav.signup')}

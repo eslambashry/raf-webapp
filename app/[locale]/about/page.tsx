@@ -304,7 +304,7 @@ export default function AboutPage() {
               </div>
               <div className={`w-full md:w-1/2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
-                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                     {t('whoWeAre.title')}
                   </h2>
                   <div className="w-[115px] h-[4px] bg-[#C48765] mb-6"></div>
@@ -322,7 +322,7 @@ export default function AboutPage() {
               className="mb-24"
             >
               <div className={`text-center mb-12`}>
-                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                   {t('values.title')}
                 </h2>
                 <div className="w-[83px] h-[4px] bg-[#C48765] mx-auto"></div>
@@ -341,7 +341,7 @@ export default function AboutPage() {
                     variants={scaleInVariants}
                     className="bg-white rounded-[20px] p-8 shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    <h3 className={`text-[24px] font-bold text-[#34222E] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
+                    <h3 className={`text-[24px] font-bold text-[#540f6b] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
                       {t(`values.${value}.title`)}
                     </h3>
                     <p className={`text-[18px] text-gray-700 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
@@ -369,7 +369,7 @@ export default function AboutPage() {
               </div>
               <div className={`w-full md:w-1/2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
-                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                     {t('vision.title')}
                   </h2>
                   <div className="w-[83px] h-[4px] bg-[#C48765] mb-6"></div>
@@ -380,7 +380,7 @@ export default function AboutPage() {
                 <h3 
                   ref={sectionRefs.goals}
                   data-section="goals"
-                  className={`text-[24px] font-bold text-[#34222E] mb-4 ${isRTL ? 'font-cairo' : 'font-cairo'}`}
+                  className={`text-[24px] font-bold text-[#540f6b] mb-4 ${isRTL ? 'font-cairo' : 'font-cairo'}`}
                 >
                   {t('goals.title')}
                 </h3>
@@ -411,7 +411,7 @@ export default function AboutPage() {
               </div>
               <div className={`w-full md:w-1/2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
-                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                     {t('mission.title')}
                   </h2>
                   <div className="w-[112px] h-[4px] bg-[#C48765] mb-6"></div>
@@ -429,7 +429,7 @@ export default function AboutPage() {
               className="mb-24"
             >
               <div className={`text-center mb-12`}>
-                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                   {t('products.title')}
                 </h2>
                 <div className="w-[83px] h-[4px] bg-[#C48765] mx-auto"></div>
@@ -448,7 +448,7 @@ export default function AboutPage() {
                     variants={scaleInVariants}
                     className="bg-white rounded-[20px] p-8 shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    <h3 className={`text-[24px] font-bold text-[#34222E] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
+                    <h3 className={`text-[24px] font-bold text-[#540f6b] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
                       {t(`products.items.${product}.title`)}
                     </h3>
                     <p className={`text-[18px] text-gray-700 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
@@ -466,7 +466,7 @@ export default function AboutPage() {
               className="mb-24"
             >
               <div className={`text-center mb-12`}>
-                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                   {t('services.title')}
                 </h2>
                 <div className="w-[83px] h-[4px] bg-[#C48765] mx-auto"></div>
@@ -485,7 +485,7 @@ export default function AboutPage() {
                     variants={scaleInVariants}
                     className="bg-white rounded-[20px] p-8 shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    <h3 className={`text-[24px] font-bold text-[#34222E] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
+                    <h3 className={`text-[24px] font-bold text-[#540f6b] mb-4 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
                       {t(`services.items.${service}.title`)}
                     </h3>
                     <p className={`text-[18px] text-gray-700 ${isRTL ? 'font-cairo text-right' : 'font-cairo'}`}>
@@ -513,7 +513,7 @@ export default function AboutPage() {
               </div>
               <div className={`w-full md:w-1/2 ${isRTL ? 'text-right' : 'text-left'}`}>
                 <div className={`flex flex-col ${isRTL ? 'items-end' : 'items-start'}`}>
-                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#34222E] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
+                  <h2 className={`text-[30px] md:text-[35px] font-bold text-[#540f6b] mb-2 ${isRTL ? 'font-cairo' : 'font-cairo'}`}>
                     {t('design.title')}
                   </h2>
                   <div className="w-[112px] h-[4px] bg-[#C48765] mb-6"></div>

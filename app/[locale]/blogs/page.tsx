@@ -99,7 +99,7 @@ export default function BlogsPage() {
                 {blogs.map((blog) => (
                   <div
                     key={blog._id}
-                    className="group bg-[#EFEDEA] rounded-2xl overflow-hidden border-2 border-[#34222e] shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                    className="group bg-[#EFEDEA] rounded-2xl overflow-hidden border-2 border-[#540f6b] shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
                   >
                     <div className="relative">
                       <div className="relative h-72 overflow-hidden">
@@ -110,7 +110,7 @@ export default function BlogsPage() {
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
-                      <div className="absolute top-4 left-4 bg-[#34222e] text-[#c48765] px-4 py-1 rounded-full text-sm">
+                      <div className="absolute top-4 left-4 bg-[#540f6b] text-[#c48765] px-4 py-1 rounded-full text-sm">
                         {t('newLabel')}
                       </div>
                     </div>
@@ -123,7 +123,7 @@ export default function BlogsPage() {
                           <span> {blog.views}</span>
                         </div>
                       </div>
-                      <h3 className={`text-2xl font-bold text-[#34222E] leading-tight ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+                      <h3 className={`text-2xl font-bold text-[#540f6b] leading-tight ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
                         {blog.title}
                       </h3>
 

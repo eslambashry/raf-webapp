@@ -81,18 +81,18 @@ export default function SignupPage() {
               className="mx-auto mb-4"
             />
           </Link>
-          <h1 className="text-2xl font-bold text-[#34222E]">{t('title')}</h1>
+          <h1 className="text-2xl font-bold text-[#540f6b]">{t('title')}</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('firstName')}
             </label>
             <input
               {...register('firstName')}
               type="text"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
             />
             {errors.firstName && (
               <p className="text-red-500 text-xs">{v('firstNameLength')}</p>
@@ -100,24 +100,24 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('middleName')}
             </label>
             <input
               {...register('middleName')}
               type="text"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('lastName')}
             </label>
             <input
               {...register('lastName')}
               type="text"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
             />
             {errors.lastName && (
               <p className="text-red-500 text-xs">{v('lastNameLength')}</p>
@@ -125,13 +125,13 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('email')}
             </label>
             <input
               {...register('email')}
               type="email"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               placeholder="example@domain.com"
               dir="ltr"
             />
@@ -141,13 +141,13 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('phoneNumber')}
             </label>
             <input
               {...register('phoneNumber')}
               type="tel"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               dir="ltr"
             />
             {errors.phoneNumber && (
@@ -156,13 +156,13 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('password')}
             </label>
             <input
               {...register('password')}
               type="password"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               dir="ltr"
             />
             {errors.password && (
@@ -171,13 +171,13 @@ export default function SignupPage() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-[#34222E] font-bold text-sm">
+            <label className="block text-[#540f6b] font-bold text-sm">
               {t('confirmPassword')}
             </label>
             <input
               {...register('confirmPassword')}
               type="password"
-              className="w-full p-3 rounded-lg border-2 border-[#34222e] focus:outline-none focus:border-[#c48765] transition-colors"
+              className="w-full p-3 rounded-lg border-2 border-[#540f6b] focus:outline-none focus:border-[#c48765] transition-colors"
               dir="ltr"
             />
             {errors.confirmPassword && (
@@ -191,10 +191,10 @@ export default function SignupPage() {
                 {...register('agreeTerms')}
                 type="checkbox"
                 id="agreeTerms"
-                className="w-4 h-4 text-[#c48765] border-2 border-[#34222e] rounded focus:ring-[#c48765]"
+                className="w-4 h-4 text-[#c48765] border-2 border-[#540f6b] rounded focus:ring-[#c48765]"
               />
             </div>
-            <label htmlFor="agreeTerms" className="ml-2 text-sm text-[#34222E]">
+            <label htmlFor="agreeTerms" className="ml-2 text-sm text-[#540f6b]">
               {t('agreeTerms')}
             </label>
           </div>
@@ -205,13 +205,13 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[#34222e] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a1c26] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#540f6b] text-white rounded-lg py-3 font-bold text-sm hover:bg-[#2a1c26] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? '...' : t('signupButton')}
           </button>
 
           <div className="text-center mt-6">
-            <p className="text-sm text-[#34222E]">
+            <p className="text-sm text-[#540f6b]">
               {t('haveAccount')} <Link href="/auth/login" className="text-[#c48765] hover:underline font-medium">{t('login')}</Link>
             </p>
           </div>
