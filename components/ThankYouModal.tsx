@@ -47,7 +47,7 @@ export default function ThankYouModal({ isOpen, onClose }: ThankYouModalProps) {
                 </p>
                 <Link
                   href="/"
-                  className="inline-block bg-[#d68c3c] text-white rounded-lg px-8 py-3 font-bold text-lg hover:bg-[#681034] transition-colors"
+                  className="inline-block bg-[#1f0c25] text-white rounded-lg px-8 py-3 font-bold text-lg hover:bg-[#681034] transition-colors"
                   onClick={onClose}
                 >
                   العودة للصفحة الرئيسية

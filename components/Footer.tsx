@@ -82,23 +82,26 @@ const Footer = () => {
     <footer className="bg-[#540f6b] text-[#EFEDEA]" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Main Footer Content */}
       <div className="border-t border-[#EFEDEA]/10">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {/* Company Info */}
-            <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
-              <Image
-                src="/logo_3.png"
-                alt="Logo"
-                width={140}
-                height={80}
-                className="object-contain rounded-lg hover:rounded-full transition-all duration-300"
-              />
-              <p className="text-[#EFEDEA]/80 leading-relaxed my-6">
-                {t('footer.companyDescription')}
-              </p>
+                    {/* Company Info */}
+                    <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/logo_3.png"
+                  alt="Logo"
+                  width={120}
+                  height={70}
+                  className="object-contain rounded-xl hover:scale-105 transition-all duration-300 shadow-lg"
+                />
+                <p className="text-[#EFEDEA] leading-relaxed">
+                  {t('footer.companyDescription')}
+                </p>
+              </div>
               
               {/* Social Links */}
-              <div className="flex gap-4">
+              <div className="flex gap-6 mt-8">
                 {socialLinks.map((social, index) => {
                   const Icon = SocialIcons[social.icon as keyof typeof SocialIcons];
                   return (
@@ -107,8 +110,8 @@ const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-[#EFEDEA]/20 flex items-center justify-center
-                               hover:bg-[#EFEDEA] hover:text-[#540f6b] group transition-all duration-300"
+                      className="w-12 h-12 rounded-xl border-2 border-[#EFEDEA]/20 flex items-center justify-center
+                               hover:bg-[#EFEDEA] hover:text-[#540f6b] hover:scale-110 group transition-all duration-300 shadow-md"
                     >
                       <Icon />
                     </Link>
@@ -116,6 +119,7 @@ const Footer = () => {
                 })}
               </div>
             </div>
+
 
             {/* Quick Links */}
             <div className={locale === 'ar' ? 'text-right' : 'text-left'}>
@@ -183,8 +187,8 @@ const Footer = () => {
           </div>
 
           {/* Real Estate License */}
-          <div className="mt-8 pt-6 border-t border-[#EFEDEA]/10">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="mt-12 pt-8 border-t border-[#EFEDEA]/20">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-12">
               {/* Fal License with Logo */}
               <div className="flex items-center gap-4">
                 <Image
@@ -224,7 +228,7 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="mt-12 pt-6 border-t border-[#EFEDEA]/10 text-center">
+          <div className="mt-16 pt-8 border-t border-[#EFEDEA]/20 text-center">
             <p className="text-[#EFEDEA]/60">
               {t('footer.copyright')}
             </p>

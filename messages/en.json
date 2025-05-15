@@ -633,5 +633,10 @@
     "videoTitle": " ",
     "videoDescription": " ",
     "loading": "Loading..."
+  },
+  "Maintenance": {
+    "title": "Website Under Maintenance",
+    "message": "We are currently working on improving our website to provide a better experience. We'll be back soon!",
+    "contact": "For urgent inquiries, please contact us via email"
   }
 }

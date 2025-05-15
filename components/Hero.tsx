@@ -40,13 +40,13 @@ export default function Hero() {
               transition={{ duration: 1 }}
               className="mb-8"
             >
-              <Image
+              {/* <Image
                 src="/logo_3.png"
                 alt="RAF Logo"
                 width={200}
                 height={100}
                 className="object-contain"
-              />
+              /> */}
             </motion.div>
 
             {/* Main Title */}
@@ -60,22 +60,37 @@ export default function Hero() {
             </motion.h1>
 
             {/* Decorative Line */}
-            <motion.div
+            {/* <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="h-1 w-32 bg-gradient-to-r from-[#681034] via-[#d68c3c] to-[#681034] mb-6"
-            />
+              className="h-1 w-32 bg-gradient-to-r from-[#681034] via-[#1f0c25] to-[#681034] mb-6"
+            /> */}
 
             {/* Description */}
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl mb-8"
-            >
-              {t('hero.description')}
-            </motion.p>
+            <div className="flex items-center gap-4 mb-8">
+              <motion.p
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl"
+              >
+                {t('hero.description')}
+              </motion.p>
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                {/* <Image 
+                  src="/vision.svg"
+                  alt="Vision Icon"
+                  width={60}
+                  height={40}
+                  className="object-contain"
+                /> */}
+              </motion.div>
+            </div>
 
             {/* CTA Buttons */}
             <motion.div
@@ -92,7 +107,7 @@ export default function Hero() {
               </Link>
               <Link 
                 href="/contact" 
-                className="px-8 py-3 bg-[#C48765]  text-white rounded-lg transition-all duration-300 text-lg"
+                className="px-8 py-3 bg-[#540f6b]  text-white rounded-lg transition-all duration-300 text-lg"
               >
                 {t('hero.contactUs')}
               </Link>
@@ -100,24 +115,24 @@ export default function Hero() {
           </div>
 
           {/* Scroll Indicator */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
             <ArrowDownCircle className="w-10 h-10 text-white opacity-80" />
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Side Pattern */}
         <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-[#681034]/10 to-transparent" />
 
         {/* Bottom Gradient Line */}
-        <div className="absolute bottom-0 left-0 w-full">
-          <div className="h-1 bg-gradient-to-r from-[#681034] via-[#d68c3c] to-[#681034]" />
+        {/* <div className="absolute bottom-0 left-0 w-full">
+          <div className="h-1 bg-gradient-to-r from-[#681034] via-[#1f0c25] to-[#681034]" />
           <div className="h-20 bg-gradient-to-t from-[#540f6b] to-transparent" />
-        </div>
+        </div> */}
       </section>
     </div>
   )

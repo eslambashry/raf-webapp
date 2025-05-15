@@ -27,7 +27,7 @@ export default function VideoSection() {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">{t('videoSection.title', { default: 'مشاريعنا' })}</h2>
-          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-[#681034] to-[#d68c3c]" />
+          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-[#681034] to-[#1f0c25]" />
           <p className="mt-4 text-xl max-w-3xl mx-auto">
             {t('videoSection.description', { default: 'شاهد أحدث مشاريعنا العقارية بتقنية الفيديو عالي الجودة' })}
           </p>

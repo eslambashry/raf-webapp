@@ -1,14 +1,17 @@
 'use client';
+import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 
+import { Home, Phone, Wrench, Droplet, Users, Zap } from 'lucide-react';
+
 const services = [
-  { id: 1, key: 'rental', icon: '🏠' },
-  { id: 2, key: 'communication', icon: '📱' },
-  { id: 3, key: 'maintenance', icon: '🔧' },
-  { id: 4, key: 'water', icon: '💧' },
-  { id: 5, key: 'staff', icon: '👥' },
-  { id: 6, key: 'electricity', icon: '⚡' }
+  { id: 1, key: 'rental', icon: Home },
+  { id: 2, key: 'communication', icon: Phone },
+  { id: 3, key: 'maintenance', icon: Wrench },
+  { id: 4, key: 'water', icon: Droplet },
+  { id: 5, key: 'staff', icon: Users },
+  { id: 6, key: 'electricity', icon: Zap }
 ];
 
 export default function Services() {
@@ -27,7 +30,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20"
         >
-          <span className="text-[#d68c3c] text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-2 sm:mb-3 md:mb-4 block">
+          <span className="text-[#1f0c25] text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-2 sm:mb-3 md:mb-4 block">
             {t('ourServices')}
           </span>
           
@@ -35,7 +38,7 @@ export default function Services() {
             {t('afterSaleTitle')}
           </h2>
           
-          <div className="w-20 sm:w-24 md:w-32 lg:w-40 h-0.5 sm:h-1 md:h-1.5 bg-gradient-to-r from-[#d68c3c] to-[#1d0728] mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full" />
+          <div className="w-20 sm:w-24 md:w-32 lg:w-40 h-0.5 sm:h-1 md:h-1.5 bg-gradient-to-r from-[#1f0c25] to-[#1d0728] mx-auto mb-3 sm:mb-4 md:mb-6 rounded-full" />
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#1d0728]/70 max-w-3xl mx-auto font-medium leading-relaxed px-2 sm:px-4">
             {t('freeServices')}
@@ -75,15 +78,19 @@ export default function Services() {
                 <div className="relative">
                   {/* Icon and Line - Smaller for Mobile */}
                   <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-                    <span className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl">{service.icon}</span>
-                    {/* <div className={`flex-1 h-0.5 bg-[#d68c3c] rounded-full transform 
-                                 origin-${isArabic ? 'right' : 'left'} 
-                                 group-hover:scale-x-150 transition-transform duration-300`} /> */}
-                  </div>
+  <div className="relative group-hover:scale-110 transition-transform duration-300">
+    <span className="absolute inset-0 bg-[#540f6b]/20 rounded-full blur-sm transform scale-110 group-hover:scale-125 transition-all duration-300"></span>
+    <span className="relative flex items-center justify-center text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-br from-[#540f6b] to-[#8a1dab] rounded-full p-2 text-white shadow-md group-hover:shadow-lg group-hover:from-[#8a1dab] group-hover:to-[#540f6b] transition-all duration-300">
+      {React.createElement(service.icon, { className: "w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" })}
+    </span>
+  </div>
+  <div className={`flex-1 h-0.5 bg-gradient-to-r from-[#1f0c25] to-[#540f6b] rounded-full transform origin-${isArabic ? 'right' : 'left'} scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+</div>
+
                   
                   {/* Title - Smaller for Mobile */}
                   <h3 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-[#1d0728] 
-                               mb-1.5 xs:mb-2 sm:mb-3 md:mb-4 group-hover:text-[#d68c3c] 
+                               mb-1.5 xs:mb-2 sm:mb-3 md:mb-4 group-hover:text-[#1f0c25] 
                                transition-colors duration-300 line-clamp-2">
                     {t(`items.${service.key}`)}
                   </h3>
@@ -97,7 +104,7 @@ export default function Services() {
                 
                 {/* Bottom Gradient Line */}
                 <div className="absolute bottom-0 left-0 w-full h-0.5
-                              bg-gradient-to-r from-[#1d0728] to-[#d68c3c] 
+                              bg-gradient-to-r from-[#1d0728] to-[#1f0c25] 
                               transform scale-x-0 group-hover:scale-x-100 
                               transition-transform duration-500" />
               </div>
@@ -109,7 +116,7 @@ export default function Services() {
       {/* Background Elements - Responsive Sizing */}
       <div className={`absolute top-0 ${isArabic ? 'right-0' : 'left-0'} 
                     w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 
-                    bg-[#d68c3c]/5 rounded-full 
+                    bg-[#1f0c25]/5 rounded-full 
                     ${isArabic ? 'translate-x-1/2' : '-translate-x-1/2'} -translate-y-1/2 
                     blur-2xl sm:blur-3xl`} />
       <div className={`absolute bottom-0 ${isArabic ? 'left-0' : 'right-0'} 

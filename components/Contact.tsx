@@ -199,14 +199,14 @@
 
 // export default Contact;
 'use client';
-import Image from 'next/image';
+
 import { z } from 'zod';
 import { useState, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Phone, Send, User } from 'lucide-react';
-import Link from 'next/link';
+import { MessageSquare, Phone, Send, User } from 'lucide-react';
+
 
 const contactSchema = z.object({
   senderName: z.string().min(2).max(50),
@@ -295,7 +295,6 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-  console.log(window.dataLayer)
   return (
     <section className="relative min-h-screen bg-[#EFEDEA] text-[#540f6b] py-20">
       <div className="absolute inset-0 overflow-hidden">
