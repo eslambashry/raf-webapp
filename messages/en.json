@@ -428,8 +428,14 @@
     "squareMeters": "m²",
     "discover": "discover our projects",
     "sectionDescription": "Our business strategy is based on innovation and adaptability. Starting from Jeddah, we strategically focus our efforts on a diverse portfolio of projects, including residential, commercial, hospitality, retail, tourist destinations, and public projects, reflecting the multi-faceted nature of our brand.",
-    "viewMore": "View More"
-    
+    "viewMore": "View More",
+    "projectsLocationMap": "Projects Location Map",
+    "exploreProjectsOnMap": "Explore our real estate projects across different locations",
+    "ourProjects": "Our Projects",
+    "loadingProjects": "Loading projects...",
+    "loadingMap": "Loading map...",
+    "clickOnMarkers": "Click on markers to view project details",
+    "viewOnMap": "View on Map"
   },
   "about": {
     "title": "About Us",

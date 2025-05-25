@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Project Features
+
+### Projects Map View
+
+The application includes an interactive map view for real estate projects. To enable this feature, you need to set up a Google Maps API key:
+
+1. Get a Google Maps JavaScript API key from the [Google Cloud Platform Console](https://console.cloud.google.com/)
+2. Enable the Maps JavaScript API and Places API
+3. Create a `.env.local` file in the project root and add:
+
+```
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key_here
+```
+
+Without this API key, the map feature will not work properly.

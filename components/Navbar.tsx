@@ -106,7 +106,8 @@ export default function Navbar() {
 
   const navItems = [
     { text: t('nav.home'), href: "/", active: pathname === `/${locale}` || pathname === `/${locale}/` },
-    { text: t('nav.projects'), href: "/projects", active: pathname === `/${locale}/projects` },
+    { text: t('nav.projects'), href: "/projects", active: pathname === `/${locale}/projects` || pathname.startsWith(`/${locale}/projects/`) },
+    { text: t('projects.projectsLocationMap'), href: "/projects-map", active: pathname === `/${locale}/projects-map` },
     { text: t('nav.contact'), href: "/contact", active: pathname === `/${locale}/contact` },
     { text: t('nav.about'), href: "/about", active: pathname === `/${locale}/about` },
     { text: t('nav.blog'), href: "/blogs", active: pathname === `/${locale}/blogs` },

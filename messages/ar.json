@@ -429,7 +429,15 @@
     "compactView": "عرض مختصر",
     "page": "صفحة",
     "of": "من",
-    "discover": "اكتشف المزيد"
+    "discover": "اكتشف المزيد",
+    "projectsLocationMap": "خريطة مواقع المشاريع",
+    "exploreProjectsOnMap": "استكشف مشاريعنا العقارية في مختلف المواقع",
+    "ourProjects": "مشاريعنا",
+    "loadingProjects": "جاري تحميل المشاريع...",
+    "loadingMap": "جاري تحميل الخريطة...",
+    "clickOnMarkers": "انقر على العلامات لعرض تفاصيل المشروع",
+    "viewOnMap": "عرض على الخريطة",
+    "mapCredit": "© خريطة المشاريع العقارية"
   },
   "wishlist": {
     "wishlistTitle": "المشاريع المفضلة",

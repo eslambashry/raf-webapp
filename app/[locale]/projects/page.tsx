@@ -271,7 +271,18 @@ export default function Projects() {
               <div className="w-32 h-1 bg-gradient-to-r from-[#c48765] to-[#e2b399] mx-auto rounded-full" />
             </div>
             {/* View Mode Toggle */}
-            <div className="flex justify-end mb-8">
+            <div className="flex justify-between items-center mb-8">
+              <Link
+                href="/projects-map"
+                className="flex items-center gap-2 text-sm font-medium bg-white rounded-xl px-4 py-2 shadow-md text-[#540f6b] hover:bg-[#540f6b] hover:text-white transition-all duration-300"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                {t('viewOnMap')}
+              </Link>
+              
               <div className="bg-white rounded-xl shadow-md p-1 inline-flex">
                 <button
                   onClick={() => setViewMode('horizontal')}
