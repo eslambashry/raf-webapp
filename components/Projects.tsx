@@ -131,12 +131,12 @@ export default function Projects() {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: 20 }}
         key={category._id}
-        className="group relative bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+        className="group relative bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform scale-[0.98] hover:scale-[1]"
         onMouseEnter={() => setHoveredCard(category._id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
         <div className="flex flex-col md:flex-row h-full">
-          <div className="relative w-full md:w-1/2 h-[300px] md:h-auto overflow-hidden">
+          <div className="relative w-full md:w-1/2 h-[250px] md:h-auto overflow-hidden">
             <Image
               src={category.Image.secure_url}
               alt={category.title}
@@ -163,13 +163,13 @@ export default function Projects() {
             </button>
           </div>
 
-          <div className="relative w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
+          <div className="relative w-full md:w-1/2 p-4 sm:p-6 flex flex-col justify-between bg-white">
             <div>
-              <h3 className="text-2xl font-bold  text-[#540f6b] mb-8 font-cairo">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#540f6b] mb-4 sm:mb-6 font-cairo">
                 {category.title}
               </h3>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-5">
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-600">{t('sold')}</span>
@@ -243,7 +243,7 @@ export default function Projects() {
               href={`/projects/${category._id}`}
               className="mt-8 block"
             >
-              <button className="w-full bg-[#540f6b] text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
+              <button className="w-full bg-[#540f6b] text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] font-semibold group">
                 {t('viewProject')}
                 <ChevronRight className="inline-block ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
@@ -271,7 +271,7 @@ export default function Projects() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         key={category._id}
-        className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
+        className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 transform scale-[0.98] hover:scale-[1]" 
         onMouseEnter={() => setHoveredCard(category._id)}
         onMouseLeave={() => setHoveredCard(null)}
       >
@@ -330,18 +330,18 @@ export default function Projects() {
   
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#EFEDEA]">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12 sm:mb-16">
+    <section className="py-8 sm:py-12 md:py-16 bg-[#EFEDEA]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl m-auto text-center md:text-4xl font-bold text-[#540f6b] mb-3 ">
               {t('sectionTitle')}
             </h2>
             {/* <div className="w-20 h-1 text-center bg-[#540f6b]"></div> */}
           </div>
 
-          <div className="text-center mt-12 sm:mt-16">
-            <div className="flex justify-center items-center space-x-6 mb-12">
+          <div className="text-center mt-8 sm:mt-10">
+            <div className="flex justify-center items-center space-x-4 mb-8">
               <div className="bg-white rounded-xl shadow-md p-1 inline-flex">
                 <button
                   onClick={() => setViewMode('horizontal')}
@@ -370,8 +370,8 @@ export default function Projects() {
 
             <div className={
               viewMode === 'horizontal'
-                ? 'grid grid-cols-1 lg:grid-cols-2 gap-10'
-                : 'grid grid-cols-1 gap-4'
+                ? 'grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10'
+                : 'grid grid-cols-1 gap-4 sm:gap-6'
             }>
               <AnimatePresence>
                 {categories
@@ -385,7 +385,7 @@ export default function Projects() {
 
             {/* Pagination Controls */}
             {categories.length > itemsPerPage && (
-              <div className="mt-12 flex justify-center items-center space-x-4">
+              <div className="mt-8 sm:mt-10 flex justify-center items-center space-x-4">
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                   disabled={currentPage === 1}

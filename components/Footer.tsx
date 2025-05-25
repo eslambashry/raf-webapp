@@ -232,9 +232,9 @@ const Footer = () => {
             <p className="text-[#EFEDEA]/60">
               {t('footer.copyright')}
             </p>
-            <p className="text-[#EFEDEA]/80 text-sm mt-4">
+            {/* <p className="text-[#EFEDEA]/80 text-sm mt-4">
               تم التطوير بواسطة <a href="https://goldenmoonads.com/" className="text-[#EFEDEA] underline">Golden Moon Ads</a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

@@ -92,13 +92,24 @@ export const metadata: Metadata = {
   },
 };
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  params: { locale }
+}: RootLayoutProps) {
   return (
-    <html suppressHydrationWarning>
+    <html 
+      suppressHydrationWarning 
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      lang={locale}
+      className={locale === 'ar' ? 'rtl' : 'ltr'}
+    >
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/logo1.png" />

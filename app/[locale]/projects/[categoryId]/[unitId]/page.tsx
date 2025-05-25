@@ -152,16 +152,16 @@ const ProjectPage = () => {
 
   return (
     <ClientOnly>
-      <main className="min-h-screen bg-[#EFEDEA]">
+      <main className="min-h-screen bg-[#EFEDEA]" dir="rtl">
         <Navbar />
         
         {/* Add spacing after navbar */}
         <div className="h-20"></div>
         
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8" dir={params.locale === 'ar' ? 'rtl' : 'ltr'}>
             {/* Left Column - Images and Details */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-8 text-right">
               {/* Title */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <h1 className="text-3xl font-bold text-[#540f6b] mb-3">{unit.title}</h1>
@@ -179,26 +179,36 @@ const ProjectPage = () => {
                     priority
                   />
                   
-                  {/* Navigation Controls */}
-                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6">
+                  {/* Navigation Controls - Correctly handling RTL/LTR */}
+                  <div 
+                    className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6"
+                    dir={params.locale === 'ar' ? 'rtl' : 'ltr'}
+                  >
+                    {/* Previous Button - Always left in LTR, right in RTL */}
                     <button
                       onClick={() => handleImageChange('prev')}
                       className="p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-all transform hover:scale-110"
-                      aria-label="Previous image"
+                      aria-label={params.locale === 'ar' ? 'الصورة السابقة' : 'Previous image'}
                     >
-                      <ChevronLeft className="w-6 h-6" />
+                      {params.locale === 'ar' ? 
+                        <ChevronRight className="w-6 h-6" /> : 
+                        <ChevronLeft className="w-6 h-6" />}
                     </button>
+                    
+                    {/* Next Button - Always right in LTR, left in RTL */}
                     <button
                       onClick={() => handleImageChange('next')}
                       className="p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-all transform hover:scale-110"
-                      aria-label="Next image"
+                      aria-label={params.locale === 'ar' ? 'الصورة التالية' : 'Next image'}
                     >
-                      <ChevronRight className="w-6 h-6" />
+                      {params.locale === 'ar' ? 
+                        <ChevronLeft className="w-6 h-6" /> : 
+                        <ChevronRight className="w-6 h-6" />}
                     </button>
                   </div>
 
-                  {/* Image Counter */}
-                  <div className="absolute bottom-6 right-6 bg-black/50 px-4 py-2 rounded-full text-white text-sm">
+                  {/* Image Counter - Properly positioned for RTL/LTR */}
+                  <div className={`absolute bottom-6 ${params.locale === 'ar' ? 'left-6' : 'right-6'} bg-black/50 px-4 py-2 rounded-full text-white text-sm`}>
                     {currentImage + 1} / {unit.images.length}
                   </div>
                 </div>
@@ -225,10 +235,10 @@ const ProjectPage = () => {
               </div>
 
               {/* Description */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
+              {/* <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <h2 className="text-2xl font-bold text-[#540f6b] mb-4">{t('description')}</h2>
                 <p className="text-gray-600 leading-relaxed text-lg">{unit.description}</p>
-              </div>
+              </div> */}
 
               {/* Features Grid */}
               <motion.div 
@@ -283,41 +293,9 @@ const ProjectPage = () => {
             </div>
 
             {/* Right Column - Quick Info and Contact */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-6 text-right">
               {/* Price and Status */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center justify-between mb-8">
-                  <div>
-                    <p className="text-gray-500 mb-1">{t('price')}</p>
-                    <p className="text-3xl font-bold text-[#540f6b]">{unit.price.toLocaleString()} {t('currency')}</p>
-                  </div>
-                  <div className="p-3 bg-[#c48765]/10 rounded-xl">
-                    <span className="text-[#c48765] font-semibold">{unit.status}</span>
-                  </div>
-                </div>
-
-                {/* Location Buttons */}
-                <div className="space-y-4">
-                  <button
-                    onClick={() => setIsMapOpen(true)}
-                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#540f6b] text-white rounded-xl hover:bg-[#540f6b]/90 transition-colors group"
-                  >
-                    <Map className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    <span className="text-base">{t('viewLocation')}</span>
-                  </button>
-                  
-                  <button
-                    onClick={handleCopyLocationLink}
-                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#EFEDEA] hover:bg-[#c48765]/10 rounded-xl transition-colors group"
-                  >
-                    <MapPin className="w-5 h-5 text-[#c48765] group-hover:scale-110 transition-transform" />
-                    <span className="font-medium text-[#540f6b] group-hover:text-[#c48765] transition-colors text-base">
-                      {t('copyLink')}
-                    </span>
-                  </button>
-                </div>
-              </div>
-
+           
               {/* Contact Options */}
               <div className="bg-white rounded-2xl p-8 shadow-lg sticky top-24">
                 <h2 className="text-2xl font-bold text-[#540f6b] mb-6">{t('contact.title')}</h2>

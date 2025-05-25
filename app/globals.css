@@ -11,7 +11,8 @@
   * {
     font-family: inherit;
   }
-  :root {
+  
+   :root {
     /* الألوان الأساسية */
     --primary: 342 69% 30%; /* BOYSENBERRY - #681034 */
     --primary-light: 342 69% 40%;
@@ -99,6 +100,23 @@
 
 .font-tajawal {
   font-family: var(--font-tajawal);
+}
+
+/* RTL specific utility classes */
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.ms-auto {
+  margin-inline-start: auto;
+}
+
+.me-auto {
+  margin-inline-end: auto;
 }
 
 .font-almarai {
