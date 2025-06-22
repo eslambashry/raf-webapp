@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { X, MapPin, Building, Home, Zap, Shield, Droplet, Wifi, Check, PlusCircle, Camera, Warehouse } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
@@ -34,7 +34,13 @@ interface ProjectData {
     reservedPercentage: number;
     total?: number;
   };
-  units?: any[];
+  units?: {
+    _id: string;
+    title: string;
+    status?: string;
+    area?: number;
+    price?: number;
+  }[];
   location?: string;
 }
 
@@ -47,29 +53,29 @@ interface ProjectsMapProps {
 const getContainerStyle = (isMobile: boolean, isTablet: boolean, isNestHub: boolean) => ({
   width: '100%',
   height: isMobile 
-    ? '500px' 
+    ? '600px' 
     : isTablet 
-      ? '580px' 
+      ? '700px' 
       : isNestHub 
-        ? '600px' 
-        : '650px',
+        ? '750px' 
+        : '800px',
   borderRadius: '1rem',
   overflow: 'hidden'
 });
 
-// Center on Saudi Arabia by default
+// Center on Jeddah by default - centered on the project areas
 const defaultCenter = {
-  lat: 24.7136,
-  lng: 46.6753
+  lat: 21.5948,
+  lng: 39.1477
 };
 
-// Custom map styles for a more modern look
+// Custom map styles for a more modern look with Jeddah focus
 const mapStyles = [
   {
     "featureType": "water",
     "elementType": "geometry",
     "stylers": [
-      { "color": "#e9e9e9" },
+      { "color": "#e3f2fd" },
       { "lightness": 17 }
     ]
   },
@@ -126,7 +132,15 @@ const mapStyles = [
     "featureType": "poi.park",
     "elementType": "geometry",
     "stylers": [
-      { "color": "#dedede" },
+      { "color": "#e8f5e8" },
+      { "lightness": 21 }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#f0f8ff" },
       { "lightness": 21 }
     ]
   },
@@ -151,38 +165,33 @@ const mapStyles = [
     "stylers": [
       { "visibility": "off" }
     ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#f2f2f2" },
+      { "lightness": 19 }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "color": "#fefefe" },
+      { "lightness": 20 }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "color": "#fefefe" },
+      { "lightness": 17 },
+      { "weight": 1.2 }
+    ]
   }
 ];
-
-// Helper function to generate feature icons
-const getFeatureIcon = (feature: string) => {
-  const featureToLower = feature.toLowerCase();
-  if (featureToLower.includes('موقع') || featureToLower.includes('location')) {
-    return <MapPin className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('ذكي') || featureToLower.includes('smart')) {
-    return <Wifi className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('حديقة') || featureToLower.includes('garden')) {
-    return <Home className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('أمن') || featureToLower.includes('security')) {
-    return <Shield className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('مسبح') || featureToLower.includes('pool')) {
-    return <Droplet className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('رياضي') || featureToLower.includes('gym')) {
-    return <Zap className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('موقف') || featureToLower.includes('parking')) {
-    return <Building className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  if (featureToLower.includes('تشطيبات') || featureToLower.includes('finish')) {
-    return <Check className="w-3.5 h-3.5 text-[#540f6b]" />;
-  }
-  return <Building className="w-3.5 h-3.5 text-[#540f6b]" />;
-};
 
 export default function ProjectsMap({ projects = [], selectedType = 'all' }: ProjectsMapProps) {
   const locale = useLocale();
@@ -199,9 +208,9 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
   
   // Get appropriate card width based on device
   const getCardWidth = () => {
-    if (isMobile) return 260;
-    if (isTablet || isNestHub) return 290;
-    return 320;
+    if (isMobile) return 320;
+    if (isTablet || isNestHub) return 380;
+    return 420;
   };
   
   // Filter projects based on selected type if needed
@@ -272,8 +281,8 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
       // Adjust zoom level to not be too zoomed in with few markers
       if (enhancedProjects.length < 3) {
         const listener = google.maps.event.addListenerOnce(mapRef.current, 'idle', () => {
-          if (mapRef.current && mapRef.current.getZoom() && mapRef.current.getZoom()! > 15) {
-            mapRef.current.setZoom(15);
+          if (mapRef.current && mapRef.current.getZoom() && mapRef.current.getZoom()! > 14) {
+            mapRef.current.setZoom(14); // Better zoom level for Jeddah
           }
         });
         return () => google.maps.event.removeListener(listener);
@@ -327,7 +336,11 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
           },
           mapTypeControlOptions: {
             position: 3
-          }
+          },
+          minZoom: 10,
+          maxZoom: 18,
+          gestureHandling: 'cooperative',
+          backgroundColor: '#f8fafc'
         }}
       >
         {enhancedProjects.map(project => (
@@ -342,9 +355,12 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
                 ? '/images/map-marker-hover.svg' 
                 : '/images/map-marker.svg',
               scaledSize: new google.maps.Size(hoveredMarker === project._id ? 48 : 40, 
-                                             hoveredMarker === project._id ? 48 : 40)
+                                             hoveredMarker === project._id ? 48 : 40),
+              anchor: new google.maps.Point(hoveredMarker === project._id ? 24 : 20, 
+                                          hoveredMarker === project._id ? 48 : 40)
             }}
             animation={hoveredMarker === project._id ? google.maps.Animation.BOUNCE : undefined}
+            title={project.title}
           />
         ))}
 
@@ -377,18 +393,11 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
                     style={{ backgroundImage: 'url("/images/architectural-pattern.svg")', backgroundSize: 'cover' }}></div>
                   
                   <div className="p-0.5">
-                    <button 
-                      onClick={handleInfoWindowClose}
-                      className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-white shadow-md transition-all duration-300 hover:scale-110"
-                    >
-                      <X className="w-3.5 h-3.5 text-[#540f6b]" />
-                    </button>
-
-                    <div className="text-center font-bold text-[#540f6b] py-2 text-sm md:text-base border-b border-gray-100 px-2.5 truncate">
+                    <div className="text-center font-bold text-[#540f6b] py-3 text-sm md:text-base border-b border-gray-100 px-3">
                       {selectedProject.title}
                     </div>
                     
-                    <div className="relative h-32 w-full overflow-hidden">
+                    <div className="relative h-40 w-full overflow-hidden">
                       <Image
                         src={selectedProject.image}
                         alt={selectedProject.title}
@@ -396,105 +405,13 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
                         className="object-cover transition-transform duration-700 hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div className="absolute bottom-2 right-2 bg-white/90 px-2 py-0.5 rounded-md text-[10px] text-[#540f6b] font-medium shadow-md">
-                        {selectedProject.type}
-                      </div>
                     </div>
                     
-                    {/* Project details - price and area if available */}
-                    {(selectedProject.price !== undefined || selectedProject.area !== undefined) && (
-                      <div className="px-3 py-1.5 flex justify-between items-center border-b border-gray-100">
-                        {selectedProject.price !== undefined && selectedProject.price > 0 && (
-                          <div className="text-xs">
-                            <span className="text-gray-500">{locale === 'ar' ? 'السعر:' : 'Price:'}</span>
-                            <span className="text-[#540f6b] font-semibold ml-1">
-                              {new Intl.NumberFormat(locale === 'ar' ? 'ar-SA' : 'en-US', {
-                                style: 'currency',
-                                currency: 'SAR',
-                                maximumFractionDigits: 0,
-                                minimumFractionDigits: 0
-                              }).format(selectedProject.price)}
-                            </span>
-                          </div>
-                        )}
-                        {selectedProject.area && selectedProject.area > 0 && (
-                          <div className="text-xs">
-                            <span className="text-gray-500">{locale === 'ar' ? 'المساحة:' : 'Area:'}</span>
-                            <span className="text-[#540f6b] font-semibold ml-1">
-                              {selectedProject.area} m²
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    
-                    {/* Status indicators - combined into a single progress bar */}
-                    <div className="px-3 py-1.5">
-                      <div className="flex justify-between items-center mb-1.5 text-[10px]">
-                        <div className="flex gap-4">
-                          <div className="flex items-center">
-                            <div className="w-2 h-2 rounded-full bg-[#540f6b] mr-1"></div>
-                            <span className="text-gray-600">{t('sold')}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="w-2 h-2 rounded-full bg-yellow-500 mr-1"></div>
-                            <span className="text-gray-600">{t('reserved')}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="w-2 h-2 rounded-full bg-green-500 mr-1"></div>
-                            <span className="text-gray-600">{t('available')}</span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Combined progress bar */}
-                      <div className="h-2 bg-gray-200 rounded-full overflow-hidden flex">
-                        <div 
-                          className="h-full bg-[#540f6b] transition-all duration-500 ease-out"
-                          style={{ width: `${selectedProject.progress?.completedPercentage}%` }}
-                        />
-                        <div 
-                          className="h-full bg-yellow-500 transition-all duration-500 ease-out"
-                          style={{ width: `${selectedProject.progress?.reservedPercentage}%` }}
-                        />
-                        <div 
-                          className="h-full bg-green-500 transition-all duration-500 ease-out"
-                          style={{ width: `${selectedProject.progress?.availablePercentage}%` }}
-                        />
-                      </div>
-                      
-                      {/* Unit count if available */}
-                      {selectedProject.progress?.total && (
-                        <div className="text-[10px] text-gray-500 text-center mt-1">
-                          {locale === 'ar' ? 'إجمالي الوحدات:' : 'Total Units:'} <span className="font-semibold">{selectedProject.progress.total}</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* Feature tags - limit to 3 with +more */}
-                    <div className="flex flex-wrap gap-1 px-3 py-1.5">
-                      {selectedProject.features?.slice(0, 3).map((feature, i) => (
-                        <div 
-                          key={i}
-                          className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 rounded text-[10px]"
-                        >
-                          {getFeatureIcon(feature)}
-                          <span className="text-gray-700 truncate" style={{ maxWidth: '70px' }}>{feature}</span>
-                        </div>
-                      ))}
-                      {selectedProject.features && selectedProject.features.length > 3 && (
-                        <div className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 rounded text-[10px]">
-                          <PlusCircle className="w-3 h-3 text-[#540f6b]" />
-                          <span className="text-[#540f6b]">{selectedProject.features.length - 3} {locale === 'ar' ? 'المزيد' : 'more'}</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* View project button */}
-                    <div className="p-2.5 pt-1.5 border-t border-gray-100">
+                    {/* View project button - enhanced */}
+                    <div className="px-4 pb-4">
                       <Link 
                         href={`/projects/${selectedProject._id}`}
-                        className="block w-full text-center bg-[#540f6b] hover:bg-[#540f6b]/90 text-white py-1.5 px-3 rounded text-xs font-medium transition-all duration-300 hover:shadow-lg"
+                        className="block w-full text-center bg-[#540f6b] hover:bg-[#540f6b]/90 text-white py-2.5 px-4 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02]"
                       >
                         {t('viewProject')}
                       </Link>
@@ -517,10 +434,20 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
       {!isMobile && (
         <div className="absolute bottom-8 right-8 bg-white/70 backdrop-blur-sm px-3 py-1.5 rounded-lg pointer-events-none shadow-md">
           <p className="text-xs text-[#540f6b] font-cairo">
-            {t('mapCredit')}
+            {locale === 'ar' ? 'خريطة مشاريع جدة' : 'Jeddah Projects Map'}
           </p>
         </div>
       )}
+      
+      {/* Jeddah Location Indicator */}
+      <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm rounded-lg px-3 py-2 pointer-events-none shadow-md">
+        <div className="flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-[#540f6b]" />
+          <p className="text-xs text-[#540f6b] font-cairo font-medium">
+            {locale === 'ar' ? 'جدة، المملكة العربية السعودية' : 'Jeddah, Saudi Arabia'}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -9,4 +9,5 @@ export const pathnames = {
   '/about': '/about',
   '/contact': '/contact',
   '/projects': '/projects',
+  '/building_maintenance': '/building_maintenance',
 } as const;

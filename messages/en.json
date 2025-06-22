@@ -9,7 +9,8 @@
     "blog": "Blogs",
     "consultation": "Consultation",
     "wishlist": "Wishlist",
-    "condition": "Terms and Conditions"
+    "condition": "Terms and Conditions",
+    "maintenance": "Building Maintenance"
   },
   "hero": {
     "title": "Find Your Dream Home",
@@ -644,5 +645,41 @@
     "title": "Website Under Maintenance",
     "message": "We are currently working on improving our website to provide a better experience. We'll be back soon!",
     "contact": "For urgent inquiries, please contact us via email"
+  },
+  "maintenance": {
+    "service": "Building Maintenance Service",
+    "title": "Building Maintenance Request",
+    "description": "Submit your building maintenance request and we'll get back to you as soon as possible with a comprehensive solution.",
+    "name": "Full Name",
+    "numberOfFloors": "Number of Floors",
+    "phoneNumber": "Phone Number",
+    "numberOfProjects": "Number of Projects",
+    "numberOfFlats": "Number of Flats",
+    "address": "Address/Location",
+    "details": "Please provide detailed information about the maintenance required...",
+    "submit": "Submit Request",
+    "sending": "Sending...",
+    "successMessage": "Your maintenance request has been submitted successfully. We'll contact you soon!",
+    "errorMessage": "An error occurred while submitting your request. Please try again.",
+    "validation": {
+      "name": "Name must be at least 2 characters and less than 50 characters",
+      "numberOfFloors": "Number of floors is required and must be a valid number",
+      "phoneNumber": "Please enter a valid Saudi phone number (e.g., 05xxxxxxxx)",
+      "numberOfProjects": "Number of projects is required and must be a valid number",
+      "details": "Details must be at least 10 characters and less than 1000 characters",
+      "numberOfFlats": "Number of flats is required and must be a valid number",
+      "address": "Address must be at least 5 characters and less than 200 characters"
+    },
+    "nameLabel": "Full Name",
+    "numberOfFloorsLabel": "Number of Floors",
+    "phoneNumberLabel": "Phone Number",
+    "numberOfProjectsLabel": "Number of Projects",
+    "detailsLabel": "Please provide detailed information about the maintenance required...",
+    "numberOfFlatsLabel": "Number of Flats",
+    "addressLabel": "Address/Location",
+    "orderCode": "Order Code",
+    "copyCode": "Copy Order Code",
+    "saveCodeMessage": "Please save this order code for future reference",
+    "codeCopied": "Order code copied"
   }
 }

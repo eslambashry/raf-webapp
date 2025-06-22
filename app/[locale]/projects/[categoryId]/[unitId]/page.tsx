@@ -7,7 +7,7 @@ import ContactModal from '@/components/ContactModal';
 import ThankYouModal from '@/components/ThankYouModal';
 import MapModal from '@/components/MapModal';
 import ClientOnly from '@/components/ClientOnly';
-import { ChevronLeft, ChevronRight, MapPin, Phone, MessageCircle, Map } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Phone, MessageCircle} from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -295,7 +295,7 @@ const ProjectPage = () => {
             {/* Right Column - Quick Info and Contact */}
             <div className="lg:col-span-1 space-y-6 text-right">
               {/* Price and Status */}
-           
+
               {/* Contact Options */}
               <div className="bg-white rounded-2xl p-8 shadow-lg sticky top-24">
                 <h2 className="text-2xl font-bold text-[#540f6b] mb-6">{t('contact.title')}</h2>
@@ -304,17 +304,23 @@ const ProjectPage = () => {
                     <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span className="text-base">{t('contact.callUs')}</span>
                   </Link>
-                  <Link                     className="w-full flex items-center justify-center gap-3  bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
- href="https://wa.me/+966536667967 " target='_blank'>
-                  <button                     className="w-full flex items-center justify-center gap-3 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
-
-                    
-                  >
-                    <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    <span className="text-base">{t('contact.whatsapp')}</span>
-                  </button>
+                  <Link className="w-full flex items-center justify-center gap-3  bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group"
+                    href="https://wa.me/+966536667967 " target='_blank'>
+                    <button className="w-full flex items-center justify-center gap-3 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#25D366]/90 transition-colors group">
+                      <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span className="text-base">{t('contact.whatsapp')}</span>
+                    </button>
                   </Link>
-              
+                  <button 
+                    onClick={handleCopyLocationLink}
+                    className="w-full flex items-center justify-center gap-3 p-4 bg-[#c48765] text-white rounded-xl hover:bg-[#c48765]/90 transition-colors group"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span className="text-base">{t('copyLocation')}</span>
+                  </button>
                 </div>
               </div>
             </div>

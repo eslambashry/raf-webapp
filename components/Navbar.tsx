@@ -107,38 +107,31 @@ export default function Navbar() {
   const navItems = [
     { text: t('nav.home'), href: "/", active: pathname === `/${locale}` || pathname === `/${locale}/` },
     { text: t('nav.projects'), href: "/projects", active: pathname === `/${locale}/projects` || pathname.startsWith(`/${locale}/projects/`) },
-    { text: t('projects.projectsLocationMap'), href: "/projects-map", active: pathname === `/${locale}/projects-map` },
+    // { text: t('projects.projectsLocationMap'), href: "/projects-map", active: pathname === `/${locale}/projects-map` },
+    { text: t('nav.maintenance'), href: "/building_maintenance", active: pathname === `/${locale}/building_maintenance` },
     { text: t('nav.contact'), href: "/contact", active: pathname === `/${locale}/contact` },
     { text: t('nav.about'), href: "/about", active: pathname === `/${locale}/about` },
     { text: t('nav.blog'), href: "/blogs", active: pathname === `/${locale}/blogs` },
     { text: t('nav.wishlist'), href: "/wishlist", active: pathname === `/${locale}/wishlist` },
   ];
 
-  const authItems = user 
-    ? []
-    : [
-        { text: t('auth.nav.login'), href: "/auth/login", active: pathname === `/${locale}/auth/login` },
-        { text: t('auth.nav.signup'), href: "/auth/signup", active: pathname === `/${locale}/auth/signup` },
-      ];
-
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-1 translate-y-0' 
-          : 'bg-white/80 backdrop-blur-sm py-1 lg:translate-y-0'
+          ? 'bg-[#540f6b] backdrop-blur-md shadow-lg py-1 translate-y-0 ' 
+          : 'bg-[#540f6b] backdrop-blur-sm py-1 lg:translate-y-0'
       } ${isMenuOpen ? 'translate-y-0' : '-translate-y-1'}`}
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       {/* Gradient border at top with animation */}
       {/* <div className="h-1 bg-gradient-to-r from-[#c48765] via-[#540f6b] to-[#c48765] bg-[length:200%_auto] animate-gradient"></div> */}
       
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 flex justify-between items-center text-white">
         <Link href="/" className="flex items-center group relative overflow-hidden rounded-lg">
           <div className="relative overflow-hidden rounded-lg transform transition-transform duration-300 hover:scale-105">
             <Image
-              src="/raf.png"
+              src="/logo3.png"
               alt="RAF Advanced Logo"
               width={125}
               height={50}
@@ -155,8 +148,8 @@ export default function Navbar() {
               href={item.href}
               className={`relative px-4 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg overflow-hidden ${
                 item.active
-                  ? 'text-[#c48765] bg-[#c48765]/10'
-                  : 'text-[#540f6b] hover:text-[#c48765] hover:bg-[#c48765]/5'
+                  ? 'text-white bg-[#c48765]/10'
+                  : 'text-white hover:text-white hover:bg-[#c48765]/5'
               }`}
             >
               <span className="relative z-10">{item.text}</span>
@@ -170,7 +163,7 @@ export default function Navbar() {
             <div className="relative" ref={userMenuRef}>
               <button 
                 onClick={toggleUserMenu}
-                className={`flex items-center px-4 py-2.5 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-all duration-300 rounded-lg hover:bg-[#c48765]/5 ${userMenuOpen ? 'bg-[#c48765]/10 text-[#c48765]' : ''} transform hover:scale-[1.02]`}
+                className={`flex items-center px-4 py-2.5 text-sm font-medium text-white hover:text-[#c48765] transition-all duration-300 rounded-lg hover:bg-[#c48765]/5 ${userMenuOpen ? 'bg-[#c48765]/10 text-[#c48765]' : ''} transform hover:scale-[1.02]`}
                 aria-expanded={userMenuOpen}
                 aria-haspopup="true"
               >
@@ -180,7 +173,7 @@ export default function Navbar() {
                 <span className={`${isArabic ? 'ml-1' : 'mr-1'} transition-transform duration-300 group-hover:translate-x-0.5`}>{userDisplayName}</span>
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
-                  className={`h-4 w-4 transition-transform duration-300 ${userMenuOpen ? 'rotate-180' : ''} ml-1`} 
+                  className={`h-4 w-4 transition-transform duration-300 ${userMenuOpen ? 'rotate-180' : ''} ml-1 text-white`} 
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
@@ -228,8 +221,8 @@ export default function Navbar() {
                 href="/auth/login"
                 className={`px-4 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg transform hover:scale-[1.02] ${
                   pathname === "/auth/login"
-                    ? 'text-[#c48765] bg-[#c48765]/10'
-                    : 'text-[#540f6b] hover:text-[#c48765] hover:bg-[#c48765]/5'
+                    ? 'text-white bg-[#c48765]/10'
+                    : 'text-white hover:text-[#c48765] hover:bg-[#c48765]/5'
                 }`}
               >
                 {t('auth.nav.login')}
@@ -246,7 +239,7 @@ export default function Navbar() {
           <Link
             href="/"
             locale={isArabic ? 'en' : 'ar'}
-            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
+            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-white hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
             aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
           >
             <span className="font-semibold">{isArabic ? 'EN' : 'عربي'}</span>
@@ -258,14 +251,14 @@ export default function Navbar() {
           <Link
             href="/"
             locale={isArabic ? 'en' : 'ar'}
-            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-[#540f6b] hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
+            className="flex items-center justify-center w-10 h-10 text-sm font-medium text-white hover:text-[#c48765] transition-colors rounded-full hover:bg-[#c48765]/5"
             aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
           >
             <span className="font-semibold">{isArabic ? 'EN' : 'عربي'}</span>
           </Link>
           
           <button
-            className="p-2 text-[#540f6b] focus:outline-none rounded-lg hover:bg-[#c48765]/5"
+            className="p-2 text-white focus:outline-none rounded-lg hover:bg-[#c48765]/5"
             onClick={toggleMenu}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}

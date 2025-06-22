@@ -1,9 +1,7 @@
 'use client'
 
-import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
-import { ArrowDownCircle } from 'lucide-react'
 import Link from "next/link"
 
 export default function Hero() {
@@ -14,100 +12,100 @@ export default function Hero() {
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       <section className="relative h-full w-full" dir={isRTL ? 'rtl' : 'ltr'}>
-        {/* Background Video/Image Layer */}
+        {/* Background Video Layer */}
         <div className="absolute inset-0">
-          <Image
-            src="/desk.jpg"
-            alt="RAF Real Estate Development"
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent" />
+          <video
+            autoPlay
+    loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Dark Overlay Layer */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/10" />
+          
+          {/* Additional Dark Layer for Better Text Readability */}
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Islamic Pattern Overlay */}
-        <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10" />
+        <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-5" />
 
-        {/* Main Content */}
+        {/* Main Content Container */}
         <div className="relative z-10 h-full container mx-auto px-4">
-          <div className="h-full flex flex-col justify-center items-start max-w-4xl">
-            {/* Logo Animation */}
+          <div className="h-full flex flex-col justify-center items-start max-w-5xl">
+            
+            {/* Logo Section */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="mb-8"
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="mb-12"
             >
-              {/* <Image
-                src="/logo_3.png"
-                alt="RAF Logo"
-                width={200}
-                height={100}
-                className="object-contain"
-              /> */}
+              {/* Logo can be added here if needed */}
             </motion.div>
 
-            {/* Main Title */}
-            <motion.h1
-              initial={{ y: 30, opacity: 0 }}
+            {/* Main Title Section */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className={`text-6xl md:text-7xl font-bold text-white mb-6 ${isRTL ? 'font-arabic' : ''}`}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              className="mb-8"
             >
-              {t('hero.title')}
-            </motion.h1>
-
-            {/* Decorative Line */}
-            {/* <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="h-1 w-32 bg-gradient-to-r from-[#681034] via-[#1f0c25] to-[#681034] mb-6"
-            /> */}
-
-            {/* Description */}
-            <div className="flex items-center gap-4 mb-8">
-              <motion.p
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl"
-              >
-                {t('hero.description')}
-              </motion.p>
+              <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight ${isRTL ? 'font-arabic' : ''}`}>
+                {t('hero.title')}
+              </h1>
+              
+              {/* Decorative Line */}
               <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                {/* <Image 
-                  src="/vision.svg"
-                  alt="Vision Icon"
-                  width={60}
-                  height={40}
-                  className="object-contain"
-                /> */}
-              </motion.div>
-            </div>
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+                className="h-1 w-40 bg-gradient-to-r from-[#681034] via-[#1f0c25] to-[#681034] mb-8"
+              />
+            </motion.div>
 
-            {/* CTA Buttons */}
+            {/* Description Section */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              className="mb-12"
+            >
+              <div className="flex items-start gap-6 max-w-3xl">
+                <p className="text-xl md:text-2xl text-gray-100 leading-relaxed flex-1">
+                  {t('hero.description')}
+                </p>
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                  className="flex-shrink-0"
+                >
+                  {/* Vision icon can be added here */}
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons Section */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
+              className="flex flex-wrap gap-6"
             >
               <Link 
                 href="/projects" 
-                className="px-8 py-3 bg-[#1D0728]  text-white rounded-lg transition-all duration-300 text-lg"
+                className="group px-10 py-4 bg-[#1D0728] hover:bg-[#2a0f3a] text-white rounded-lg transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 {t('hero.exploreProjects')}
               </Link>
               <Link 
                 href="/contact" 
-                className="px-8 py-3 bg-[#540f6b]  text-white rounded-lg transition-all duration-300 text-lg"
+                className="group px-10 py-4 bg-[#540f6b] hover:bg-[#6a1487] text-white rounded-lg transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 {t('hero.contactUs')}
               </Link>
@@ -115,24 +113,10 @@ export default function Hero() {
           </div>
 
           {/* Scroll Indicator */}
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <ArrowDownCircle className="w-10 h-10 text-white opacity-80" />
-          </motion.div> */}
+    
         </div>
 
-        {/* Side Pattern */}
-        <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-[#681034]/10 to-transparent" />
-
-        {/* Bottom Gradient Line */}
-        {/* <div className="absolute bottom-0 left-0 w-full">
-          <div className="h-1 bg-gradient-to-r from-[#681034] via-[#1f0c25] to-[#681034]" />
-          <div className="h-20 bg-gradient-to-t from-[#540f6b] to-transparent" />
-        </div> */}
+   
       </section>
     </div>
   )
