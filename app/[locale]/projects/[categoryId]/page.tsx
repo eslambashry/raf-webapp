@@ -138,7 +138,7 @@ export default function ProjectDetails() {
     );
   }
 
-  const renderFeatureIcon = (value: number, Icon: any, label: string) => {
+  const renderFeatureIcon = (value: number, Icon: React.ElementType, label: string) => {
     if (!value) return null;
     return (
       <div className="flex items-center gap-2 text-gray-600">
@@ -636,7 +636,7 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {/* <FeatureSection /> */}
+        <FeatureSection />
         <Footer />
       </main>
     </ClientOnly>

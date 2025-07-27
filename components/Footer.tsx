@@ -2,11 +2,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
-import { text } from 'stream/consumers';
+import { fetchContactSettings, ContactSettings } from '@/lib/api';
+
 
 // تعريف مكونات الأيقونات
 const SocialIcons = {
@@ -69,14 +70,22 @@ const Footer = () => {
   const locale = useLocale();
 
   const t = useTranslations();
-  const [email, setEmail] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsModalOpen(true);
-    setEmail('');
-  };
+  const [contactSettings, setContactSettings] = useState<ContactSettings | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const settings = await fetchContactSettings();
+        setContactSettings(settings);
+      } catch (error) {
+        console.error('Error fetching contact settings:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   return (
     <footer className="bg-[#540f6b] text-[#EFEDEA]" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -150,8 +159,8 @@ const Footer = () => {
               <h4 className="text-xl font-bold mb-6">{t('footer.contactUs')}</h4>
               <ul className="space-y-4">
                 {[
-                  { icon: Phone, text: '0536667967', subtext: t('footer.mainNumber'), href: 'tel:0536667967' },
-                  { icon: Phone, text: '920031103', subtext: t('footer.unifiedNumber'), href: 'tel:920031103', isUnified: true },
+                  { icon: Phone, text: contactSettings?.marketingPhone || '0536667967', subtext: t('footer.mainNumber'), href: `tel:${contactSettings?.marketingPhone || '0536667967'}` },
+                  { icon: Phone, text: contactSettings?.unifiedPhone || '920031103', subtext: t('footer.unifiedNumber'), href: `tel:${contactSettings?.unifiedPhone || '920031103'}`, isUnified: true },
                   { icon: Mail, text: 'info@rafco.sa', subtext: t('footer.email'), href: 'mailto:info@rafco.sa' },
                   { icon: MapPin, text: t('footer.address'), subtext: t('footer.country') },
                 ].map((item, index) => (

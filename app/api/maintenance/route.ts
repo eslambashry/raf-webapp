@@ -22,21 +22,32 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Function to get and increment order number
+// Function to get and increment order number with timeout
 async function getNextOrderNumber() {
   try {
-    const client = await clientPromise;
+    const client = await Promise.race([
+      clientPromise,
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('MongoDB connection timeout')), 5000)
+      )
+    ]) as Awaited<typeof clientPromise>;
+
     const db = client.db('maintenance-requests');
     const counters = db.collection<Counter>('counters');
 
     const filter: Filter<Counter> = { _id: 'orderNumber' };
 
-    // Find and update the counter atomically
-    const result = await counters.findOneAndUpdate(
-      filter,
-      { $inc: { sequence_value: 1 } },
-      { upsert: true, returnDocument: 'after' }
-    );
+    // Find and update the counter atomically with timeout
+    const result = await Promise.race([
+      counters.findOneAndUpdate(
+        filter,
+        { $inc: { sequence_value: 1 } },
+        { upsert: true, returnDocument: 'after' }
+      ),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('MongoDB operation timeout')), 5000)
+      )
+    ]) as Counter | null;
 
     // If this is the first request ever (new counter created)
     if (!result || result.sequence_value === 1) {
@@ -57,14 +68,11 @@ async function getNextOrderNumber() {
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Starting maintenance request processing');
     const body = await request.json();
     
     // Allow numberOfProjects to be string (letters and numbers)
     const { name, numberOfFloors, phoneNumber, numberOfProjects, numberOfFlats, address, details } = body;
-
-    // Get the next sequential order number
-    const orderNumber = await getNextOrderNumber();
-    const orderCode = orderNumber.toString();
 
     if (!name || !numberOfFloors || !phoneNumber || !numberOfProjects || !numberOfFlats || !address || !details) {
       return NextResponse.json(
@@ -76,7 +84,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get the next sequential order number
+    console.log('Getting next order number');
+    const orderNumber = await getNextOrderNumber();
+    const orderCode = orderNumber.toString();
+    console.log('Generated order code:', orderCode);
+
     // Store the maintenance request in MongoDB
+    console.log('Storing maintenance request');
     const client = await clientPromise;
     const db = client.db('maintenance-requests');
     await db.collection('requests').insertOne({
@@ -154,9 +169,10 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send email
+    console.log('Sending email notification');
     const mailOptions = {
       from: 'maintenance@raf-advanced.sa',
-      to: 'maintenance@raf-advanced.sa', // Send to the same email
+      to: 'maintenance@raf-advanced.sa',
       subject: `طلب صيانة المبنى - ${name}`,
       html: emailContent,
       text: `
@@ -187,13 +203,12 @@ export async function POST(request: NextRequest) {
     };
 
     await transporter.sendMail(mailOptions);
-    
-    console.log('Maintenance request email sent successfully:', body);
+    console.log('Email sent successfully');
     
     return NextResponse.json(
       { 
         success: true,
-        orderCode: orderCode,
+        orderCode,
         message: 'Maintenance request submitted successfully' 
       },
       { status: 200 }

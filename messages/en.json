@@ -257,7 +257,8 @@
       "waterTank": "Water Tank",
       "livingRoom": "Living Room",
       "minutes": "minutes",
-      "certifiedByWafi": "Certified by WAFI"
+      "certifiedByWafi": "Certified by WAFI",
+      "copyLocation": "Copy Location"
     },
     "contact": {
       "title": "Contact Us",

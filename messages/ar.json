@@ -297,7 +297,9 @@
       "waterTank": "خزان مياه",
       "livingRoom": "صالة",
       "minutes": "دقيقة",
-      "certifiedByWafi": "معتمد من وافي"
+      "certifiedByWafi": "معتمد من وافي",
+      "copyLocation": "نسخ الموقع"
+
     },
     "contact": {
       "title": "تواصل معنا",

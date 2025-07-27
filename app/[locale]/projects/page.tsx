@@ -15,7 +15,6 @@ interface CategoryProgress {
   completedPercentage: number;
   availablePercentage: number;
   reservedPercentage: number;
-  unavailablePercentage: number;
   total: number;
 }
 
@@ -46,28 +45,69 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchCategoriesAndStatuses = async () => {
       try {
+        // 1. Fetch categories
         const apiUrl = locale === 'ar'
           ? 'https://raf-backend.vercel.app/category/getAllCategoryTitleImageAR/?page=1&size=100'
           : 'https://raf-backend.vercel.app/category/getAllCategoryTitleImageEN?page=1&size=100';
-        
         const response = await fetch(apiUrl);
         const data = await response.json();
-        
-        // Map the new data structure to our component's expected format
-        const mappedCategories = data.categories.map((cat: Category) => ({
-          ...cat,
-          isWishlisted: wishlist.has(cat._id),
-        }));
-        
+        const categories: Category[] = Array.isArray(data.categories) ? data.categories : [];
+
+        // 2. Fetch unit statuses from the new endpoint
+        let statusesData: { projectId: string; statuses: { status: string; percentage: number; count: number; }[]; }[] = [];
+        try {
+          const statusesRes = await fetch('https://dash-board.raf-advanced.sa/api/unit-status');
+          const statusesJson = await statusesRes.json();
+          if (statusesJson.success && Array.isArray(statusesJson.data)) {
+            statusesData = statusesJson.data;
+          }
+        } catch (error) {
+          console.error('Error fetching statuses:', error);
+          statusesData = [];
+        }
+
+        // 3. Map statuses to categories
+        const mappedCategories = categories.map((cat: Category) => {
+          const statusObj = statusesData.find((s: { projectId: string; statuses: { status: string; percentage: number; count: number; }[]; }) => s.projectId === cat._id);
+          const progress: CategoryProgress = {
+            completedPercentage: 0,
+            availablePercentage: 0,
+            reservedPercentage: 0,
+            total: 0
+          };
+          if (statusObj && Array.isArray(statusObj.statuses)) {
+            for (const st of statusObj.statuses) {
+              switch (st.status) {
+                case 'sold':
+                case 'مباع':
+                  progress.completedPercentage = st.percentage;
+                  break;
+                case 'reserved':
+                case 'محجوز':
+                  progress.reservedPercentage = st.percentage;
+                  break;
+                case 'available':
+                case 'متاح':
+                  progress.availablePercentage = st.percentage;
+                  break;
+              }
+              progress.total += st.count || 0;
+            }
+          }
+          return {
+            ...cat,
+            isWishlisted: wishlist.has(cat._id),
+            progress,
+          };
+        });
         setCategories(mappedCategories);
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error('Error fetching categories or statuses:', error);
       }
     };
-
-    fetchCategories();
+    fetchCategoriesAndStatuses();
   }, [locale, wishlist]);
 
   const toggleWishlist = async (categoryId: string, event: React.MouseEvent) => {
@@ -121,7 +161,6 @@ export default function Projects() {
       completedPercentage: 0,
       availablePercentage: 0,
       reservedPercentage: 0,
-      unavailablePercentage: 0,
       total: 0
     };
     
@@ -171,7 +210,7 @@ export default function Projects() {
           </div>
           <div className="relative w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
             <div>
-              <h3 className="text-2xl font-bold text-[#540f6b] mb-6 font-cairo">
+              <h3 className="text-2xl font-bold text-[#540f6b] mb-6 font-cairo text-center">
                 {category.title}
               </h3>
               
@@ -215,20 +254,6 @@ export default function Projects() {
       <div
         className="h-full bg-[#1D0728] transition-all duration-500 ease-out"
         style={{ width: `${progress.availablePercentage}%` }}
-      />
-    </div>
-  </div>
-  <div>
-    <div className="flex justify-between items-center mb-2">
-      <span className="text-sm text-gray-600">{t('unavailable')}</span>
-      <span className="text-sm font-semibold text-[#C48765]">
-        {progress.unavailablePercentage || 0}%
-      </span>
-    </div>
-    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-      <div
-        className="h-full bg-[#C48765] transition-all duration-500 ease-out"
-        style={{ width: `${progress.unavailablePercentage || 0}%` }}
       />
     </div>
   </div>
