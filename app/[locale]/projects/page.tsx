@@ -259,7 +259,7 @@ export default function Projects() {
   </div>
   <div>
     <div className="flex justify-between items-center mb-2">
-      <span className="text-sm text-gray-600">{t('totalUnits')}</span>
+      <span className="text-sm text-gray-600">{t('total')}</span>
       <span className="text-sm font-semibold text-gray-800">
         {progress.total}
       </span>

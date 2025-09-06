@@ -32,7 +32,7 @@ interface ProjectData {
     completedPercentage: number;
     availablePercentage: number;
     reservedPercentage: number;
-    total?: number;
+    totalUnits?: number;
   };
   units?: {
     _id: string;
@@ -249,7 +249,7 @@ export default function ProjectsMap({ projects = [], selectedType = 'all' }: Pro
       completedPercentage: Math.floor(Math.random() * 40) + 10,
       reservedPercentage: Math.floor(Math.random() * 30) + 5,
       availablePercentage: Math.floor(Math.random() * 30) + 20,
-      total: 100
+      totalUnits: 100
     }
   }));
 

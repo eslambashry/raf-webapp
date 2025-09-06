@@ -12,7 +12,7 @@ interface CategoryProgress {
   availablePercentage: number;
   reservedPercentage: number;
   unavailablePercentage: number;
-  total: number;
+  totalUnits: number;
 }
 interface Category {
   _id: string;
@@ -77,7 +77,7 @@ export default function Projects() {
             availablePercentage: 0,
             reservedPercentage: 0,
             unavailablePercentage: 0,
-            total: 0
+            totalUnits: 0
           };
           if (statusObj && Array.isArray(statusObj.statuses)) {
             for (const st of statusObj.statuses) {
@@ -99,7 +99,7 @@ export default function Projects() {
                   progress.unavailablePercentage = st.percentage;
                   break;
               }
-              progress.total += st.count || 0;
+              progress.totalUnits += st.count || 0;
             }
           }
           return {
@@ -167,7 +167,7 @@ export default function Projects() {
       availablePercentage: 0,
       reservedPercentage: 0,
       unavailablePercentage: 0,
-      total: 0
+      totalUnits: 0
     };
 
 
@@ -279,7 +279,7 @@ export default function Projects() {
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-gray-600">{t('totalUnits')}</span>
                 <span className="text-sm font-semibold text-gray-800">
-                  {progress.total}
+                  {progress.totalUnits}
                 </span>
               </div>
             </div>
@@ -308,7 +308,7 @@ export default function Projects() {
       availablePercentage: 0,
       reservedPercentage: 0,
       unavailablePercentage: 0,
-      total: 0
+      totalUnits: 0
     };
   
     return (

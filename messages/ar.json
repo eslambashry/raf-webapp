@@ -426,7 +426,7 @@
     "reserved": "محجوز",
     "available": "متاح",
     "unavailable":"تحت الانشاء",
-    "totalUnits":"إجمالي الوحدات",
+    "total":"إجمالي الوحدات",
     "gridView": "عرض الشبكة",
     "horizontalView": "عرض أفقي",
     "compactView": "عرض مختصر",
@@ -452,7 +452,7 @@
     "reserved": "محجوز",
     "available": "متاح",
     "unavailable":"تحت الانشاء",
-    "totalUnits":"إجمالي الوحدات"
+    "total":"إجمالي الوحدات"
   },
   "services": {
     "afterSaleTitle": "خدمات متميزه ",

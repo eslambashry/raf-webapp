@@ -1,52 +1,298 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# راف العقارية - تطوير عقاري متميز
 
-## Getting Started
+## 📋 نظرة عامة على المشروع
 
-First, run the development server:
+**راف العقارية** هو موقع إلكتروني متطور لشركة تطوير عقاري رائدة في المملكة العربية السعودية. يوفر الموقع منصة شاملة لعرض المشاريع العقارية الفاخرة وإدارة طلبات الصيانة وتقديم خدمات استشارية متكاملة للعملاء.
 
+### 🎯 الأهداف الرئيسية
+
+- **عرض المشاريع العقارية**: تقديم عرض تفاعلي ومفصل للمشاريع السكنية والتجارية
+- **إدارة طلبات الصيانة**: نظام متكامل لتلقي وإدارة طلبات صيانة المباني
+- **تجربة مستخدم متميزة**: واجهة مستخدم عصرية ومتجاوبة مع جميع الأجهزة
+- **دعم متعدد اللغات**: دعم كامل للغة العربية والإنجليزية
+- **تحسين محركات البحث**: تطبيق أفضل ممارسات SEO للظهور في نتائج البحث
+
+## 🚀 المميزات والوظائف
+
+### الوظائف الأساسية
+- **عرض المشاريع**: عرض تفاعلي للمشاريع العقارية مع تفاصيل شاملة
+- **نظام المفضلة**: إمكانية حفظ المشاريع المفضلة للمستخدمين
+- **طلب الصيانة**: نموذج متكامل لتقديم طلبات صيانة المباني
+- **خريطة المشاريع**: عرض جغرافي للمشاريع على الخرائط
+- **نظام المصادقة**: تسجيل دخول وإدارة حسابات المستخدمين
+- **دعم متعدد اللغات**: واجهة بالعربية والإنجليزية
+
+### المميزات التقنية
+- **تصميم متجاوب**: يعمل على جميع الأجهزة والشاشات
+- **أداء محسن**: تحسين سرعة التحميل والأداء العام
+- **SEO متقدم**: تحسين محركات البحث والظهور في النتائج
+- **أمان عالي**: حماية البيانات والمصادقة الآمنة
+- **تحليلات متقدمة**: تتبع سلوك المستخدمين والأداء
+
+## 🛠️ التقنيات والأدوات المستخدمة
+
+### Frontend
+- **Next.js 15.2.2**: إطار عمل React متطور مع Server-Side Rendering
+- **React 18**: مكتبة واجهة المستخدم
+- **TypeScript**: لغة البرمجة المدعومة بالأنواع
+- **Tailwind CSS**: إطار عمل CSS للتصميم السريع
+- **Framer Motion**: مكتبة الرسوم المتحركة
+- **React Hook Form**: إدارة النماذج
+- **Zod**: التحقق من صحة البيانات
+
+### Backend & APIs
+- **Next.js API Routes**: واجهات برمجة التطبيقات
+- **MongoDB**: قاعدة بيانات NoSQL
+- **Nodemailer**: إرسال البريد الإلكتروني
+- **Axios**: طلبات HTTP
+- **Google APIs**: خدمات خرائط Google
+
+### إدارة الحالة والبيانات
+- **React Context**: إدارة الحالة العامة
+- **Local Storage**: حفظ البيانات محلياً
+- **MongoDB Atlas**: قاعدة بيانات سحابية
+
+### النشر والاستضافة
+- **Vercel**: منصة النشر السحابية
+- **Hostinger**: استضافة البريد الإلكتروني
+- **ImageKit**: إدارة الصور والوسائط
+
+### أدوات التطوير
+- **ESLint**: فحص جودة الكود
+- **PostCSS**: معالجة CSS
+- **Bundle Analyzer**: تحليل حجم الحزم
+
+## 📁 هيكلية المشروع
+
+```
+raf-webapp/
+├── app/                          # صفحات التطبيق (App Router)
+│   ├── [locale]/                 # صفحات متعددة اللغات
+│   │   ├── page.tsx             # الصفحة الرئيسية
+│   │   ├── about/               # صفحة من نحن
+│   │   ├── projects/            # صفحات المشاريع
+│   │   ├── blogs/               # المدونة
+│   │   ├── contact/             # صفحة التواصل
+│   │   └── auth/                # صفحات المصادقة
+│   ├── api/                     # واجهات برمجة التطبيقات
+│   │   └── maintenance/         # API طلبات الصيانة
+│   └── layout.tsx               # التخطيط الرئيسي
+├── components/                   # مكونات React
+│   ├── ui/                      # مكونات واجهة المستخدم
+│   ├── Navbar.tsx              # شريط التنقل
+│   ├── Projects.tsx            # عرض المشاريع
+│   ├── Contact.tsx             # نموذج التواصل
+│   └── ...                     # مكونات أخرى
+├── lib/                         # مكتبات مساعدة
+│   ├── mongodb.ts              # إعداد قاعدة البيانات
+│   ├── api.ts                  # وظائف API
+│   └── utils.ts                # وظائف مساعدة
+├── messages/                    # ملفات الترجمة
+│   ├── ar.json                 # الترجمة العربية
+│   └── en.json                 # الترجمة الإنجليزية
+├── config/                      # إعدادات التطبيق
+├── context/                     # React Context
+├── hooks/                       # React Hooks مخصصة
+├── public/                      # الملفات الثابتة
+└── types/                       # تعريفات TypeScript
+```
+
+## 🚀 الإعداد والتشغيل
+
+### المتطلبات الأساسية
+- **Node.js**: الإصدار 18 أو أحدث
+- **npm**: مدير الحزم
+- **Git**: نظام التحكم بالإصدارات
+
+### خطوات التثبيت
+
+1. **استنساخ المشروع**
+   ```bash
+   git clone [رابط المستودع]
+   cd raf-webapp
+   ```
+
+2. **تثبيت التبعيات**
+   ```bash
+   npm install
+   ```
+
+3. **إعداد متغيرات البيئة**
+   ```bash
+   # إنشاء ملف .env.local
+   MONGODB_URI=your_mongodb_connection_string
+   NEXT_PUBLIC_API_URL=your_api_url
+   ```
+
+4. **تشغيل بيئة التطوير**
+   ```bash
+   npm run dev
+   ```
+
+5. **بناء المشروع للإنتاج**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+### أوامر مفيدة
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev          # تشغيل خادم التطوير
+npm run build        # بناء المشروع للإنتاج
+npm run start        # تشغيل خادم الإنتاج
+npm run lint         # فحص جودة الكود
+npm run analyze      # تحليل حجم الحزم
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 إعدادات البيئة
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### متغيرات البيئة المطلوبة
+```env
+# قاعدة البيانات
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# API
+NEXT_PUBLIC_API_URL=https://raf-backend.vercel.app
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Project Features
-
-### Projects Map View
-
-The application includes an interactive map view for real estate projects. To enable this feature, you need to set up a Google Maps API key:
-
-1. Get a Google Maps JavaScript API key from the [Google Cloud Platform Console](https://console.cloud.google.com/)
-2. Enable the Maps JavaScript API and Places API
-3. Create a `.env.local` file in the project root and add:
-
-```
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key_here
+# البريد الإلكتروني
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_USER=maintenance@raf-advanced.sa
+SMTP_PASS=your_email_password
 ```
 
-Without this API key, the map feature will not work properly.
+## 🛡️ الأمان والحماية
+
+### ميزات الأمان
+- **HTTPS**: تشفير جميع الاتصالات
+- **CORS**: حماية من الطلبات غير المصرح بها
+- **Rate Limiting**: حماية من الهجمات
+- **Input Validation**: التحقق من صحة المدخلات
+- **SQL Injection Protection**: حماية من حقن SQL
+
+### إدارة المصادقة
+- **JWT Tokens**: رموز مصادقة آمنة
+- **Session Management**: إدارة الجلسات
+- **Password Hashing**: تشفير كلمات المرور
+- **Role-based Access**: صلاحيات حسب الدور
+
+## 📊 تحسين الأداء
+
+### تحسينات Frontend
+- **Code Splitting**: تقسيم الكود لتحسين التحميل
+- **Image Optimization**: تحسين الصور
+- **Lazy Loading**: التحميل الكسول للمكونات
+- **Caching**: التخزين المؤقت
+
+### تحسينات Backend
+- **Database Indexing**: فهرسة قاعدة البيانات
+- **Connection Pooling**: تجميع الاتصالات
+- **Caching**: التخزين المؤقت للبيانات
+- **Compression**: ضغط البيانات
+
+## 🔍 تحسين محركات البحث (SEO)
+
+### ميزات SEO
+- **Meta Tags**: علامات وصفية محسنة
+- **Structured Data**: بيانات منظمة
+- **Sitemap**: خريطة الموقع
+- **Robots.txt**: إرشادات محركات البحث
+- **Open Graph**: مشاركة وسائل التواصل الاجتماعي
+
+### تحسينات الأداء
+- **Core Web Vitals**: تحسين مؤشرات الأداء الأساسية
+- **Mobile Optimization**: تحسين للأجهزة المحمولة
+- **Accessibility**: إمكانية الوصول
+- **Page Speed**: سرعة تحميل الصفحات
+
+## 🌐 دعم متعدد اللغات
+
+### اللغات المدعومة
+- **العربية**: اللغة الأساسية مع دعم RTL
+- **الإنجليزية**: اللغة الثانوية
+
+### ميزات الترجمة
+- **next-intl**: إدارة الترجمة
+- **RTL Support**: دعم الكتابة من اليمين لليسار
+- **Dynamic Routing**: توجيه ديناميكي حسب اللغة
+- **Locale Detection**: اكتشاف اللغة تلقائياً
+
+## 📱 التصميم المتجاوب
+
+### نقاط التوقف
+- **Mobile**: 320px - 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: 1024px وما فوق
+
+### ميزات التصميم
+- **Flexible Grid**: شبكة مرنة
+- **Responsive Images**: صور متجاوبة
+- **Touch-friendly**: واجهة صديقة للمس
+- **Progressive Enhancement**: تحسين تدريجي
+
+## 🧪 الاختبار والجودة
+
+### أدوات الاختبار
+- **ESLint**: فحص جودة الكود
+- **TypeScript**: فحص الأنواع
+- **Build Analysis**: تحليل البناء
+- **Performance Monitoring**: مراقبة الأداء
+
+### معايير الجودة
+- **Code Standards**: معايير كتابة الكود
+- **Performance Budget**: ميزانية الأداء
+- **Accessibility**: معايير إمكانية الوصول
+- **Security**: معايير الأمان
+
+## 📈 التحليلات والتتبع
+
+### أدوات التحليلات
+- **Google Analytics**: تحليلات شاملة
+- **Google Tag Manager**: إدارة العلامات
+- **Performance Monitoring**: مراقبة الأداء
+- **Error Tracking**: تتبع الأخطاء
+
+## 🚀 النشر والإنتاج
+
+### منصة النشر
+- **Vercel**: النشر التلقائي
+- **GitHub Integration**: تكامل مع GitHub
+- **Environment Variables**: متغيرات البيئة
+- **Domain Management**: إدارة النطاقات
+
+### خطوات النشر
+1. رفع الكود إلى GitHub
+2. ربط المشروع بـ Vercel
+3. إعداد متغيرات البيئة
+4. تفعيل النشر التلقائي
+
+## 🤝 المساهمة والتطوير
+
+### إرشادات المساهمة
+- اتباع معايير كتابة الكود
+- كتابة اختبارات للميزات الجديدة
+- تحديث الوثائق
+- مراجعة الكود قبل الدمج
+
+### هيكل العمل
+- **Feature Branches**: فروع للميزات الجديدة
+- **Pull Requests**: طلبات الدمج
+- **Code Review**: مراجعة الكود
+- **Continuous Integration**: التكامل المستمر
+
+## 📞 الدعم والمساعدة
+
+### معلومات التواصل
+- **البريد الإلكتروني**: [email@domain.com]
+- **الموقع الإلكتروني**: [https://raf-advanced.sa]
+- **المستندات**: [رابط المستندات]
+
+### موارد مفيدة
+- [وثائق Next.js](https://nextjs.org/docs)
+- [وثائق React](https://reactjs.org/docs)
+- [وثائق Tailwind CSS](https://tailwindcss.com/docs)
+- [وثائق MongoDB](https://docs.mongodb.com)
+
+---
+
+**ملاحظة**: هذا المشروع مطور باستخدام أحدث التقنيات وأفضل الممارسات في تطوير تطبيقات الويب. يتم تحديثه باستمرار لضمان الأداء الأمثل وتجربة المستخدم المتميزة.
