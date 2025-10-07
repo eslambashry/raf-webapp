@@ -16,6 +16,7 @@ interface CategoryProgress {
   availablePercentage: number;
   reservedPercentage: number;
   total: number;
+  totalUnits: number;
 }
 
 interface Category {
@@ -56,7 +57,7 @@ export default function Projects() {
         const categories: Category[] = Array.isArray(data.categories) ? data.categories : [];
 
         // 2. Fetch unit statuses from the new endpoint
-        let statusesData: { projectId: string; statuses: { status: string; percentage: number; count: number; }[]; }[] = [];
+        let statusesData: { projectId: string; projectName: string; statuses: { status: string; percentage: number; }[]; totalUnits: number; }[] = [];
         try {
           const statusesRes = await fetch('https://dash-board.raf-advanced.sa/api/unit-status');
           const statusesJson = await statusesRes.json();
@@ -70,14 +71,19 @@ export default function Projects() {
 
         // 3. Map statuses to categories
         const mappedCategories = categories.map((cat: Category) => {
-          const statusObj = statusesData.find((s: { projectId: string; statuses: { status: string; percentage: number; count: number; }[]; }) => s.projectId === cat._id);
+          const statusObj = statusesData.find((s: { projectId: string; projectName: string; statuses: { status: string; percentage: number; }[]; totalUnits: number; }) => s.projectId === cat._id);
           const progress: CategoryProgress = {
             completedPercentage: 0,
             availablePercentage: 0,
             reservedPercentage: 0,
-            total: 0
+            total: 0,
+            totalUnits: 0
           };
           if (statusObj && Array.isArray(statusObj.statuses)) {
+            // استخدام totalUnits من البيانات الجديدة
+            progress.totalUnits = statusObj.totalUnits || 0;
+            progress.total = progress.totalUnits; // إجمالي الوحدات
+            
             for (const st of statusObj.statuses) {
               switch (st.status) {
                 case 'sold':
@@ -89,11 +95,10 @@ export default function Projects() {
                   progress.reservedPercentage = st.percentage;
                   break;
                 case 'available':
-                case 'متاح':
+                case 'متاح للبيع':
                   progress.availablePercentage = st.percentage;
                   break;
               }
-              progress.total += st.count || 0;
             }
           }
           return {
@@ -161,7 +166,8 @@ export default function Projects() {
       completedPercentage: 0,
       availablePercentage: 0,
       reservedPercentage: 0,
-      total: 0
+      total: 0,
+      totalUnits: 0
     };
     
     return (
