@@ -284,6 +284,7 @@
     "linkCopied": "تم نسخ الرابط",
     "share": "مشاركة",
     "feature": "الخصائص",
+"copyLocation": "نسخ الموقع",
     "features": {
       "guard": "حارس",
       "maidRoom": "غرفة خادمة",
@@ -297,8 +298,8 @@
       "waterTank": "خزان مياه",
       "livingRoom": "صالة",
       "minutes": "دقيقة",
-      "certifiedByWafi": "معتمد من وافي",
-      "copyLocation": "نسخ الموقع"
+      "certifiedByWafi": "معتمد من وافي"
+    
 
     },
     "contact": {

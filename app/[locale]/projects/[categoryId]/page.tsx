@@ -205,11 +205,11 @@ export default function ProjectDetails() {
                         <button
                           onClick={handleCopyLocationLink}
                           className="p-2 bg-white/70 hover:bg-[#540f6b]/20 rounded-lg transition-all duration-300 group relative"
-                          aria-label={t('copyLink')}
+                          aria-label={t('copyLocation')}
                         >
                           <Copy className="w-5 h-5 text-[#540f6b]" />
                           <span className="absolute -top-10 transform -translate-x-1/2 left-1/2 bg-[#540f6b] text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg">
-                            {t('copyLink')}
+                            {t('copyLocation')}
                           </span>
                         </button>
                       </div>
@@ -273,13 +273,13 @@ export default function ProjectDetails() {
               variants={container}
               initial="hidden"
               animate="show"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
             >
-              {units.slice(0, -1).map((unit) => (
+              {units.map((unit) => (
                 <motion.div
                   key={unit._id}
                   variants={item}
-                  className={`group bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl
+                  className={`group bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl flex flex-col h-full
                     ${(unit.status === 'Sold' || unit.status === 'مباع' || unit.status === 'Rented' || unit.status === 'مؤجر' || unit.status === 'Unavailable' || unit.status === 'غير متاح' || unit.status === 'Reserved' || unit.status === 'محجوز')
                       ? 'opacity-90'
                       : 'hover:scale-[1.02]'}`}
@@ -363,7 +363,7 @@ export default function ProjectDetails() {
                     })()}
                   </div>
 
-                  <div className="p-6" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+                  <div className="p-6 flex flex-col flex-grow" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
                     <div className={`flex items-center justify-between mb-4`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
                       <h3 dir={locale === 'ar' ? 'rtl' : 'ltr'} className="text-lg font-bold text-[#540f6b]">{unit.title}</h3>
                       <div className={`flex items-center gap-2`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -434,205 +434,18 @@ export default function ProjectDetails() {
                       </div>
                     )}
 
-                    <Link href={`/projects/${categoryId}/${unit._id}`}>
-                      <button className={`w-full bg-gradient-to-r ${locale === 'ar' ? 'from-[#540f6b] to-[#540f6b]' : 'from-[#540f6b] to-[#b37654]'} text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}>
-                        {t('viewDetails')}
-                      </button>
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Last Unit - Full Width Card */}
-            {units.length > 0 && (
-              <motion.div
-                variants={container}
-                initial="hidden"
-                animate="show"
-                className="mt-12" dir={locale === 'ar' ? 'rtl' : 'ltr'}
-              >
-                <motion.div
-                  variants={item}
-                  className={`group bg-white rounded-3xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl
-                    ${(units[units.length-1].status === 'Sold' || units[units.length-1].status === 'مباع' || units[units.length-1].status === 'Rented' || units[units.length-1].status === 'مؤجر' || units[units.length-1].status === 'Unavailable' || units[units.length-1].status === 'غير متاح' || units[units.length-1].status === 'Reserved' || units[units.length-1].status === 'محجوز')
-                      ? 'opacity-90'
-                      : 'hover:scale-[1.01]'}`}
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                    <div className="relative h-[300px] md:h-full">
-                      <Image
-                        src={units[units.length-1].images[0].secure_url}
-                        alt={units[units.length-1].title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      
-                      {/* Status Overlays */}
-                      {(() => {
-                        switch (units[units.length-1].status) {
-                          case 'Sold':
-                          case 'مباع':
-                            return (
-                              <>
-                                <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-10" />
-                                <div className="absolute inset-0 flex items-center justify-center z-20">
-                                  <Image
-                                    src="/sizes/sold.png"
-                                    alt="Sold"
-                                    width={180}
-                                    height={180}
-                                    className="object-contain transform scale-125 animate-pulse"
-                                  />
-                                </div>
-                              </>
-                            );
-                          case 'Rented':
-                          case 'مؤجر':
-                            return (
-                              <>
-                                <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-10" />
-                                <div className="absolute inset-0 flex items-center justify-center z-20">
-                                  <Image
-                                    src="/sizes/hagz.png"
-                                    alt="Rented"
-                                    width={180}
-                                    height={180}
-                                    className="object-contain transform scale-125 animate-pulse"
-                                  />
-                                </div>
-                              </>
-                            );
-                          case 'Available for sale':
-                          case 'متاح للبيع':
-                            return (
-                              <div className="absolute top-4 left-4 px-6 py-2 bg-emerald-500 text-white font-semibold rounded-full shadow-lg">
-                                {t('status.availableForSale')}
-                              </div>
-                            );
-                          case 'Available for rent':
-                          case 'متاح للإيجار':
-                            return (
-                              <div className="absolute top-4 left-4 px-6 py-2 bg-[#540f6b] text-white font-semibold rounded-full shadow-lg">
-                                {t('status.availableForRent')}
-                              </div>
-                            );
-                          case 'Reserved':
-                          case 'محجوز':
-                            return (
-                              <>
-                                <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-10" />
-                                <div className="absolute inset-0 flex items-center justify-center z-20">
-                                  <Image
-                                    src="/sizes/reserved.png"
-                                    alt="Reserved"
-                                    width={180}
-                                    height={180}
-                                    className="object-contain transform scale-125 animate-pulse"
-                                  />
-                                </div>
-                              </>
-                            );
-                          default:
-                            return null;
-                        }
-                      })()}
-                    </div>
-
-                    <div className="p-8 flex flex-col justify-between bg-gradient-to-r from-white to-[#F5F0EB]" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                      <div>
-                        <div className={`flex items-center justify-between mb-4`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                          <h3 dir={locale === 'ar' ? 'rtl' : 'ltr'} className="text-2xl font-bold text-[#540f6b]">{units[units.length-1].title}</h3>
-                          <div className={`flex items-center gap-2`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                            <button
-                              onClick={() => handleCopyLink(units[units.length-1]._id)}
-                              className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                              title={t('copyLink')}
-                              dir={locale}
-                            >
-                              {copiedId === units[units.length-1]._id ? (
-                                <Check className="w-5 h-5 text-green-500" />
-                              ) : (
-                                <Copy className="w-5 h-5 text-gray-600" />
-                              )}
-                            </button>
-                            <button
-                              onClick={() => {
-                                const url = `${window.location.origin}/${locale}/projects/${categoryId}/${units[units.length-1]._id}`;
-                                if (navigator.share) {
-                                  navigator.share({
-                                    title: units[units.length-1].title,
-                                    text: units[units.length-1].description,
-                                    url: url,
-                                  });
-                                } else {
-                                  // Fallback for browsers that don't support Web Share API
-                                  navigator.clipboard.writeText(url);
-                                  toast.success(t('linkCopied'));
-                                }
-                              }}
-                              className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-                              title={t('share')}
-                              dir={locale}
-                            >
-                              <Share2 className="w-5 h-5 text-gray-600" />
-                            </button>
-                          </div>
-                        </div>
-
-                        <div className={`flex items-center gap-2 mb-6`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                          <span className="text-sm font-medium text-gray-500">{t('unitId')}:</span>
-                          <span className="text-sm font-medium text-[#540f6b]">{units[units.length-1].customId}</span>
-                        </div>
-                        
-                        {units[units.length-1].description && (
-                          <div className="mb-6">
-                            <p className={`text-gray-600 first-line:indent-8 leading-[2rem] tracking-normal h-auto mb-6`} style={{ 
-                              lineHeight: '2rem', 
-                              textAlign: 'justify',
-                              textAlignLast: locale === 'ar' ? 'right' : 'left',
-                              direction: locale === 'ar' ? 'rtl' : 'ltr'
-                            }}>{units[units.length-1].description}</p>
-                          </div>
-                        )}
-                        
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                          {renderFeatureIcon(units[units.length-1].rooms, Bed, t('rooms'))}
-                          {renderFeatureIcon(units[units.length-1].livingrooms, Home, t('livingrooms'))}
-                          {renderFeatureIcon(units[units.length-1].bathrooms, Bath, t('bathrooms'))}
-                          {renderFeatureIcon(units[units.length-1].parking, Car, t('parking'))}
-                          {renderFeatureIcon(units[units.length-1].cameras, Camera, t('cameras'))}
-                          {renderFeatureIcon(units[units.length-1].guard, Shield, t('guard'))}
-                          {renderFeatureIcon(units[units.length-1].waterTank, Droplet, t('waterTank'))}
-                        </div>
-
-                        <div className={`flex items-center justify-between mb-6`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                          <div className={`flex items-center gap-2`} dir={locale === 'ar' ? 'rtl' : 'ltr'} >
-                            <Maximize2 className="w-5 h-5 text-[#540f6b]" />
-                            <span className="text-gray-600">{units[units.length-1].area} {t('areaUnit')}</span>
-                          </div>
-                        </div>
-
-                        {units[units.length-1].price && (
-                          <div className={`flex items-center gap-2 mb-6`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-                            <span className="text-lg font-bold text-[#540f6b]">{t('price')}:</span>
-                            <span className="text-xl font-bold text-[#540f6b]">
-                              {units[units.length-1].price.toLocaleString()} {t('currency')}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      <Link href={`/projects/${categoryId}/${units[units.length-1]._id}`}>
-                        <button className={`w-full bg-gradient-to-r ${locale === 'ar' ? 'from-[#540f6b] to-[#540f6b]' : 'from-[#540f6b] to-[#540f6b]'} text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}>
+                    <div className="mt-auto pt-4">
+                      <Link href={`/projects/${categoryId}/${unit._id}`}>
+                        <button className={`w-full bg-gradient-to-r ${locale === 'ar' ? 'from-[#540f6b] to-[#540f6b]' : 'from-[#540f6b] to-[#b37654]'} text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}>
                           {t('viewDetails')}
                         </button>
                       </Link>
                     </div>
                   </div>
                 </motion.div>
-              </motion.div>
-            )}
+              ))}
+            </motion.div>
+
           </div>
         </div>
 

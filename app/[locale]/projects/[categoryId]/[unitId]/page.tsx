@@ -311,7 +311,7 @@ const ProjectPage = () => {
                       <span className="text-base">{t('contact.whatsapp')}</span>
                     </button>
                   </Link>
-                  <button 
+                  {/* <button 
                     onClick={handleCopyLocationLink}
                     className="w-full flex items-center justify-center gap-3 p-4 bg-[#c48765] text-white rounded-xl hover:bg-[#c48765]/90 transition-colors group"
                   >
@@ -320,7 +320,7 @@ const ProjectPage = () => {
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     <span className="text-base">{t('copyLocation')}</span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -339,12 +339,12 @@ const ProjectPage = () => {
           isOpen={isThankYouOpen}
           onClose={() => setIsThankYouOpen(false)}
         />
-        <MapModal
+        {/* <MapModal
           isOpen={isMapOpen}
           onClose={() => setIsMapOpen(false)}
           location={unit.location}
           coordinates={unit.coordinates}
-        />
+        /> */}
 
         <Footer />
       </main>
